@@ -1,0 +1,16 @@
+{
+  "presets": [
+    "@babel/preset-env", // Transpile modern JavaScript to a version that is compatible with your target browsers
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic"
+      }
+    ], // Transpile JSX syntax
+    "@babel/preset-typescript" // Transpile TypeScript
+  ],
+  "plugins": [
+    "@babel/plugin-transform-class-properties", // Allow class properties syntax
+    "@babel/plugin-transform-runtime" // Enable async/await and other ES6+ features
+  ]
+}

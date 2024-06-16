@@ -9,9 +9,9 @@ const Products = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch]);
+  }, []);
   const { products, isLoading, error } = useAppSelector(
-    (state: any) => state.productReducer
+    (state) => state.productReducer
   );
 
   const limitedProducts = products.slice(0, 6);

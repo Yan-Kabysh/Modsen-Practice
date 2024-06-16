@@ -1,5 +1,7 @@
+import { THEME_TYPES } from '../types';
+
 export default {
-  title: 'light',
+  title: THEME_TYPES.LIGHT,
 
   colors: {
     primary: '#000000',
@@ -7,5 +9,7 @@ export default {
 
     background: '#FFFFFF',
     text: '#000000',
+    buttonBackground: '#FFFFFF',
+    buttonText: '#000000',
   },
 };

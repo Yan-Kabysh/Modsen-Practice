@@ -35,6 +35,24 @@ const Wrapper = styled.div`
       gap: 30px;
     }
   }
+  button {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #000000;
+    height: 38px;
+  }
 `;
 
-export { Wrapper };
+const Input = styled.input`
+  width: 400px;
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid #000000;
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 27px;
+  outline: none;
+`;
+
+export { Wrapper, Input };

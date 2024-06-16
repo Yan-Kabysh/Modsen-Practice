@@ -4,8 +4,8 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier', // Добавьте эту строку
-    'plugin:prettier/recommended' // И эту строку
+    'prettier', 
+    'plugin:prettier/recommended' 
   ],
   plugins: [
     'react',
@@ -35,9 +35,9 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-unused-vars': 'warn', // Изменено на предупреждение
+    '@typescript-eslint/no-unused-vars': 'warn',
     'react/no-deprecated': 'warn',
     'react/prop-types' : 'off',
-    'no-var': 'error' // Изменено на предупреждение
+    'no-var': 'error' 
   }
 };

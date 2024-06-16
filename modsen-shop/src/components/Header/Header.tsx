@@ -8,24 +8,26 @@ import {
   StyledHeaderButtonsBlock,
 } from '@/components/Header/styledHeader';
 import Switch from 'react-switch';
-import { shade } from 'polished';
-import { ThemeContext } from 'styled-components';
-import { useContext } from 'react';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { uiSlice } from '@/store/reducers/UIReducer/UISlice';
+import { THEME_TYPES } from '../../types';
+console.log(THEME_TYPES.LIGHT);
+const Header: React.FC = () => {
+  // const asd = useContext(ThemeContext);
+  const dispatch = useAppDispatch();
+  const { currentTheme } = useAppSelector((state) => state.uiReducer);
 
-interface Props {
-  toggleTheme: () => void;
-}
-
-const Header: React.FC<Props> = ({ toggleTheme }) => {
-  const asd = useContext(ThemeContext);
+  const handleThemeChange = () => {
+    dispatch(uiSlice.actions.toggleTheme());
+  };
   return (
     <HeaderWrapper>
       <StyledLogo>Modsen SHOPPE </StyledLogo>
       <StyledHeaderButtonsBlock>
         <StyledShopButton>Shop</StyledShopButton>
         <Switch
-          onChange={toggleTheme}
-          checked={asd?.title === 'dark'}
+          onChange={handleThemeChange}
+          checked={currentTheme.title === THEME_TYPES.DARK}
           checkedIcon={false}
           uncheckedIcon={false}
           width={45}

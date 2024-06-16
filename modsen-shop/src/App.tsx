@@ -1,29 +1,30 @@
-import React, { useState } from 'react';
 import { Header } from '@/components/Header/Header';
 import { Global } from './globals';
 import styled, { ThemeProvider } from 'styled-components';
-import light from './theme/light';
-import dark from './theme/dark';
-import { Products } from '@/components/Products/Products';
 import { Footer } from './components/Footer/Footer';
+import { useAppSelector } from './hooks/redux';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { Home } from './pages/home/Home';
+import { Error } from './pages/Error/Error';
 
 const Wrapper = styled.div`
   max-width: 100vw;
-  /* width: 100%; */
   margin: 0 7% 0 7%;
 `;
 
 const App = () => {
-  const [theme, setTheme] = useState(light);
-  const toggleTheme = () => {
-    setTheme(theme.title === 'light' ? dark : light);
-  };
+  const { currentTheme } = useAppSelector((state) => state.uiReducer);
+
   return (
     <Wrapper>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={currentTheme}>
         <Global />
-        <Header toggleTheme={toggleTheme} />
-        <Products />
+        <Header />
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="home" element={<Home />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
         <Footer />
       </ThemeProvider>
     </Wrapper>

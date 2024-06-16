@@ -24,13 +24,13 @@ const ImageWrapper = styled.div`
   width: 100%;
   height: 380px;
   display: flex;
-  justify-content: center; /* Центрирование изображения по горизонтали */
-  align-items: center; /* Центрирование изображения по вертикали */
+  justify-content: center;
+  align-items: center;
 
   img {
-    max-width: 100%; /* Максимальная ширина изображения равна ширине ImageWrapper */
-    max-height: 100%; /* Максимальная высота изображения равна высоте ImageWrapper */
-    object-fit: contain; /* Заполнение изображения без искажений */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
   }
 `;
 

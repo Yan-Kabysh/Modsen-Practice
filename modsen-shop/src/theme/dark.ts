@@ -1,5 +1,7 @@
+import { THEME_TYPES } from '../types';
+
 export default {
-  title: 'dark',
+  title: THEME_TYPES.DARK,
 
   colors: {
     primary: '#333',
@@ -7,5 +9,7 @@ export default {
 
     background: '#222',
     text: '#fff',
+    buttonBackground: '#000000',
+    buttonText: '#FFFFFF',
   },
 };

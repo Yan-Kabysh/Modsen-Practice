@@ -1,8 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-// const AllertaStencil = require('@/fonts/AllertaStencil-Regular.ttf');
-// const DMSans = require('@/fonts/DMSans-VariableFont_opsz,wght.ttf');
-
 const Global = createGlobalStyle`
   * {
     margin: 0;

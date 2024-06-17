@@ -25,6 +25,8 @@ interface ProductState {
 
 interface ProductProps {
   product: IProduct;
+  width: string;
+  height: string;
 }
 
 interface ThemeState {
@@ -35,4 +37,17 @@ interface IEmailForm {
   email: string;
 }
 
-export type { IProduct, ProductState, ProductProps, ThemeState, IEmailForm };
+interface SelectProps {
+  label: string;
+  options: { value: string; label: string }[];
+  onChange: (value: string) => void;
+}
+
+export type {
+  IProduct,
+  ProductState,
+  ProductProps,
+  ThemeState,
+  IEmailForm,
+  SelectProps,
+};

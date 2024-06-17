@@ -11,9 +11,13 @@ import Switch from 'react-switch';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { uiSlice } from '@/store/reducers/UIReducer/UISlice';
 import { THEME_TYPES } from '../../types';
-console.log(THEME_TYPES.LIGHT);
+import { useNavigate } from 'react-router-dom';
+
 const Header: React.FC = () => {
-  // const asd = useContext(ThemeContext);
+  const navigate = useNavigate();
+  const clickHandler = () => {
+    navigate('/shop');
+  };
   const dispatch = useAppDispatch();
   const { currentTheme } = useAppSelector((state) => state.uiReducer);
 
@@ -24,7 +28,7 @@ const Header: React.FC = () => {
     <HeaderWrapper>
       <StyledLogo>Modsen SHOPPE </StyledLogo>
       <StyledHeaderButtonsBlock>
-        <StyledShopButton>Shop</StyledShopButton>
+        <StyledShopButton onClick={clickHandler}>Shop</StyledShopButton>
         <Switch
           onChange={handleThemeChange}
           checked={currentTheme.title === THEME_TYPES.DARK}

@@ -1,10 +1,10 @@
 import { ProductProps } from '@/types';
 import { Wrapper, ImageWrapper } from './StyledProduct'; // Импорт нового стилизованного компонента
 
-const Product: React.FC<ProductProps> = ({ product }) => {
+const Product: React.FC<ProductProps> = ({ product, width, height }) => {
   return (
-    <Wrapper>
-      <ImageWrapper>
+    <Wrapper width={width}>
+      <ImageWrapper height={height}>
         <img src={product.image} alt="" />
       </ImageWrapper>
       <span className="title">{product.title}</span>

@@ -1,35 +1,66 @@
 import { useAppSelector, useAppDispatch } from '@/hooks/redux';
-import { fetchProducts } from '@/store/reducers/ProductActionCreators';
+import {
+  fetchCategorieProducts,
+  fetchProducts,
+} from '@/store/reducers/ProductActionCreators';
 import { IProduct } from '@/types';
 import { useEffect } from 'react';
 import { Product } from '../Product/Product';
 import { Container, Wrapper } from './StyledProducts';
 
-const Products = () => {
+const Products = ({
+  width,
+  height,
+  count,
+  searchTerm = '',
+  priceRange,
+  sortBy,
+  shopBy,
+}: any) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
+    dispatch(fetchProducts(sortBy));
+  }, [sortBy]);
+
+  useEffect(() => {
+    if (shopBy && shopBy.length > 0) {
+      dispatch(fetchCategorieProducts(shopBy));
+    }
+  }, [shopBy]);
+
   const { products, isLoading, error } = useAppSelector(
     (state) => state.productReducer
   );
 
-  const limitedProducts = products.slice(0, 6);
+  const filteredProducts = products.filter((product: IProduct) => {
+    const matchesSearchTerm = product.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    const matchesPriceRange = priceRange
+      ? product.price >= priceRange[0] && product.price <= priceRange[1]
+      : true;
+
+    return matchesSearchTerm && matchesPriceRange;
+  });
+
+  const limitedProducts = count
+    ? filteredProducts.slice(0, count)
+    : filteredProducts;
+
   return (
     <Container>
-      <div className="title">
-        <h1 className="h1">Shop The Latest</h1>
-        <a href="" className="a">
-          View All
-        </a>
-      </div>
       <Wrapper>
         {isLoading && <p>Loading...</p>}
         {error && <p>{error}</p>}
-        {products &&
-          limitedProducts.map((product: IProduct) => (
-            <Product key={product.id} product={product} />
-          ))}
+        {limitedProducts.map((product: IProduct) => (
+          <Product
+            width={width}
+            height={height}
+            key={product.id}
+            product={product}
+          />
+        ))}
       </Wrapper>
     </Container>
   );

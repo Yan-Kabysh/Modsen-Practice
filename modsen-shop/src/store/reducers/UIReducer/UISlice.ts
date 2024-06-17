@@ -5,8 +5,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import light from 'theme/light';
 import dark from 'theme/dark';
 
+const savedTheme = localStorage.getItem('theme');
+
 const initialState: ThemeState = {
-  currentTheme: light,
+  currentTheme: savedTheme === THEME_TYPES.DARK ? dark : light,
 };
 
 export const uiSlice = createSlice({
@@ -16,6 +18,7 @@ export const uiSlice = createSlice({
     toggleTheme: (state) => {
       state.currentTheme =
         state.currentTheme.title === THEME_TYPES.LIGHT ? dark : light;
+      localStorage.setItem('theme', state.currentTheme.title);
     },
     setTheme: (state, action) => {
       state.currentTheme = action.payload;

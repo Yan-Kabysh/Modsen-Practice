@@ -1,16 +1,24 @@
 import { styled } from 'styled-components';
+interface WrapperProps {
+  width?: string;
+}
 
-const Wrapper = styled.div`
-  width: 30%;
+interface ImageWrapperProps {
+  height?: string;
+}
+const Wrapper = styled.div<WrapperProps>`
+  width: ${({ width }) => width || '30%'};
   display: flex;
   flex-direction: column;
   gap: 20px;
+
   .title {
     font-family: 'DM Sans';
     font-size: 20px;
     font-weight: 400;
     line-height: 26px;
   }
+
   .cost {
     font-family: 'DM Sans';
     font-size: 20px;
@@ -20,9 +28,9 @@ const Wrapper = styled.div`
   }
 `;
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled.div<ImageWrapperProps>`
   width: 100%;
-  height: 380px;
+  height: ${({ height }) => height || '380px'};
   display: flex;
   justify-content: center;
   align-items: center;

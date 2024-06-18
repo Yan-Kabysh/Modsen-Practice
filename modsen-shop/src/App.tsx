@@ -7,6 +7,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Home } from './pages/home/Home';
 import { Error } from './pages/Error/Error';
 import { Shop } from './pages/Shop/Shop';
+import { ContactUs } from './pages/ContactUs/ContactUs';
+import { ProductPage } from './pages/ProductPage/ProductPage';
 
 const Wrapper = styled.div`
   max-width: 100vw;
@@ -25,6 +27,8 @@ const App = () => {
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="home" element={<Home />} />
           <Route path="shop" element={<Shop />} />
+          <Route path="shop/:id" element={<ProductPage />} />
+          <Route path="contact" element={<ContactUs />} />
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />

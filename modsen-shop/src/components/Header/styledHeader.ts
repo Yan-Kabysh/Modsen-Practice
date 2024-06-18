@@ -5,6 +5,8 @@ const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   /* margin: 0 auto; */
+  border-bottom: 1px solid #d8d8d8;
+  margin-bottom: 20px;
 `;
 
 const StyledLogo = styled.div`
@@ -13,6 +15,7 @@ const StyledLogo = styled.div`
   font-weight: 400;
   line-height: 40.5px;
   color: #a18a68;
+  cursor: pointer;
 `;
 
 const StyledShopButton = styled.button`

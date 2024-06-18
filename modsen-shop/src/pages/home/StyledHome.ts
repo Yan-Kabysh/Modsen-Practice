@@ -18,6 +18,7 @@ const Wrapper = styled.div`
   .title {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 60px;
   }
 `;
 

@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 interface WrapperProps {
   width?: string;
@@ -28,6 +29,16 @@ const Wrapper = styled.div<WrapperProps>`
   }
 `;
 
+const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  color: inherit;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: inherit;
+  }
+`;
+
 const ImageWrapper = styled.div<ImageWrapperProps>`
   width: 100%;
   height: ${({ height }) => height || '380px'};
@@ -42,4 +53,4 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   }
 `;
 
-export { Wrapper, ImageWrapper };
+export { Wrapper, ImageWrapper, StyledNavLink };

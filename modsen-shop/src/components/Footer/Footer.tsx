@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
     emailjs
       .send(
         'service_9lhh6nk',
-        'template_265lc4i',
+        'template_wrw1o9w',
         {
           to_email: data.email,
         },
@@ -48,9 +48,9 @@ const Footer: React.FC = () => {
     <Wrapper>
       <div className="refs-email">
         <div className="refs">
-          <a href="">CONTACT</a>
+          <a href="/contact">CONTACT</a>
           <a href="">TERMS OF SERVICES</a>
-          <a href="">SHIPPING AND RETURNS</a>
+          <a href="">SHOPPING AND RETURNS</a>
         </div>
         <div className="email">
           <form onSubmit={handleSubmit(submit)}>

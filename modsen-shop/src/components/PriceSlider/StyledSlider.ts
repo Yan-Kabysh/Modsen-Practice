@@ -12,17 +12,20 @@ const StyledSlider = styled(Slider)`
     position: absolute;
     top: 0;
     bottom: 0;
-    background: #d8d8d8; // Цвет трека слайдера
+    background: ${(props) =>
+      props.theme.title === 'dark'
+        ? '#9A9A9A'
+        : '#d8d8d8'}; // Цвет трека слайдера
   }
 
   .track-1 {
-    background: #000000; // Цвет выбранного диапазона
+    background: ${(props) =>
+      props.theme.colors.text}; // Цвет выбранного диапазона
   }
 
   .thumb {
     height: 10px;
     width: 2px;
-    background: black; // Цвет ползунка
     cursor: pointer;
     position: absolute;
     top: 1px;

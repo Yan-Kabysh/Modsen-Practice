@@ -15,8 +15,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
-  const clickHandler = () => {
-    navigate('/shop');
+  const clickHandler = (url: string) => {
+    navigate(url);
   };
   const dispatch = useAppDispatch();
   const { currentTheme } = useAppSelector((state) => state.uiReducer);
@@ -26,9 +26,13 @@ const Header: React.FC = () => {
   };
   return (
     <HeaderWrapper>
-      <StyledLogo>Modsen SHOPPE </StyledLogo>
+      <StyledLogo onClick={() => clickHandler('/home')}>
+        Modsen SHOPPE{' '}
+      </StyledLogo>
       <StyledHeaderButtonsBlock>
-        <StyledShopButton onClick={clickHandler}>Shop</StyledShopButton>
+        <StyledShopButton onClick={() => clickHandler('/shop')}>
+          Shop
+        </StyledShopButton>
         <Switch
           onChange={handleThemeChange}
           checked={currentTheme.title === THEME_TYPES.DARK}

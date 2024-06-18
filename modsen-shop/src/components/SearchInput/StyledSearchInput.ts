@@ -10,6 +10,7 @@ const Input = styled.input`
   font-weight: 400;
   line-height: 27px;
   outline: none;
+  background: transparent;
 `;
 
 const IconWrapper = styled.div`

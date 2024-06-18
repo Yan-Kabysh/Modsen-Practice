@@ -18,6 +18,13 @@ const SortMenu = ({
   shopByOnChange,
 }: any) => {
   const [selectShopBy, setSelectShopBy] = useState<any[]>([]);
+
+  const clickHandler = () => {
+    onSearch();
+    onPriceChange();
+    onChange();
+    shopByOnChange();
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -51,6 +58,7 @@ const SortMenu = ({
         onChange={onChange}
       />
       <PriceSlider onPriceChange={onPriceChange} />
+      {/* <button onClick={clickHandler}>Filter</button> */}
     </Wrapper>
   );
 };

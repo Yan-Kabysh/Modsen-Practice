@@ -19,10 +19,16 @@ const SelectBox = styled.select`
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
+  background: transparent;
+  color: ${(props) => props.theme.colors.text};
 
   &:focus {
     outline: none;
     border-color: #007bff;
+  }
+
+  option {
+    background: ${(props) => props.theme.colors.background};
   }
 `;
 
@@ -32,7 +38,7 @@ const Arrow = styled.div`
   right: 10px;
   pointer-events: none;
   transform: translateY(-50%);
-  border: solid black;
+  border: solid ${(props) => props.theme.colors.text};
   border-width: 0 2px 2px 0;
   display: inline-block;
   padding: 4px;

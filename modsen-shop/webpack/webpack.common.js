@@ -5,20 +5,23 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const Dotenv = require('dotenv-webpack');
 
-
 module.exports = {
   name: 'client',
   entry: {
-    'react-app-setup': path.resolve(__dirname, '..', './src/index.tsx'), 
+    'react-app-setup': path.resolve(__dirname, '..', './src/index.tsx'),
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.jsx', '.js', '.graphql'], 
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.graphql'],
     mainFields: ['source', 'module', 'main'],
     modules: [path.resolve('node_modules')],
     alias: {
-
       '@': path.resolve(__dirname, 'src'),
-    }
+      '@/components': path.resolve(__dirname, 'src/components'),
+      '@/images': path.resolve(__dirname, 'src/assets/images'),
+      '@/fonts': path.resolve(__dirname, 'src/assets/fonts'),
+      '@/hooks': path.resolve(__dirname, 'src/hooks'),
+      '@/store': path.resolve(__dirname, 'src/store'),
+    },
   },
   module: {
     rules: [
@@ -27,7 +30,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader', 
+            loader: 'babel-loader',
           },
         ],
       },
@@ -49,18 +52,17 @@ module.exports = {
     path: path.resolve(__dirname, '..', './build'),
     filename: '[name]_[fullhash].js',
   },
-  
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, '..', './public/index.html'),
-      favicon: path.resolve(__dirname, '..', './public/images/favicon.png'), 
+      favicon: path.resolve(__dirname, '..', './public/images/favicon.png'),
       showErrors: true,
-    }), 
+    }),
     new MiniCssExtractPlugin({
       filename: '[name]_[fullhash].css',
       chunkFilename: '[id].css',
-    }), 
+    }),
     new WebpackManifestPlugin({
       writeToFileEmit: true,
     }),
@@ -68,7 +70,6 @@ module.exports = {
     new Dotenv({
       path: '.env',
     }),
-    
   ],
   stats: 'errors-only',
 };

@@ -38,7 +38,7 @@ const Wrapper = styled.div`
   button {
     background: none;
     border: none;
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid ${(props) => props.theme.colors.text};
     height: 38px;
   }
 `;
@@ -47,12 +47,14 @@ const Input = styled.input`
   width: 400px;
   height: 40px;
   border: none;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid ${(props) => props.theme.colors.text};
   font-family: 'DM Sans';
   font-size: 16px;
   font-weight: 400;
   line-height: 27px;
   outline: none;
+  background: transparent;
+  color: ${(props) => props.theme.colors.text};
 `;
 
 export { Wrapper, Input };

@@ -16,6 +16,12 @@ const Global = createGlobalStyle`
    .iconPath{
     fill: ${(props) => props.theme.colors.text};
    }
+   input{
+    color: ${(props) => props.theme.colors.text};
+   }
+   .thumb{
+    background: ${(props) => props.theme.colors.text};
+   }
    @font-face {
       font-family: "Allerta Stencil";
       src: url(${require('@/fonts/AllertaStencil-Regular.ttf')})

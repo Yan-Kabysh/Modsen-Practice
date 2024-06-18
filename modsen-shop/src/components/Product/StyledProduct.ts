@@ -8,7 +8,7 @@ interface ImageWrapperProps {
   height?: string;
 }
 const Wrapper = styled.div<WrapperProps>`
-  width: ${({ width }) => width || '30%'};
+  width: ${({ width }) => width || '100%'};
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -19,17 +19,18 @@ const Wrapper = styled.div<WrapperProps>`
     font-weight: 400;
     line-height: 26px;
   }
+`;
 
-  .cost {
-    font-family: 'DM Sans';
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 26px;
-    color: #a18a68;
-  }
+const Span = styled.span`
+  font-family: 'DM Sans';
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  color: #a18a68;
 `;
 
 const StyledNavLink = styled(NavLink)`
+  width: 30%;
   text-decoration: none;
   color: inherit;
   &:hover,
@@ -53,4 +54,4 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   }
 `;
 
-export { Wrapper, ImageWrapper, StyledNavLink };
+export { Wrapper, ImageWrapper, StyledNavLink, Span };

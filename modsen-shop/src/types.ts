@@ -21,6 +21,7 @@ interface ProductState {
   products: IProduct[];
   isLoading: boolean;
   error: string;
+  product: IProduct;
 }
 
 interface ProductProps {

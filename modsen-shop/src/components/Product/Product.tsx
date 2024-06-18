@@ -1,5 +1,5 @@
 import { ProductProps } from '@/types';
-import { Wrapper, ImageWrapper, StyledNavLink } from './StyledProduct'; // Импорт нового стилизованного компонента
+import { Wrapper, ImageWrapper, StyledNavLink, Span } from './StyledProduct'; // Импорт нового стилизованного компонента
 const productItemClick = () => {};
 const Product: React.FC<ProductProps> = ({ product, width, height }) => {
   return (
@@ -9,7 +9,7 @@ const Product: React.FC<ProductProps> = ({ product, width, height }) => {
           <img src={product.image} alt="" />
         </ImageWrapper>
         <span className="title">{product.title}</span>
-        <span className="cost">$ {product.price}</span>
+        <Span>$ {product.price}</Span>
       </Wrapper>
     </StyledNavLink>
   );

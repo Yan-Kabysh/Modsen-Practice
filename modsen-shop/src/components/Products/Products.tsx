@@ -16,6 +16,7 @@ const Products = ({
   priceRange,
   sortBy,
   shopBy,
+  excludeProductId,
 }: any) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -44,9 +45,16 @@ const Products = ({
     return matchesSearchTerm && matchesPriceRange;
   });
 
-  const limitedProducts = count
-    ? filteredProducts.slice(0, count)
-    : filteredProducts;
+  let limitedProducts;
+
+  if (excludeProductId) {
+    limitedProducts = filteredProducts.filter(
+      (product) => product.id !== excludeProductId
+    );
+  } else {
+    limitedProducts = filteredProducts;
+  }
+  limitedProducts = count ? limitedProducts.slice(0, count) : limitedProducts;
 
   return (
     <Container>

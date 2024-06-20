@@ -21,7 +21,7 @@ const Wrapper = styled.div<WrapperProps>`
   }
 `;
 
-const Span = styled.span`
+const Price = styled.span`
   font-family: 'DM Sans';
   font-size: 20px;
   font-weight: 500;
@@ -54,4 +54,4 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   }
 `;
 
-export { Wrapper, ImageWrapper, StyledNavLink, Span };
+export { Wrapper, ImageWrapper, StyledNavLink, Price };

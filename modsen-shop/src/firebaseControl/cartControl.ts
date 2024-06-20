@@ -31,10 +31,21 @@ export const removeItemFromCart = async (userId: string, productId: number) => {
   try {
     console.log(`Removing product ${productId} from user ${userId}'s cart...`);
     const userCartRef = getUserCartRef(userId);
-    await updateDoc(userCartRef, { items: arrayRemove({ id: productId }) });
-    console.log(
-      `Product ${productId} removed successfully from user ${userId}'s cart.`
-    );
+    const userCartSnap = await getDoc(userCartRef);
+
+    if (userCartSnap.exists()) {
+      const items = userCartSnap.data()?.items || [];
+      const updatedItems = items.filter(
+        (item: IProduct) => item.id !== productId
+      );
+
+      await updateDoc(userCartRef, { items: updatedItems });
+      console.log(
+        `Product ${productId} removed successfully from user ${userId}'s cart.`
+      );
+    } else {
+      console.log(`Cart for user ${userId} does not exist.`);
+    }
   } catch (error) {
     console.error('Error removing item from cart:', error);
     throw error;

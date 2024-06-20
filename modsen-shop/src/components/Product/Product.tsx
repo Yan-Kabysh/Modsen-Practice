@@ -1,6 +1,6 @@
+import { Span } from '../../pages/Error/StyledError';
 import { ProductProps } from '@/types';
-import { Wrapper, ImageWrapper, StyledNavLink, Span } from './StyledProduct'; // Импорт нового стилизованного компонента
-const productItemClick = () => {};
+import { Wrapper, ImageWrapper, StyledNavLink } from './StyledProduct'; // Импорт нового стилизованного компонента
 const Product: React.FC<ProductProps> = ({ product, width, height }) => {
   return (
     <StyledNavLink to={'/shop/' + product.id}>

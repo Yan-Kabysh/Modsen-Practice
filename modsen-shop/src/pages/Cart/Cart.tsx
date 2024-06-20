@@ -8,6 +8,10 @@ import {
   removeItemFromCart,
 } from '../../firebaseControl/cartControl';
 import { removeItem, setCart } from '@/store/reducers/CartReducer/CartReducer';
+import { H1 } from '../Shop/StyledShop';
+import { CardProduct } from '@/components/CardProduct/CardProduct';
+import { ColumsTitles, Items } from './StyledCart';
+import { Span } from '../Error/StyledError';
 
 const Cart = () => {
   const [loading, setLoading] = useState(true);
@@ -50,21 +54,27 @@ const Cart = () => {
 
   return (
     <div>
-      <h1>Cart</h1>
-      <h1>{user.email}</h1>
+      <H1>Cart</H1>
+      <ColumsTitles>
+        <Span>PRODUCT</Span>
+        <Span>TITLE</Span>
+        <Span>QUANTITY</Span>
+        <Span>PRICE</Span>
+        <Span>TOTAL PRICE</Span>
+        <Span>ACTION</Span>
+      </ColumsTitles>
       {cartItems.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
-        <ul>
+        <Items>
           {cartItems.map((item: IProduct) => (
-            <li key={item.id}>
-              <h2>{item.title}</h2>
-              <p>{item.price}</p>
-              <img src={item.image} alt="" />
-              <button onClick={() => removeClick(item.id)}>Remove</button>
-            </li>
+            <CardProduct
+              key={item.id}
+              product={item}
+              onRemove={() => removeClick(item.id)}
+            />
           ))}
-        </ul>
+        </Items>
       )}
     </div>
   );

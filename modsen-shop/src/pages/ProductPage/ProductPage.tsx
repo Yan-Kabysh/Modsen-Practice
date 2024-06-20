@@ -3,13 +3,12 @@ import { FacebookIcon } from '@/components/Icons/Facebook';
 import { InstagramIcon } from '@/components/Icons/InstagramIcon';
 import { MailIcon } from '@/components/Icons/MailIcon';
 import { TwitterIcon } from '@/components/Icons/TwitterIcon';
-import { Span } from '@/components/Product/StyledProduct';
+import { Price } from '@/components/Product/StyledProduct';
 import { Products } from '@/components/Products/Products';
 import { StarRating } from '@/components/StarRating/StarRating';
 import { addItemToCart, getUserCart } from '../../firebaseControl/cartControl';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { selectedProductFetch } from '@/store/reducers/ProductActionCreators';
-import { IProduct } from '@/types';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
@@ -92,7 +91,7 @@ const ProductPage = () => {
         </ImageContainer>
         <Info>
           <H2>{product.title}</H2>
-          <Span>$ {product.price}</Span>
+          <Price>$ {product.price}</Price>
           <Rating>
             {product.rating && <StarRating value={product.rating.rate} />}
             {product.rating && (

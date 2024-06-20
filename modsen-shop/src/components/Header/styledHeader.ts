@@ -40,10 +40,17 @@ const StyledHeaderButtonsBlock = styled.div`
   align-items: center;
 `;
 
+const ButtonCart = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+`;
+
 export {
   HeaderWrapper,
   StyledLogo,
   StyledShopButton,
   StyledIcon,
   StyledHeaderButtonsBlock,
+  ButtonCart,
 };

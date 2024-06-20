@@ -6,6 +6,7 @@ import {
   StyledShopButton,
   StyledIcon,
   StyledHeaderButtonsBlock,
+  ButtonCart,
 } from '@/components/Header/styledHeader';
 import Switch from 'react-switch';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
@@ -48,9 +49,9 @@ const Header: React.FC = () => {
           <SearchIcon />
         </StyledIcon>
         <StyledIcon>
-          <button onClick={() => clickHandler('/cart')}>
+          <ButtonCart onClick={() => clickHandler('/cart')}>
             <CartIcon />
-          </button>
+          </ButtonCart>
         </StyledIcon>
       </StyledHeaderButtonsBlock>
     </HeaderWrapper>

@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 const HeaderWrapper = styled.div`
-  /* width: 90%; */
   display: flex;
   justify-content: space-between;
-  /* margin: 0 auto; */
   border-bottom: 1px solid #d8d8d8;
-  margin-bottom: 20px;
+  margin: 30px 0 20px 0;
+  padding-bottom: 10px;
 `;
 
 const StyledLogo = styled.div`

@@ -1,3 +1,4 @@
+import { Button } from '@/components/Button/Button';
 import { FacebookIcon } from '@/components/Icons/Facebook';
 import { InstagramIcon } from '@/components/Icons/InstagramIcon';
 import { MailIcon } from '@/components/Icons/MailIcon';
@@ -5,6 +6,7 @@ import { TwitterIcon } from '@/components/Icons/TwitterIcon';
 import { Span } from '@/components/Product/StyledProduct';
 import { Products } from '@/components/Products/Products';
 import { StarRating } from '@/components/StarRating/StarRating';
+import { addItemToCart, getUserCart } from '../../firebaseControl/cartControl';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { selectedProductFetch } from '@/store/reducers/ProductActionCreators';
 import { IProduct } from '@/types';
@@ -29,6 +31,8 @@ import {
   TitleSpan,
   Wrapper,
 } from './StyledProductPage';
+import { useAddCart } from '@/hooks/useAddCart';
+import { addItem } from '@/store/reducers/CartReducer/CartReducer';
 
 const ProductPage = () => {
   const { id = '' } = useParams();
@@ -36,6 +40,7 @@ const ProductPage = () => {
   const product = useAppSelector((state) => state.productReducer.product);
   const [selectedImage, setSelectedImage] = useState('');
   const [similarItems, setSimilarItems] = useState('');
+  const user = useAppSelector((state) => state.userReducer.user);
 
   useEffect(() => {
     dispatch(selectedProductFetch(id));
@@ -59,6 +64,20 @@ const ProductPage = () => {
     return <div>Loading...</div>; // Добавьте индикатор загрузки
   }
 
+  const handleAddToCart = async () => {
+    if (user && user.id) {
+      try {
+        await addItemToCart(user.id, product);
+        dispatch(addItem(product)); // Обновление состояния Redux
+        alert('Product added to cart');
+      } catch (error) {
+        alert('Failed to add product to cart. Please try again later.');
+      }
+    } else {
+      alert('Please log in to add items to your cart');
+    }
+  };
+
   return (
     <Wrapper>
       <ProductWrapper>
@@ -81,6 +100,7 @@ const ProductPage = () => {
             )}
           </Rating>
           <Desc>{product.description}</Desc>
+          <Button onClick={handleAddToCart}>Add to cart</Button>
           <Icons>
             <MailIcon />
             <FacebookIcon />

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   border-top: 1px solid #d8d8d8;
-  margin: 255px 0 90px 0;
+  margin: 200px 0 50px 0;
   .refs-email {
     display: flex;
     justify-content: space-between;

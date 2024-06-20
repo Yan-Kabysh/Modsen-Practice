@@ -1,3 +1,4 @@
+import { User } from 'firebase/auth';
 import { DefaultTheme } from 'styled-components';
 export enum THEME_TYPES {
   LIGHT = 'light',
@@ -44,6 +45,22 @@ interface SelectProps {
   onChange: (value: string) => void;
 }
 
+interface IUser {
+  email: string | null;
+  token: string | null;
+  id: string | null;
+}
+
+interface IUserState {
+  user: IUser;
+  isLoading: boolean;
+  error: string;
+}
+
+interface ExtendedUser extends User {
+  accessToken: string;
+}
+
 export type {
   IProduct,
   ProductState,
@@ -51,4 +68,7 @@ export type {
   ThemeState,
   IEmailForm,
   SelectProps,
+  IUserState,
+  IUser,
+  ExtendedUser,
 };

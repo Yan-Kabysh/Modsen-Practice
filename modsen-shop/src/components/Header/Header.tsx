@@ -48,7 +48,9 @@ const Header: React.FC = () => {
           <SearchIcon />
         </StyledIcon>
         <StyledIcon>
-          <CartIcon />
+          <button onClick={() => clickHandler('/cart')}>
+            <CartIcon />
+          </button>
         </StyledIcon>
       </StyledHeaderButtonsBlock>
     </HeaderWrapper>

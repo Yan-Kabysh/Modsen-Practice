@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledInput = styled.input`
-  width: 45%;
+  width: ${(props) => props.width || '45%'};
   height: 40px;
   background: transparent;
   border: none;
@@ -10,7 +10,7 @@ const StyledInput = styled.input`
   font-size: 16px;
   font-weight: 400;
   line-height: 27px;
-  color: #000000;
+  color: ${(props) => props.theme.colors.text};
   outline: none;
 
   &::placeholder {

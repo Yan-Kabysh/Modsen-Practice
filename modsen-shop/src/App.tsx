@@ -10,6 +10,9 @@ import { Shop } from './pages/Shop/Shop';
 import { ContactUs } from './pages/ContactUs/ContactUs';
 import { ProductPage } from './pages/ProductPage/ProductPage';
 import { useEffect } from 'react';
+import { Login } from './pages/Login/Login';
+import { Register } from './pages/Register/Register';
+import { Cart } from './pages/Cart/Cart';
 
 const Wrapper = styled.div`
   max-width: 100vw;
@@ -26,10 +29,13 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
           <Route path="home" element={<Home />} />
           <Route path="shop" element={<Shop />} />
           <Route path="shop/:id" element={<ProductPage />} />
           <Route path="contact" element={<ContactUs />} />
+          <Route path="cart" element={<Cart />} />
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />

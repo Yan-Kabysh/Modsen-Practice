@@ -1,9 +1,7 @@
 import { User } from 'firebase/auth';
+import { ButtonHTMLAttributes } from 'react';
 import { DefaultTheme } from 'styled-components';
-export enum THEME_TYPES {
-  LIGHT = 'light',
-  DARK = 'dark',
-}
+
 
 interface IProduct {
   id: number;
@@ -16,6 +14,7 @@ interface IProduct {
     rate: number;
     count: number;
   };
+  quantity: number;
 }
 
 interface ProductState {
@@ -43,6 +42,7 @@ interface SelectProps {
   label: string;
   options: { value: string; label: string }[];
   onChange: (value: string) => void;
+  reset: boolean
 }
 
 interface IUser {
@@ -61,6 +61,26 @@ interface ExtendedUser extends User {
   accessToken: string;
 }
 
+interface PaginationDotProps {
+  active: boolean;
+}
+
+interface CustomSwiperProps {
+  autoScrollInterval?: number;
+}
+
+interface SlideContainerProps {
+  activeIndex: number;
+}
+
+interface IMenuButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  isOpen: boolean;
+}
+
+interface IDescriptionProps {
+  isOpen: boolean;
+}
+
 export type {
   IProduct,
   ProductState,
@@ -71,4 +91,9 @@ export type {
   IUserState,
   IUser,
   ExtendedUser,
+  PaginationDotProps,
+  CustomSwiperProps,
+  SlideContainerProps,
+  IMenuButtonProps,
+  IDescriptionProps,
 };

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { breakpoints } from '@/constants/Breakpoints';
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,6 +16,10 @@ const H1 = styled.h1`
   font-size: 33px;
   font-weight: 500;
   line-height: 43px;
+  @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 20px;
+    line-height: 26px;
+  }
 `;
 
 const Span = styled.span`
@@ -24,6 +30,10 @@ const Span = styled.span`
   color: #707070;
   text-align: center;
   margin-bottom: 40px;
+  @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 12px;
+    line-height: 20px;
+  }
 `;
 
-export { Wrapper, H1, Span };
+export { H1, Span, Wrapper };

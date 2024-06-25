@@ -1,5 +1,6 @@
-import { IProduct } from '@/types';
-import { AppDispatch } from '../store';
+import { IProduct } from '@/../types/types';
+import { AppDispatch } from '@/store/store';
+
 import { productSlice } from './ProductsSlice';
 
 export const fetchProducts =

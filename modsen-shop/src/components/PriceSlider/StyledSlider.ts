@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import Slider from 'react-slider';
+import styled from 'styled-components';
 
 // StyledSlider.js
 const StyledSlider = styled(Slider)`
@@ -50,4 +50,4 @@ const Price = styled.div`
   text-align: left;
 `;
 
-export { StyledSlider, ValueDisplay, Wrapper, Price };
+export { Price, StyledSlider, ValueDisplay, Wrapper };

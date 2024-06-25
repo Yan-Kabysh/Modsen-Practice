@@ -1,5 +1,6 @@
-import { IUser, IUserState } from '@/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { IUser, IUserState } from '@/../types/types';
 
 const initialState: IUserState = {
   user: {} as IUser,
@@ -18,7 +19,6 @@ export const UserSlice = createSlice({
       state.isLoading = false;
       state.error = '';
       state.user = action.payload;
-      console.log('awdawdawd', state.user);
     },
     userFetchingError(state, action: PayloadAction<string>) {
       state.isLoading = false;

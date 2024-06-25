@@ -42,4 +42,4 @@ const Form = styled.form`
   gap: 40px;
 `;
 
-export { Wrapper, StyledNavLink, Span, Form };
+export { Form, Span, StyledNavLink, Wrapper };

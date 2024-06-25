@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { breakpoints } from '@/constants/Breakpoints';
+
 const StyledTextArea = styled.textarea`
   width: 100%;
   height: 100px;
@@ -16,6 +18,10 @@ const StyledTextArea = styled.textarea`
 
   &::placeholder {
     color: #707070;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 12px;
+    line-height: 20px;
   }
 `;
 

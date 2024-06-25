@@ -45,4 +45,4 @@ const Arrow = styled.div`
   transform: rotate(45deg);
 `;
 
-export { Wrapper, SelectBox, Arrow };
+export { Arrow, SelectBox, Wrapper };

@@ -1,52 +1,65 @@
+import { onAuthStateChanged } from 'firebase/auth';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+
+import { IProduct } from '@/../types/types';
 import { Button } from '@/components/Button/Button';
-import { FacebookIcon } from '@/components/Icons/Facebook';
-import { InstagramIcon } from '@/components/Icons/InstagramIcon';
-import { MailIcon } from '@/components/Icons/MailIcon';
-import { TwitterIcon } from '@/components/Icons/TwitterIcon';
-import { Price } from '@/components/Product/StyledProduct';
 import { Products } from '@/components/Products/Products';
 import { StarRating } from '@/components/StarRating/StarRating';
-import { addItemToCart, getUserCart } from '../../firebaseControl/cartControl';
+import { ROUTES } from '@/constants/Path';
+import { auth } from '@/firebase';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { selectedProductFetch } from '@/store/reducers/ProductActionCreators';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { ReactComponent as FacebookIcon } from '@/images/facebook.svg';
+import { ReactComponent as InstagramIcon } from '@/images/instagram.svg';
+import { ReactComponent as MailIcon } from '@/images/mail.svg';
+import { ReactComponent as TwitterIcon } from '@/images/twiter.svg';
+import { addItem, setCart } from '@/store/reducers/CartReducer/CartReducer';
+import { selectedProductFetch } from '@/store/reducers/ProductReducer/ProductActionCreators';
+import { userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
+
+import { addItemToCart, getUserCart } from '../../firebaseControl/cartControl';
 import {
   Categories,
   Category,
   Desc,
   DescDiv,
   DescDivTitle,
+  Description,
   H2,
   Icons,
   ImageContainer,
   Info,
+  Price,
   ProductWrapper,
   Rating,
   SelectedImg,
+  SelectedImgWrapper,
   Similar,
   SmallImages,
   SmallImg,
+  SmallImgWrapper,
+  StyledArrowIcon,
   TitleSpan,
   Wrapper,
 } from './StyledProductPage';
-import { useAddCart } from '@/hooks/useAddCart';
-import { addItem } from '@/store/reducers/CartReducer/CartReducer';
 
 const ProductPage = () => {
   const { id = '' } = useParams();
   const dispatch = useAppDispatch();
   const product = useAppSelector((state) => state.productReducer.product);
+  const cartItems = useAppSelector((state) => state.cartReducer.items);
   const [selectedImage, setSelectedImage] = useState('');
   const [similarItems, setSimilarItems] = useState('');
   const user = useAppSelector((state) => state.userReducer.user);
+  const navigate = useNavigate(); // for redirection
+  const [add, setAdd] = useState(false);
+  const [descriptionSpan, setDecriptionSpan] = useState(false);
 
   useEffect(() => {
     dispatch(selectedProductFetch(id));
   }, [id, dispatch]);
 
   useEffect(() => {
-    // Перемотать страницу вверх при загрузке компонента App
     window.scrollTo(0, 0);
   }, [id]);
 
@@ -59,35 +72,81 @@ const ProductPage = () => {
     }
   }, [product]);
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      onAuthStateChanged(auth, async (currentUser) => {
+        if (currentUser) {
+          const userId = currentUser.uid;
+          dispatch(
+            userFetchingSuccess({ id: userId, email: currentUser.email, token })
+          );
+          try {
+            const items = await getUserCart(userId);
+            const itemsWithQuantity = items.map((item: IProduct) => ({
+              ...item,
+              quantity: item.quantity || 1,
+            }));
+            dispatch(setCart(itemsWithQuantity));
+          } catch (error) {
+            console.error('Failed to load cart items:', error);
+          }
+        } else {
+          navigate(ROUTES.LOGIN);
+        }
+      });
+    }
+  }, [auth, dispatch, navigate]);
+
   if (!product) {
-    return <div>Loading...</div>; // Добавьте индикатор загрузки
+    return <div>Loading...</div>; // Loading indicator
   }
 
   const handleAddToCart = async () => {
-    if (user && user.id) {
-      try {
-        await addItemToCart(user.id, product);
-        dispatch(addItem(product)); // Обновление состояния Redux
-        alert('Product added to cart');
-      } catch (error) {
-        alert('Failed to add product to cart. Please try again later.');
+    if (localStorage.getItem('token')) {
+      if (user && user.id) {
+        try {
+          setAdd(true);
+          await addItemToCart(user.id, product);
+          dispatch(addItem(product)); // Update Redux state
+          setAdd(false);
+          // alert('Product added to cart');
+        } catch (error) {
+          alert('Failed to add product to cart. Please try again later.');
+        }
+      } else {
+        alert('Please log in to add items to your cart');
       }
     } else {
-      alert('Please log in to add items to your cart');
+      navigate(ROUTES.LOGIN);
     }
   };
+
+  const handleGoToCart = () => {
+    navigate(ROUTES.CART);
+  };
+
+  const descClickHandler = () => {
+    setDecriptionSpan((prev) => !prev);
+  };
+
+  const isProductInCart = cartItems.some((item) => item.id === product.id);
 
   return (
     <Wrapper>
       <ProductWrapper>
         <ImageContainer>
           <SmallImages>
-            <SmallImg
-              src={product.image}
-              onClick={() => setSelectedImage(product.image)}
-            />
+            <SmallImgWrapper>
+              <SmallImg
+                src={product.image}
+                onClick={() => setSelectedImage(product.image)}
+              />
+            </SmallImgWrapper>
           </SmallImages>
-          <SelectedImg src={selectedImage} />
+          <SelectedImgWrapper>
+            <SelectedImg src={selectedImage} />
+          </SelectedImgWrapper>
         </ImageContainer>
         <Info>
           <H2>{product.title}</H2>
@@ -99,7 +158,13 @@ const ProductPage = () => {
             )}
           </Rating>
           <Desc>{product.description}</Desc>
-          <Button onClick={handleAddToCart}>Add to cart</Button>
+          {isProductInCart ? (
+            <Button onClick={handleGoToCart}>Go to Cart</Button>
+          ) : (
+            <Button onClick={handleAddToCart}>
+              {add ? 'Adding...' : 'Add to Cart'}
+            </Button>
+          )}
           <Icons>
             <MailIcon />
             <FacebookIcon />
@@ -113,10 +178,13 @@ const ProductPage = () => {
         </Info>
       </ProductWrapper>
       <DescDiv>
-        <DescDivTitle>
+        <DescDivTitle onClick={descClickHandler}>
           <TitleSpan>Description</TitleSpan>
+          <StyledArrowIcon isOpen={descriptionSpan} />
         </DescDivTitle>
-        <Desc>{product.description}</Desc>
+        <Description isOpen={descriptionSpan}>
+          {product.description}
+        </Description>
       </DescDiv>
       <Similar>
         <H2>Similar Items</H2>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+
 import { Products } from '@/components/Products/Products';
 import { SortMenu } from '@/components/SortMenu/SortMenu';
+
 import { Container, H1, Wrapper } from './StyledShop';
 
 const Shop = () => {
@@ -8,8 +10,6 @@ const Shop = () => {
   const [priceRange, setPriceRange] = useState<number[]>([0, 100]);
   const [sortSelect, setSortSelect] = useState('');
   const [shopBySelect, setShopBySelect] = useState('');
-
-  console.log(shopBySelect);
 
   return (
     <Container>

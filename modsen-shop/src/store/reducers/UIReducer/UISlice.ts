@@ -1,9 +1,9 @@
-import { ThemeState } from '@/types';
-import { THEME_TYPES } from '../../../types';
-
 import { createSlice } from '@reduxjs/toolkit';
-import light from 'theme/light';
 import dark from 'theme/dark';
+import light from 'theme/light';
+
+import { ThemeState } from '@/../types/types';
+import THEME_TYPES from '@/constants/ThemeTypes';
 
 const savedTheme = localStorage.getItem('theme');
 

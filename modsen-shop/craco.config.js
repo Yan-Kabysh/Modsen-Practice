@@ -7,7 +7,37 @@ module.exports = {
       '@/components': path.resolve(__dirname, 'src/components'),
       '@/fonts': path.resolve(__dirname, 'src/assets/fonts'),
       '@/hooks': path.resolve(__dirname, 'src/hooks'),  
-      '@/store': path.resolve(__dirname, 'src/store'),  
-    }
+      '@/store': path.resolve(__dirname, 'src/store'),
+      '@/constants': path.resolve(__dirname, 'src/constants'),  
+      '@/firebase': path.resolve(__dirname, 'src/firebase'),  
+    },
+    configure: (webpackConfig, { env, paths }) => {
+      const svgRuleIndex = webpackConfig.module.rules.findIndex(rule =>
+        rule.test && rule.test.toString().includes('svg')
+      );
+
+      // Modify existing file-loader rule to ignore SVG files
+      if (svgRuleIndex >= 0) {
+        webpackConfig.module.rules[svgRuleIndex].exclude = /\.svg$/;
+      }
+
+      // Add new rule for SVGR
+      webpackConfig.module.rules.push({
+        test: /\.svg$/,
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              icon: true,
+            },
+          },
+        ],
+      });
+
+      return webpackConfig;
+    },
+  },
+  eslint: {
+    mode: 'file',
   },
 };

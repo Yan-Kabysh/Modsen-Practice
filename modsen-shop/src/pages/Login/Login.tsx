@@ -1,18 +1,20 @@
-import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
+import { ExtendedUser } from '@/../types/types';
 import { Button } from '@/components/Button/Button';
 import { StyledInput } from '@/components/Input/StyledInput';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { H1 } from '../Error/StyledError';
-import { Form, Span, StyledNavLink, Wrapper } from './StyledLogin';
+import { ROUTES } from '@/constants/Path';
 import { useAppDispatch } from '@/hooks/redux';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import {
   userFetching,
-  userFetchingSuccess,
   userFetchingError,
+  userFetchingSuccess,
 } from '@/store/reducers/UserReducer/UserSlice';
-import { ExtendedUser } from '@/types';
+
+import { H1 } from '../Error/StyledError';
+import { Form, Span, StyledNavLink, Wrapper } from './StyledLogin';
 
 type FormValues = {
   email: string;
@@ -33,9 +35,8 @@ const Login = () => {
     dispatch(userFetching());
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((credential) => {
-        const user = credential.user as ExtendedUser; // Приведение к расширенному типу
+        const user = credential.user as ExtendedUser;
         console.log(user);
-        // user.accessToken = credential.user.getIdToken(); // Получение токена пользователя
         dispatch(
           userFetchingSuccess({
             email: user.email!,
@@ -43,7 +44,8 @@ const Login = () => {
             token: user.accessToken,
           })
         );
-        navigate('/home');
+        localStorage.setItem('token', user.accessToken);
+        navigate(ROUTES.HOME);
       })
       .catch((error) => {
         console.error(error);
@@ -86,7 +88,7 @@ const Login = () => {
         </div>
         <Span>
           {"Don't have an account? "}
-          <StyledNavLink to="/register">Register</StyledNavLink>
+          <StyledNavLink to={ROUTES.REGISTER}>Register</StyledNavLink>
         </Span>
         <Button type="submit">Login</Button>
       </Form>

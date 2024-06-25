@@ -1,5 +1,7 @@
-import styled from 'styled-components';
 import React from 'react';
+import styled from 'styled-components';
+
+import { breakpoints } from '@/constants/Breakpoints';
 
 type ButtonProps = {
   maxWidth?: string;
@@ -27,6 +29,11 @@ const StyledButton = styled.button<ButtonProps>`
     color: ${(props) => props.theme.colors.buttonBackground};
     background: ${(props) => props.theme.colors.buttonText};
     border: 1px solid ${(props) => props.theme.colors.buttonText};
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    max-width: 520px;
+    width: 100%;
+    height: 26px;
   }
 `;
 

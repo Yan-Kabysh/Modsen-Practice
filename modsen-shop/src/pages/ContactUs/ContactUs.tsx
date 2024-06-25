@@ -1,13 +1,11 @@
-import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
 import emailjs from 'emailjs-com';
+import { SubmitHandler, useForm } from 'react-hook-form';
+
 import { Button } from '@/components/Button/Button';
-import { Input } from '@/components/Input/Input';
-import { TextArea } from '@/components/TextArea/Textarea';
-import { H1 } from '../Shop/StyledShop';
-import { ButtonDiv, InputsDiv, Span, Wrapper } from './StyledContactUs';
 import { StyledInput } from '@/components/Input/StyledInput';
 import { StyledTextArea } from '@/components/TextArea/StyledTextArea';
+
+import { ButtonDiv, H1, InputsDiv, Span, Wrapper } from './StyledContactUs';
 
 type FormValues = {
   firstName: string;

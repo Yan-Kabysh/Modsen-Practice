@@ -1,10 +1,15 @@
 import { styled } from 'styled-components';
 
+import { breakpoints } from '@/constants/Breakpoints';
+
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 80px;
+  @media screen and (max-width: ${breakpoints.medium}) {
+    row-gap: 40px;
+  }
 `;
 
 const Container = styled.div`
@@ -13,4 +18,4 @@ const Container = styled.div`
   gap: 40px;
 `;
 
-export { Wrapper, Container };
+export { Container, Wrapper };

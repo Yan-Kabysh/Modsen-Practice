@@ -1,4 +1,4 @@
-import { THEME_TYPES } from '../types';
+import THEME_TYPES from '@/constants/ThemeTypes';
 
 export default {
   title: THEME_TYPES.DARK,

@@ -7,9 +7,11 @@
       "@/images/*": ["assets/images/*"],
       "@/fonts/*": ["assets/fonts/*"],
       "@/hooks/*": ["hooks/*"],
-      "@/store/*": ["store/*"]
+      "@/store/*": ["store/*"],
+      "@/constants/*": ["constants/*"],
+      "@/firebase/*": ["firebase/*"],
     },
-    "rootDir": "./src",
+    "rootDir": "./",
     "outDir": "./build",
     "target": "ESNext",
     "module": "esnext",
@@ -40,6 +42,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "types/types.ts"],
   "exclude": ["node_modules", "build", "dist"]
 }

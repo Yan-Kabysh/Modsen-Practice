@@ -1,21 +1,26 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { SearchIcon } from '../Icons/SearchIcon';
+
+import { StyledSearchIcon } from '../Header/StyledHeader';
 import { IconWrapper, Input, Wrapper } from './StyledSearchInput';
 
-const SearchInput = ({ onSearch }: any) => {
-  const { register, watch } = useForm();
+const SearchInput = ({ onSearch, resetInput }: any) => {
+  const { register, watch, reset } = useForm();
   const searchTerm = watch('searchTerm', '');
 
   useEffect(() => {
     onSearch(searchTerm);
   }, [searchTerm, onSearch]);
 
+  useEffect(() => {
+    reset({ searchTerm: '' });
+  }, [resetInput, reset]);
+
   return (
     <Wrapper>
       <Input type="text" placeholder="Search..." {...register('searchTerm')} />
       <IconWrapper>
-        <SearchIcon />
+        <StyledSearchIcon />
       </IconWrapper>
     </Wrapper>
   );

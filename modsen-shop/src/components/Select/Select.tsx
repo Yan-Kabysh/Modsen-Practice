@@ -1,9 +1,15 @@
-import { SelectProps } from '@/types';
-import React, { useState } from 'react';
-import { Arrow, SelectBox, Wrapper } from './styledSelect';
+import React, { useEffect, useState } from 'react';
 
-const Select: React.FC<SelectProps> = ({ label, options, onChange }) => {
+import { SelectProps } from '@/../types/types';
+
+import { Arrow, SelectBox, Wrapper } from './StyledSelect';
+
+const Select: React.FC<SelectProps> = ({ label, options, onChange, reset }) => {
   const [selectedOption, setSelectedOption] = useState('');
+
+  useEffect(() => {
+    setSelectedOption('');
+  }, [reset]);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
@@ -19,7 +25,7 @@ const Select: React.FC<SelectProps> = ({ label, options, onChange }) => {
             {label}
           </option>
         )}
-        {options.map((option) => (
+        {options.map((option: any) => (
           <option key={option.value} value={option.value}>
             {option.label}
           </option>

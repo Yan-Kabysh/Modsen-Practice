@@ -1,10 +1,12 @@
-import { useAppSelector, useAppDispatch } from '@/hooks/redux';
+import { useEffect } from 'react';
+
+import { IProduct } from '@/../types/types';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import {
   fetchCategorieProducts,
   fetchProducts,
-} from '@/store/reducers/ProductActionCreators';
-import { IProduct } from '@/types';
-import { useEffect } from 'react';
+} from '@/store/reducers/ProductReducer/ProductActionCreators';
+
 import { Product } from '../Product/Product';
 import { Container, Wrapper } from './StyledProducts';
 
@@ -24,7 +26,7 @@ const Products = ({
   }, [sortBy]);
 
   useEffect(() => {
-    if (shopBy && shopBy.length > 0) {
+    if (shopBy) {
       dispatch(fetchCategorieProducts(shopBy));
     }
   }, [shopBy]);
@@ -49,7 +51,7 @@ const Products = ({
 
   if (excludeProductId) {
     limitedProducts = filteredProducts.filter(
-      (product) => product.id !== excludeProductId
+      (product: { id: any }) => product.id !== excludeProductId
     );
   } else {
     limitedProducts = filteredProducts;

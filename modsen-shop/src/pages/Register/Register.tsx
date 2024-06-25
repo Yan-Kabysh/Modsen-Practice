@@ -1,16 +1,16 @@
-import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
+import { ExtendedUser } from '@/../types/types';
 import { Button } from '@/components/Button/Button';
 import { StyledInput } from '@/components/Input/StyledInput';
+import { ROUTES } from '@/constants/Path';
+import { useAppDispatch } from '@/hooks/redux';
+import { userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
+
 import { H1 } from '../Error/StyledError';
 import { Form, Span, StyledNavLink, Wrapper } from '../Login/StyledLogin';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { useAppDispatch } from '@/hooks/redux';
-import {
-  userFetching,
-  userFetchingSuccess,
-} from '@/store/reducers/UserReducer/UserSlice';
-import { ExtendedUser } from '@/types';
 
 type FormValues = {
   email: string;
@@ -25,6 +25,7 @@ const Register = () => {
   } = useForm<FormValues>();
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, data.email, data.password)
@@ -39,6 +40,8 @@ const Register = () => {
             token: user.accessToken,
           })
         );
+        localStorage.setItem('token', user.accessToken);
+        navigate(ROUTES.HOME);
       })
       .catch(console.error);
   };
@@ -78,7 +81,7 @@ const Register = () => {
         </div>
         <Span>
           {'Already have an account? '}
-          <StyledNavLink to="/login">Login</StyledNavLink>
+          <StyledNavLink to={ROUTES.LOGIN}>Login</StyledNavLink>
         </Span>
         <Button type="submit">Register</Button>
       </Form>

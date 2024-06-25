@@ -1,18 +1,18 @@
+import CustomSwiper from '@/components/CustomSwaiper/CustomSwiper';
 import { Products } from '@/components/Products/Products';
-import { CustomSwiper } from '@/components/Swiper/Swiper';
-import { Wrapper } from './StyledHome';
+import { ROUTES } from '@/constants/Path';
+
+import { H1, Ref, Title, Wrapper } from './StyledHome';
 
 const Home = () => {
   return (
     <>
       <CustomSwiper />
       <Wrapper>
-        <div className="title">
-          <h1 className="h1">Shop The Latest</h1>
-          <a href="/shop" className="a">
-            View All
-          </a>
-        </div>
+        <Title>
+          <H1>Shop The Latest</H1>
+          <Ref href={ROUTES.SHOP}>View All</Ref>
+        </Title>
         <Products count={6} />
       </Wrapper>
     </>

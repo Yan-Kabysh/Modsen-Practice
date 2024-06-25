@@ -1,12 +1,14 @@
-import { useMemo } from 'react';
-import { StarIcon } from '../Icons/StarIcon';
+import React, { useMemo } from 'react';
+
+import { ReactComponent as StarIcon } from '@/images/star.svg';
+
 import { Wrapper } from './StyledStarrating';
 
 type StarRatingPropsType = {
   value: number;
 };
 
-export const StarRating = ({ value }: StarRatingPropsType) => {
+const StarRating = ({ value }: StarRatingPropsType) => {
   const roundedValue = useMemo(() => Math.round(value), [value]);
 
   return (
@@ -19,3 +21,5 @@ export const StarRating = ({ value }: StarRatingPropsType) => {
     </Wrapper>
   );
 };
+
+export { StarRating };

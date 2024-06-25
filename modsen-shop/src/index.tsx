@@ -1,10 +1,12 @@
+import './firebase';
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { BrowserRouter, ScrollRestoration } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+
 import App from './App';
 import { setupStore } from './store/store';
-import './firebase';
 const store = setupStore();
 const rootElement = document.getElementById('root');
 if (rootElement) {

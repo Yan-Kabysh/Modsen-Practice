@@ -17,4 +17,4 @@ const H1 = styled.h1`
   margin-bottom: 40px;
 `;
 
-export { Wrapper, Container, H1 };
+export { Container, H1, Wrapper };

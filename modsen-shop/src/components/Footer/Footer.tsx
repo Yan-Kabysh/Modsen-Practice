@@ -1,12 +1,26 @@
-import React from 'react';
-import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
-import { ArrowIcon } from '../Icons/ArrowIcon';
-import { FacebookIcon } from '../Icons/Facebook';
-import { InstagramIcon } from '../Icons/InstagramIcon';
-import { LinkIcon } from '../Icons/LinkIcon';
-import { TwitterIcon } from '../Icons/TwitterIcon';
-import { Input, Wrapper } from './StyledFooter';
 import emailjs from 'emailjs-com';
+import React from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+
+import { ROUTES } from '@/constants/Path';
+import { ReactComponent as ArrowIcon } from '@/images/arrow.svg';
+import { ReactComponent as FacebookIcon } from '@/images/facebook.svg';
+import { ReactComponent as InstagramIcon } from '@/images/instagram.svg';
+import { ReactComponent as LinkIcon } from '@/images/linkedin.svg';
+import { ReactComponent as TwitterIcon } from '@/images/twiter.svg';
+
+import {
+  ArrowButton,
+  Email,
+  Input,
+  Networks,
+  Policy,
+  PolicyNetworks,
+  Ref,
+  Refs,
+  RefsEmail,
+  Wrapper,
+} from './StyledFooter';
 
 interface IEmailForm {
   email: string;
@@ -46,13 +60,13 @@ const Footer: React.FC = () => {
 
   return (
     <Wrapper>
-      <div className="refs-email">
-        <div className="refs">
-          <a href="/contact">CONTACT</a>
-          <a href="">TERMS OF SERVICES</a>
-          <a href="">SHOPPING AND RETURNS</a>
-        </div>
-        <div className="email">
+      <RefsEmail>
+        <Refs>
+          <Ref href={ROUTES.CONTACT}>CONTACT</Ref>
+          <Ref href="">TERMS OF SERVICES</Ref>
+          <Ref href="">SHOPPING AND RETURNS</Ref>
+        </Refs>
+        <Email>
           <form onSubmit={handleSubmit(submit)}>
             <Input
               placeholder="Give an email, get the newsletter."
@@ -65,26 +79,22 @@ const Footer: React.FC = () => {
                 },
               })}
             />
-            <button type="submit">
+            <ArrowButton type="submit">
               <ArrowIcon />
-            </button>
+            </ArrowButton>
           </form>
-          <div>
-            {isSubmitted && errors.email && <p>{errors.email.message}</p>}
-          </div>
-        </div>
-      </div>
-      <div className="policy-networks">
-        <span className="policy">
-          © 2023 Shelly. Terms of use and privacy policy.
-        </span>
-        <div className="networks">
+          <>{isSubmitted && errors.email && <p>{errors.email.message}</p>}</>
+        </Email>
+      </RefsEmail>
+      <PolicyNetworks>
+        <Policy>© 2023 Shelly. Terms of use and privacy policy.</Policy>
+        <Networks>
           <LinkIcon />
           <FacebookIcon />
           <InstagramIcon />
           <TwitterIcon />
-        </div>
-      </div>
+        </Networks>
+      </PolicyNetworks>
     </Wrapper>
   );
 };

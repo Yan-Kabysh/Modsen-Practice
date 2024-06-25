@@ -1,37 +1,64 @@
-import { SearchIcon } from '@/components/Icons/SearchIcon';
-import { CartIcon } from '@/components/Icons/CartIcon';
-import {
-  HeaderWrapper,
-  StyledLogo,
-  StyledShopButton,
-  StyledIcon,
-  StyledHeaderButtonsBlock,
-  ButtonCart,
-} from '@/components/Header/styledHeader';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Switch from 'react-switch';
+
+import {
+  ButtonCart,
+  Count,
+  HeaderWrapper,
+  HOPPE,
+  StyledCartIcon,
+  StyledHeaderButtonsBlock,
+  StyledHeaderButtonsBlockMedia,
+  StyledIcon,
+  StyledLogo,
+  StyledSearchIcon,
+  StyledShopButton,
+} from '@/components/Header/StyledHeader';
+import { ROUTES } from '@/constants/Path';
+import THEME_TYPES from '@/constants/ThemeTypes';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { uiSlice } from '@/store/reducers/UIReducer/UISlice';
-import { THEME_TYPES } from '../../types';
-import { useNavigate } from 'react-router-dom';
+
+import { Menu } from '../Menu/Menu';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
-  const clickHandler = (url: string) => {
-    navigate(url);
-  };
   const dispatch = useAppDispatch();
   const { currentTheme } = useAppSelector((state) => state.uiReducer);
+  const products = useAppSelector((state) => state.cartReducer.items);
+  const [items, setItems] = useState(products);
+  useEffect(() => {
+    setItems(products);
+  }, [products]);
+
+  const handleLogoClick = () => {
+    navigate(ROUTES.HOME);
+  };
+
+  const handleShopButtonClick = () => {
+    navigate(ROUTES.SHOP);
+  };
+
+  const handleCartButtonClick = () => {
+    if (!localStorage.getItem('token')) {
+      navigate(ROUTES.LOGIN);
+    } else {
+      navigate(ROUTES.CART);
+    }
+  };
 
   const handleThemeChange = () => {
     dispatch(uiSlice.actions.toggleTheme());
   };
+
   return (
     <HeaderWrapper>
-      <StyledLogo onClick={() => clickHandler('/home')}>
-        Modsen SHOPPE{' '}
+      <StyledLogo onClick={handleLogoClick}>
+        Modsen S<HOPPE>HOPPE</HOPPE>{' '}
       </StyledLogo>
       <StyledHeaderButtonsBlock>
-        <StyledShopButton onClick={() => clickHandler('/shop')}>
+        <StyledShopButton onClick={handleShopButtonClick}>
           Shop
         </StyledShopButton>
         <Switch
@@ -45,15 +72,19 @@ const Header: React.FC = () => {
           offColor="#D8D8D8"
           onColor="#707070"
         />
-        <StyledIcon>
-          <SearchIcon />
-        </StyledIcon>
-        <StyledIcon>
-          <ButtonCart onClick={() => clickHandler('/cart')}>
-            <CartIcon />
-          </ButtonCart>
-        </StyledIcon>
+        <StyledSearchIcon />
+        <ButtonCart onClick={handleCartButtonClick}>
+          <StyledCartIcon></StyledCartIcon>
+          {items.length !== 0 && <Count>{items.length}</Count>}
+        </ButtonCart>
       </StyledHeaderButtonsBlock>
+      <StyledHeaderButtonsBlockMedia>
+        <ButtonCart onClick={handleCartButtonClick}>
+          <StyledCartIcon></StyledCartIcon>
+          {items.length !== 0 && <Count>{items.length}</Count>}
+        </ButtonCart>
+      </StyledHeaderButtonsBlockMedia>
+      <Menu />
     </HeaderWrapper>
   );
 };

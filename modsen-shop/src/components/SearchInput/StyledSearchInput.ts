@@ -11,6 +11,27 @@ const Input = styled.input`
   line-height: 27px;
   outline: none;
   background: transparent;
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px
+      ${(props) => props.theme.colors.background} inset;
+    box-shadow: 0 0 0px 1000px ${(props) => props.theme.colors.background} inset;
+    -webkit-text-fill-color: ${(props) => props.theme.colors.text};
+  }
+
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px
+      ${(props) => props.theme.colors.background} inset;
+    box-shadow: 0 0 0px 1000px ${(props) => props.theme.colors.background} inset;
+    -webkit-text-fill-color: ${(props) => props.theme.colors.text};
+  }
+
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px
+      ${(props) => props.theme.colors.background} inset;
+    box-shadow: 0 0 0px 1000px ${(props) => props.theme.colors.background} inset;
+    -webkit-text-fill-color: ${(props) => props.theme.colors.text};
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -23,4 +44,4 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-export { Input, IconWrapper, Wrapper };
+export { IconWrapper, Input, Wrapper };

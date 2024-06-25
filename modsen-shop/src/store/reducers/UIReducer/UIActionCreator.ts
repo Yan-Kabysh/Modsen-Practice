@@ -1,6 +1,7 @@
+import { IProduct } from '@/../types/types';
 import { AppDispatch } from '@/store/store';
-import { IProduct } from '@/types';
-import { productSlice } from '../ProductsSlice';
+
+import { productSlice } from '../ProductReducer/ProductsSlice';
 
 export const fetchProducts = () => async (dispatch: AppDispatch) => {
   try {

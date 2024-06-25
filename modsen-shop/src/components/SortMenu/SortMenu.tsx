@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+
 import { SearchInput } from '@/components/SearchInput/SearchInput';
+
+import { Button } from '../Button/Button';
 import { PriceSlider } from '../PriceSlider/PriceSlider';
 import { Select } from '../Select/Select';
 import { Wrapper } from './StyledSortMenu';
@@ -18,13 +21,18 @@ const SortMenu = ({
   shopByOnChange,
 }: any) => {
   const [selectShopBy, setSelectShopBy] = useState<any[]>([]);
+  const [resetInput, setResetInput] = useState(false);
+  const [resetSelect, setResetSelect] = useState(false);
+  // const [resetSlider, setResetSlider] = useState(false);
 
   const clickHandler = () => {
     onSearch();
-    onPriceChange();
     onChange();
     shopByOnChange();
+    setResetInput((prev) => !prev);
+    setResetSelect((prev) => !prev);
   };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -42,23 +50,26 @@ const SortMenu = ({
 
     fetchData();
   }, []);
+
   return (
     <Wrapper>
-      <SearchInput onSearch={onSearch} />
+      <SearchInput onSearch={onSearch} resetInput={resetInput} />
       {selectShopBy && selectShopBy.length > 0 && (
         <Select
           label={'Shop By'}
           options={selectShopBy}
           onChange={shopByOnChange}
+          reset={resetSelect}
         />
       )}
       <Select
         label={'Sort By'}
         options={selectData.options}
         onChange={onChange}
+        reset={resetSelect}
       />
-      <PriceSlider onPriceChange={onPriceChange} />
-      {/* <button onClick={clickHandler}>Filter</button> */}
+      <PriceSlider onPriceChange={onPriceChange} reset={resetInput} />
+      <Button onClick={clickHandler}>Clean filters</Button>
     </Wrapper>
   );
 };

@@ -1,3 +1,4 @@
+import { breakpoints } from '@/constants/Breakpoints';
 import { styled } from 'styled-components';
 
 const Input = styled.input`
@@ -42,6 +43,7 @@ const IconWrapper = styled.div`
 
 const Wrapper = styled.div`
   position: relative;
+  
 `;
 
 export { IconWrapper, Input, Wrapper };

@@ -21,6 +21,12 @@ import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { uiSlice } from '@/store/reducers/UIReducer/UISlice';
 
 import { Menu } from '../Menu/Menu';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '@/firebase';
+import { userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
+import { IProduct } from '@/../types/types';
+import { setCart } from '@/store/reducers/CartReducer/CartReducer';
+import { getUserCart } from '../../firebaseControl/cartControl';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -31,6 +37,33 @@ const Header: React.FC = () => {
   useEffect(() => {
     setItems(products);
   }, [products]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate(ROUTES.LOGIN);
+    } else {
+      onAuthStateChanged(auth, async (currentUser) => {
+        if (currentUser) {
+          console.log('currentUser', currentUser);
+          const userId = currentUser.uid;
+          dispatch(
+            userFetchingSuccess({ id: userId, email: currentUser.email, token })
+          );
+          try {
+            const items = await getUserCart(userId);
+            const itemsWithQuantity = items.map((item: IProduct) => ({
+              ...item,
+              quantity: item.quantity || 1,
+            }));
+            dispatch(setCart(itemsWithQuantity));
+          } catch (error) {
+            console.error('Failed to load cart items:', error);
+          }
+        }
+      });
+    }
+  }, [auth, dispatch, navigate]);
 
   const handleLogoClick = () => {
     navigate(ROUTES.HOME);

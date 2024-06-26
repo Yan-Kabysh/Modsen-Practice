@@ -5,7 +5,7 @@ import { SearchInput } from '@/components/SearchInput/SearchInput';
 import { Button } from '../Button/Button';
 import { PriceSlider } from '../PriceSlider/PriceSlider';
 import { Select } from '../Select/Select';
-import { Wrapper } from './StyledSortMenu';
+import { Filters, Wrapper } from './StyledSortMenu';
 
 const selectData = {
   options: [
@@ -19,6 +19,7 @@ const SortMenu = ({
   onPriceChange,
   onChange,
   shopByOnChange,
+  isOpen,
 }: any) => {
   const [selectShopBy, setSelectShopBy] = useState<any[]>([]);
   const [resetInput, setResetInput] = useState(false);
@@ -54,22 +55,24 @@ const SortMenu = ({
   return (
     <Wrapper>
       <SearchInput onSearch={onSearch} resetInput={resetInput} />
-      {selectShopBy && selectShopBy.length > 0 && (
+      <Filters isOpen={isOpen}>
+        {selectShopBy && selectShopBy.length > 0 && (
+          <Select
+            label={'Shop By'}
+            options={selectShopBy}
+            onChange={shopByOnChange}
+            reset={resetSelect}
+          />
+        )}
         <Select
-          label={'Shop By'}
-          options={selectShopBy}
-          onChange={shopByOnChange}
+          label={'Sort By'}
+          options={selectData.options}
+          onChange={onChange}
           reset={resetSelect}
         />
-      )}
-      <Select
-        label={'Sort By'}
-        options={selectData.options}
-        onChange={onChange}
-        reset={resetSelect}
-      />
-      <PriceSlider onPriceChange={onPriceChange} reset={resetInput} />
-      <Button onClick={clickHandler}>Clean filters</Button>
+        <PriceSlider onPriceChange={onPriceChange} reset={resetInput} />
+        <Button onClick={clickHandler}>Clean filters</Button>
+      </Filters>
     </Wrapper>
   );
 };

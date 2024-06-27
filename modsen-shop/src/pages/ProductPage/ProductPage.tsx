@@ -18,30 +18,7 @@ import { selectedProductFetch } from '@/store/reducers/ProductReducer/ProductAct
 import { userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
 
 import { addItemToCart, getUserCart } from '../../firebaseControl/cartControl';
-import {
-  Categories,
-  Category,
-  Desc,
-  DescDiv,
-  DescDivTitle,
-  Description,
-  H2,
-  Icons,
-  ImageContainer,
-  Info,
-  Price,
-  ProductWrapper,
-  Rating,
-  SelectedImg,
-  SelectedImgWrapper,
-  Similar,
-  SmallImages,
-  SmallImg,
-  SmallImgWrapper,
-  StyledArrowIcon,
-  TitleSpan,
-  Wrapper,
-} from './StyledProductPage';
+import * as S from './StyledProductPage';
 
 const ProductPage = () => {
   const { id = '' } = useParams();
@@ -133,31 +110,31 @@ const ProductPage = () => {
   const isProductInCart = cartItems.some((item) => item.id === product.id);
 
   return (
-    <Wrapper>
-      <ProductWrapper>
-        <ImageContainer>
-          <SmallImages>
-            <SmallImgWrapper>
-              <SmallImg
+    <S.Wrapper>
+      <S.ProductWrapper>
+        <S.ImageContainer>
+          <S.SmallImages>
+            <S.SmallImgWrapper>
+              <S.SmallImg
                 src={product.image}
                 onClick={() => setSelectedImage(product.image)}
               />
-            </SmallImgWrapper>
-          </SmallImages>
-          <SelectedImgWrapper>
-            <SelectedImg src={selectedImage} />
-          </SelectedImgWrapper>
-        </ImageContainer>
-        <Info>
-          <H2>{product.title}</H2>
-          <Price>$ {product.price}</Price>
-          <Rating>
+            </S.SmallImgWrapper>
+          </S.SmallImages>
+          <S.SelectedImgWrapper>
+            <S.SelectedImg src={selectedImage} />
+          </S.SelectedImgWrapper>
+        </S.ImageContainer>
+        <S.Info>
+          <S.H2>{product.title}</S.H2>
+          <S.Price>$ {product.price}</S.Price>
+          <S.Rating>
             {product.rating && <StarRating value={product.rating.rate} />}
             {product.rating && (
-              <Desc>{product.rating.count} customers review</Desc>
+              <S.Desc>{product.rating.count} customers review</S.Desc>
             )}
-          </Rating>
-          <Desc>{product.description}</Desc>
+          </S.Rating>
+          <S.Desc>{product.description}</S.Desc>
           {isProductInCart ? (
             <Button onClick={handleGoToCart}>Go to Cart</Button>
           ) : (
@@ -165,36 +142,36 @@ const ProductPage = () => {
               {add ? 'Adding...' : 'Add to Cart'}
             </Button>
           )}
-          <Icons>
+          <S.Icons>
             <MailIcon />
             <FacebookIcon />
             <InstagramIcon />
             <TwitterIcon />
-          </Icons>
-          <Categories>
-            <Category>Categories:</Category>
-            <Desc>{product.category}</Desc>
-          </Categories>
-        </Info>
-      </ProductWrapper>
-      <DescDiv>
-        <DescDivTitle onClick={descClickHandler}>
-          <TitleSpan>Description</TitleSpan>
-          <StyledArrowIcon isOpen={descriptionSpan} />
-        </DescDivTitle>
-        <Description isOpen={descriptionSpan}>
+          </S.Icons>
+          <S.Categories>
+            <S.Category>Categories:</S.Category>
+            <S.Desc>{product.category}</S.Desc>
+          </S.Categories>
+        </S.Info>
+      </S.ProductWrapper>
+      <S.DescDiv>
+        <S.DescDivTitle onClick={descClickHandler}>
+          <S.TitleSpan>Description</S.TitleSpan>
+          <S.StyledArrowIcon isOpen={descriptionSpan} />
+        </S.DescDivTitle>
+        <S.Description isOpen={descriptionSpan}>
           {product.description}
-        </Description>
-      </DescDiv>
-      <Similar>
-        <H2>Similar Items</H2>
+        </S.Description>
+      </S.DescDiv>
+      <S.Similar>
+        <S.H2>Similar Items</S.H2>
         <Products
           excludeProductId={product.id}
           count={3}
           shopBy={similarItems}
         />
-      </Similar>
-    </Wrapper>
+      </S.Similar>
+    </S.Wrapper>
   );
 };
 

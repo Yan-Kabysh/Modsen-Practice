@@ -1,8 +1,7 @@
 import { Img } from '@/components/CustomSwaiper/StyledCustomSwiper';
-import blackAndWhiteImage from '@/images/black-and-white-photography-3243741_1920.jpg';
-// Import images
-import natureImage from '@/images/nature-3239504_1920.jpg';
-import tuscanyImage from '@/images/tuscany-3364921_1920.jpg';
+import blackAndWhiteImage from '@/images/black-white.jpg';
+import natureImage from '@/images/nature.jpg';
+import tuscanyImage from '@/images/tuscany.jpg';
 export const slides = [
   <div key="slide1">
     <Img src={blackAndWhiteImage} alt="" />

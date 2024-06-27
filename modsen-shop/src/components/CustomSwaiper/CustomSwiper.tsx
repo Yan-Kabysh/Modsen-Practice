@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { CustomSwiperProps } from '@/../types/types';
-import { slides } from '@/constants/Slides';
+import { slides } from './Slides';
 
 import {
   Pagination,

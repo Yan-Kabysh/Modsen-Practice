@@ -11,6 +11,7 @@ import { userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
 
 import { H1 } from '../Error/StyledError';
 import { Form, Span, StyledNavLink, Wrapper } from '../Login/StyledLogin';
+import { EMAIL_REGEX } from '@/constants/Regular';
 
 type FormValues = {
   email: string;
@@ -55,7 +56,7 @@ const Register = () => {
             {...register('email', {
               required: 'Email is required',
               pattern: {
-                value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                value: EMAIL_REGEX,
                 message: 'Invalid email address',
               },
             })}

@@ -21,6 +21,7 @@ import {
   RefsEmail,
   Wrapper,
 } from './StyledFooter';
+import { EMAIL_REGEX } from '@/constants/Regular';
 
 interface IEmailForm {
   email: string;
@@ -72,9 +73,8 @@ const Footer: React.FC = () => {
               placeholder="Give an email, get the newsletter."
               type="text"
               {...register('email', {
-                // required: 'Поле обязательно для заполнения',
                 pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  value: EMAIL_REGEX,
                   message: 'Введите корректный email',
                 },
               })}

@@ -6,6 +6,7 @@ import { StyledInput } from '@/components/Input/StyledInput';
 import { StyledTextArea } from '@/components/TextArea/StyledTextArea';
 
 import { ButtonDiv, H1, InputsDiv, Span, Wrapper } from './StyledContactUs';
+import { EMAIL_REGEX } from '@/constants/Regular';
 
 type FormValues = {
   firstName: string;
@@ -75,7 +76,7 @@ const ContactUs = () => {
             {...register('email', {
               // required: 'Поле обязательно для заполнения',
               pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                value: EMAIL_REGEX,
                 message: 'Введите корректный email',
               },
             })}

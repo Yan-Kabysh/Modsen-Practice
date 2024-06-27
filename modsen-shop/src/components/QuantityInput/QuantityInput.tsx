@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { updateItemQuantity } from '@/firebaseControl/cartControl';
+import { updateItemQuantity } from '@/helpers/cartControl';
 import { useAppSelector } from '@/hooks/redux';
 import { updateQuantity } from '@/store/reducers/CartReducer/CartReducer';
 

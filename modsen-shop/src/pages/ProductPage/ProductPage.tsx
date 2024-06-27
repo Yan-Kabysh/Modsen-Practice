@@ -8,7 +8,7 @@ import { Products } from '@/components/Products/Products';
 import { StarRating } from '@/components/StarRating/StarRating';
 import { ROUTES } from '@/constants/Path';
 import { auth } from '@/firebase';
-import { addItemToCart, getUserCart } from '@/firebaseControl/cartControl';
+import { addItemToCart, getUserCart } from '@/helpers/cartControl';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { ReactComponent as FacebookIcon } from '@/images/facebook.svg';
 import { ReactComponent as InstagramIcon } from '@/images/instagram.svg';

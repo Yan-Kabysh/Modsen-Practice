@@ -9,7 +9,7 @@ import { Menu } from '@/components/Menu/Menu';
 import { ROUTES } from '@/constants/Path';
 import THEME_TYPES from '@/constants/ThemeTypes';
 import { auth } from '@/firebase';
-import { getUserCart } from '@/firebaseControl/cartControl';
+import { getUserCart } from '@/helpers/cartControl';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { setCart } from '@/store/reducers/CartReducer/CartReducer';
 import { uiSlice } from '@/store/reducers/UIReducer/UISlice';

@@ -10,7 +10,7 @@ module.exports = {
       '@/store': path.resolve(__dirname, 'src/store'),
       '@/constants': path.resolve(__dirname, 'src/constants'),  
       '@/firebase': path.resolve(__dirname, 'src/firebase'),  
-      '@/firebaseControl': path.resolve(__dirname, 'src/firebaseControl'),  
+      '@/helpers': path.resolve(__dirname, 'src/helpers'),  
       '@/pages': path.resolve(__dirname, 'src/pages'),
     },
     configure: (webpackConfig, { env, paths }) => {

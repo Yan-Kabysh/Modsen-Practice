@@ -10,7 +10,7 @@
       "@/store/*": ["store/*"],
       "@/constants/*": ["constants/*"],
       "@/firebase/*": ["firebase/*"],
-      "@/firebaseControl/*": ["firebaseControl/*"],
+      "@/helpers/*": ["helpers/*"],
       "@/pages/*": ["pages/*"]
 
     },

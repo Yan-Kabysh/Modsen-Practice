@@ -9,6 +9,11 @@ import { CardProduct } from '@/components/CardProduct/CardProduct';
 import { Price } from '@/components/CardProduct/StyledCardProduct';
 import { ROUTES } from '@/constants/Path';
 import { auth } from '@/firebase';
+import {
+  getUserCart,
+  removeItemFromCart,
+  updateItemQuantity,
+} from '@/helpers/cartControl';
 import { useAppSelector } from '@/hooks/redux';
 import {
   removeItem,
@@ -20,11 +25,6 @@ import {
   userFetchingSuccess,
 } from '@/store/reducers/UserReducer/UserSlice';
 
-import {
-  getUserCart,
-  removeItemFromCart,
-  updateItemQuantity,
-} from '../../firebaseControl/cartControl';
 import { CartHeader, Empty, H1, Items, TotalWrapper } from './StyledCart';
 
 const Cart = () => {

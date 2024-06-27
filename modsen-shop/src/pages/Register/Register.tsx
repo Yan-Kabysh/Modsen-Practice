@@ -30,9 +30,8 @@ const Register = () => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((credential) => {
-        const user = credential.user as ExtendedUser; // Приведение к расширенному типу
+        const user = credential.user as ExtendedUser;
         console.log(user);
-        // user.accessToken = credential.user.getIdToken(); // Получение токена пользователя
         dispatch(
           userFetchingSuccess({
             email: user.email!,

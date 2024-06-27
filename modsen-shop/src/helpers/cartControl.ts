@@ -1,7 +1,12 @@
 import { arrayUnion, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
 
 import { IProduct } from '@/../types/types';
-import { db } from '@/firebase';
+import { auth, db } from '@/firebase';
+import { removeItem, setCart, updateQuantity } from '@/store/reducers/CartReducer/CartReducer';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { ROUTES } from '@/constants/Path';
+import { removeUser, userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
 
 const getUserCartRef = (userId: string) => doc(db, 'carts', userId);
 
@@ -96,5 +101,100 @@ export const getUserCart = async (userId: string) => {
   } catch (error) {
     console.error('Error getting user cart:', error);
     throw error;
+  }
+};
+
+export const useQuantityChangeHandler = (userId: any, productId: number, setQuantity: (arg0: any) => void, onQuantityChange: (arg0: any) => void) => {
+  const dispatch = useDispatch();
+
+  const handleQuantityChange = async (newQuantity: number) => {
+    setQuantity(newQuantity);
+    onQuantityChange(newQuantity);
+
+    if (userId) {
+      try {
+        await updateItemQuantity(userId, productId, newQuantity);
+        dispatch(updateQuantity({ id: productId, quantity: newQuantity }));
+      } catch (error) {
+        console.error('Failed to update quantity:', error);
+      }
+    } else {
+      console.error('User ID is null. Cannot update quantity.');
+    }
+  };
+
+  return handleQuantityChange;
+};
+
+export const handleAuthStateChange = async ({ auth, dispatch, navigate, setLoading }: any) => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    navigate(ROUTES.LOGIN);
+    setLoading(false);
+    return;
+  }
+
+  onAuthStateChanged(auth, async (currentUser) => {
+    if (currentUser) {
+      console.log('currentUser', currentUser);
+      const userId = currentUser.uid;
+      dispatch(
+        userFetchingSuccess({ id: userId, email: currentUser.email, token })
+      );
+      try {
+        const items = await getUserCart(userId);
+        const itemsWithQuantity = items.map((item: { quantity: any; }) => ({
+          ...item,
+          quantity: item.quantity || 1,
+        }));
+        dispatch(setCart(itemsWithQuantity));
+        setLoading(false);
+      } catch (error) {
+        console.error('Failed to load cart items:', error);
+        setLoading(false);
+      }
+    } else {
+      navigate(ROUTES.LOGIN);
+      setLoading(false);
+    }
+  });
+};
+
+export const handleRemoveItem = async ({ user, dispatch, id, setRemovingItems, removeItemFromCart }: any) => {
+  if (user && user.id) {
+    try {
+      setRemovingItems((prev: any) => ({ ...prev, [id]: true }));
+      await removeItemFromCart(user.id, id);
+      dispatch(removeItem(id));
+      setRemovingItems((prev: any) => ({ ...prev, [id]: false }));
+    } catch (error) {
+      console.error('Failed to remove product from cart:', error);
+      alert('Failed to remove product from cart. Please try again later.');
+    }
+  } else {
+    alert('Please log in to add items to your cart');
+  }
+};
+
+export const handleQuantityChange = async ({ user, dispatch, updateItemQuantity, productId, newQuantity }: any) => {
+  if (user && user.id) {
+    try {
+      await updateItemQuantity(user.id, productId, newQuantity);
+      dispatch(updateQuantity({ id: productId, quantity: newQuantity }));
+    } catch (error) {
+      console.error('Failed to update product quantity in cart:', error);
+    }
+  }
+};
+
+export const handleLogOut = async ({ dispatch }: any) => {
+  try {
+    await signOut(auth);
+    localStorage.removeItem('token');
+    dispatch(setCart([]));
+    dispatch(removeUser());
+    console.log('User logged out');
+  } catch (error) {
+    console.error('Error logging out user:', error);
   }
 };

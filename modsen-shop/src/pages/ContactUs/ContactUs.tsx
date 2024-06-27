@@ -27,8 +27,8 @@ const ContactUs = () => {
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     emailjs
       .send(
-        'service_9lhh6nk', // Ваш ID сервиса emailjs
-        'template_265lc4i', // Ваш ID шаблона emailjs
+        'service_9lhh6nk',
+        'template_265lc4i',
         {
           first_name: data.firstName,
           last_name: data.lastName,
@@ -36,7 +36,7 @@ const ContactUs = () => {
           subject: data.subject,
           message: data.message,
         },
-        'LDLNleshsehnRHFNt' // Ваш пользовательский ID emailjs
+        'LDLNleshsehnRHFNt'
       )
       .then(
         (result) => {

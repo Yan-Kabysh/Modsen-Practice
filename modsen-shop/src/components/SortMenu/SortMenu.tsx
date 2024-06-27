@@ -6,6 +6,7 @@ import { SearchInput } from '@/components/SearchInput/SearchInput';
 import { Select } from '@/components/Select/Select';
 
 import { Filters, Wrapper } from './StyledSortMenu';
+import { fetchCategories } from '@/helpers/fetchHelpers';
 
 const selectData = {
   options: [
@@ -35,17 +36,8 @@ const SortMenu = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch(
-          'https://fakestoreapi.com/products/categories'
-        );
-        const data = await response.json();
-        setSelectShopBy(
-          data.map((category: string) => ({ value: category, label: category }))
-        );
-      } catch (error) {
-        console.error('Failed to fetch categories:', error);
-      }
+      const data = await fetchCategories();
+      setSelectShopBy(data);
     };
 
     fetchData();

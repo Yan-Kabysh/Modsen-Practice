@@ -1,21 +1,16 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+// Login.js
 
-import { ExtendedUser } from '@/../types/types';
-import { Button } from '@/components/Button/Button';
-import { StyledInput } from '@/components/Input/StyledInput';
-import { ROUTES } from '@/constants/Path';
-import { EMAIL_REGEX } from '@/constants/Regular';
-import { useAppDispatch } from '@/hooks/redux';
 import { H1 } from '@/pages/Error/StyledError';
-import {
-  userFetching,
-  userFetchingError,
-  userFetchingSuccess,
-} from '@/store/reducers/UserReducer/UserSlice';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useAppDispatch } from '@/hooks/redux';
+import { StyledInput } from '@/components/Input/StyledInput';
+import { Button } from '@/components/Button/Button';
+import { ROUTES } from '@/constants/Path';
+import { handleLogin } from '@/helpers/authHelpers'; // Импортируем наш хелпер
 
 import { Form, Span, StyledNavLink, Wrapper } from './StyledLogin';
+import { useNavigate } from 'react-router-dom';
+import { EMAIL_REGEX } from '@/constants/Regular';
 
 type FormValues = {
   email: string;
@@ -32,26 +27,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    const auth = getAuth();
-    dispatch(userFetching());
-    signInWithEmailAndPassword(auth, data.email, data.password)
-      .then((credential) => {
-        const user = credential.user as ExtendedUser;
-        console.log(user);
-        dispatch(
-          userFetchingSuccess({
-            email: user.email!,
-            id: user.uid,
-            token: user.accessToken,
-          })
-        );
-        localStorage.setItem('token', user.accessToken);
-        navigate(ROUTES.HOME);
-      })
-      .catch((error) => {
-        console.error(error);
-        dispatch(userFetchingError(error.message));
-      });
+    handleLogin(dispatch, data, navigate);
   };
 
   return (

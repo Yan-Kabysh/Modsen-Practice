@@ -1,4 +1,3 @@
-import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -7,23 +6,16 @@ import { IProduct } from '@/../types/types';
 import { Button } from '@/components/Button/Button';
 import { CardProduct } from '@/components/CardProduct/CardProduct';
 import { Price } from '@/components/CardProduct/StyledCardProduct';
-import { ROUTES } from '@/constants/Path';
 import { auth } from '@/firebase';
 import {
-  getUserCart,
+  handleAuthStateChange,
+  handleLogOut,
+  handleQuantityChange,
+  handleRemoveItem,
   removeItemFromCart,
   updateItemQuantity,
 } from '@/helpers/cartControl';
 import { useAppSelector } from '@/hooks/redux';
-import {
-  removeItem,
-  setCart,
-  updateQuantity,
-} from '@/store/reducers/CartReducer/CartReducer';
-import {
-  removeUser,
-  userFetchingSuccess,
-} from '@/store/reducers/UserReducer/UserSlice';
 
 import { CartHeader, Empty, H1, Items, TotalWrapper } from './StyledCart';
 
@@ -38,35 +30,7 @@ const Cart = () => {
   }>({});
   const [total, setTotal] = useState(0);
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      navigate(ROUTES.LOGIN);
-    } else {
-      onAuthStateChanged(auth, async (currentUser) => {
-        if (currentUser) {
-          console.log('currentUser', currentUser);
-          const userId = currentUser.uid;
-          dispatch(
-            userFetchingSuccess({ id: userId, email: currentUser.email, token })
-          );
-          try {
-            const items = await getUserCart(userId);
-            const itemsWithQuantity = items.map((item: IProduct) => ({
-              ...item,
-              quantity: item.quantity || 1,
-            }));
-            dispatch(setCart(itemsWithQuantity));
-            setLoading(false);
-          } catch (error) {
-            console.error('Failed to load cart items:', error);
-            setLoading(false);
-          }
-        } else {
-          navigate(ROUTES.LOGIN);
-          setLoading(false);
-        }
-      });
-    }
+    handleAuthStateChange({ auth, dispatch, navigate, setLoading });
   }, [auth, dispatch, navigate]);
   useEffect(() => {
     const price = cartItems.reduce(
@@ -77,45 +41,30 @@ const Cart = () => {
   }, [cartItems]);
 
   const removeClick = async (id: number) => {
-    if (user && user.id) {
-      try {
-        setRemovingItems((prev) => ({ ...prev, [id]: true }));
-        await removeItemFromCart(user.id, id);
-        dispatch(removeItem(id));
-        setRemovingItems((prev) => ({ ...prev, [id]: false }));
-      } catch (error) {
-        console.error('Failed to remove product from cart:', error);
-        alert('Failed to remove product from cart. Please try again later.');
-      }
-    } else {
-      alert('Please log in to add items to your cart');
-    }
+    await handleRemoveItem({
+      user,
+      dispatch,
+      id,
+      setRemovingItems,
+      removeItemFromCart,
+    });
   };
 
-  const handleQuantityChange = async (
+  const handleChangeQuantity = async (
     productId: number,
     newQuantity: number
   ) => {
-    if (user && user.id) {
-      try {
-        await updateItemQuantity(user.id, productId, newQuantity);
-        dispatch(updateQuantity({ id: productId, quantity: newQuantity }));
-      } catch (error) {
-        console.error('Failed to update product quantity in cart:', error);
-      }
-    }
+    await handleQuantityChange({
+      user,
+      dispatch,
+      updateItemQuantity,
+      productId,
+      newQuantity,
+    });
   };
 
-  const handleLogOut = async () => {
-    try {
-      await signOut(auth);
-      localStorage.removeItem('token');
-      dispatch(setCart([]));
-      dispatch(removeUser());
-      console.log('User logged out');
-    } catch (error) {
-      console.error('Error logging out user:', error);
-    }
+  const handleLogout = async () => {
+    await handleLogOut({ dispatch });
   };
 
   if (loading) {
@@ -125,7 +74,7 @@ const Cart = () => {
     <>
       <CartHeader>
         <H1>Cart</H1>
-        <Button onClick={handleLogOut}>Log Out</Button>
+        <Button onClick={handleLogout}>Log Out</Button>
       </CartHeader>
 
       {cartItems.length === 0 ? (
@@ -139,7 +88,7 @@ const Cart = () => {
               remove={removingItems[item.id]}
               onRemove={() => removeClick(item.id)}
               onQuantityChange={(newQuantity: number) =>
-                handleQuantityChange(item.id, newQuantity)
+                handleChangeQuantity(item.id, newQuantity)
               }
             />
           ))}

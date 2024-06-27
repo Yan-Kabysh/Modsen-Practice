@@ -1,19 +1,15 @@
-import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Switch from 'react-switch';
 
-import { IProduct } from '@/../types/types';
 import * as S from '@/components/Header/StyledHeader';
 import { Menu } from '@/components/Menu/Menu';
 import { ROUTES } from '@/constants/Path';
 import THEME_TYPES from '@/constants/ThemeTypes';
 import { auth } from '@/firebase';
-import { getUserCart } from '@/helpers/cartControl';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { setCart } from '@/store/reducers/CartReducer/CartReducer';
 import { uiSlice } from '@/store/reducers/UIReducer/UISlice';
-import { userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
+import { useAuthCheck } from '@/helpers/authHelpers';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -25,32 +21,7 @@ const Header: React.FC = () => {
     setItems(products);
   }, [products]);
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      navigate(ROUTES.LOGIN);
-    } else {
-      onAuthStateChanged(auth, async (currentUser) => {
-        if (currentUser) {
-          console.log('currentUser', currentUser);
-          const userId = currentUser.uid;
-          dispatch(
-            userFetchingSuccess({ id: userId, email: currentUser.email, token })
-          );
-          try {
-            const items = await getUserCart(userId);
-            const itemsWithQuantity = items.map((item: IProduct) => ({
-              ...item,
-              quantity: item.quantity || 1,
-            }));
-            dispatch(setCart(itemsWithQuantity));
-          } catch (error) {
-            console.error('Failed to load cart items:', error);
-          }
-        }
-      });
-    }
-  }, [auth, dispatch, navigate]);
+  useAuthCheck(auth);
 
   const handleLogoClick = () => {
     navigate(ROUTES.HOME);

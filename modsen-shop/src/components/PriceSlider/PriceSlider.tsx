@@ -21,14 +21,12 @@ const PriceSlider = ({ onPriceChange, reset }: any) => {
   }, [products, onPriceChange]);
 
   useEffect(() => {
-    // if (reset && priceRange.length > 0) {
     const initialSliderValue = [
       Math.min(...priceRange),
       Math.max(...priceRange),
     ];
     setSliderValue(initialSliderValue);
     onPriceChange(initialSliderValue);
-    // }
   }, [reset, priceRange, onPriceChange]);
 
   const handleSliderChange = (value: number | readonly number[]) => {

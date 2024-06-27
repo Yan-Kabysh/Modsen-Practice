@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
-import { updateItemQuantity } from '@/helpers/cartControl';
+import { useQuantityChangeHandler } from '@/helpers/cartControl';
 import { useAppSelector } from '@/hooks/redux';
-import { updateQuantity } from '@/store/reducers/CartReducer/CartReducer';
 
 import {
   CountQuantity,
@@ -21,23 +19,14 @@ const QuantityInput = ({
   onQuantityChange: (quantity: number) => void;
 }) => {
   const [quantity, setQuantity] = useState(initialQuantity);
-  const dispatch = useDispatch();
   const userId = useAppSelector((state) => state.userReducer.user?.id);
 
-  const handleQuantityChange = async (newQuantity: number) => {
-    setQuantity(newQuantity);
-    onQuantityChange(newQuantity);
-    if (userId) {
-      try {
-        await updateItemQuantity(userId, productId, newQuantity);
-        dispatch(updateQuantity({ id: productId, quantity: newQuantity }));
-      } catch (error) {
-        console.error('Failed to update quantity:', error);
-      }
-    } else {
-      console.error('User ID is null. Cannot update quantity.');
-    }
-  };
+  const handleQuantityChange = useQuantityChangeHandler(
+    userId,
+    productId,
+    setQuantity,
+    onQuantityChange
+  );
 
   return (
     <QuantityWrapper>

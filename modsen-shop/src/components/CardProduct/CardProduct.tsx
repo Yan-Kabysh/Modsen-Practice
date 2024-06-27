@@ -1,8 +1,8 @@
 import { IProduct } from '@/../types/types';
+import { Button } from '@/components/Button/Button';
+import { QuantityInput } from '@/components/QuantityInput/QuantityInput';
 import { ROUTES } from '@/constants/Path';
 
-import { Button } from '../Button/Button';
-import { QuantityInput } from '../QuantityInput/QuantityInput';
 import {
   H2,
   Img,

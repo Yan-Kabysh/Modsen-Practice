@@ -1,5 +1,5 @@
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,7 +17,6 @@ import {
 } from '@/store/reducers/CartReducer/CartReducer';
 import {
   removeUser,
-  userFetching,
   userFetchingSuccess,
 } from '@/store/reducers/UserReducer/UserSlice';
 

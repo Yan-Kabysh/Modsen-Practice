@@ -1,8 +1,7 @@
 import { arrayUnion, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 
 import { IProduct } from '@/../types/types';
-
-import { db } from '../firebase';
+import { db } from '@/firebase';
 
 const getUserCartRef = (userId: string) => doc(db, 'carts', userId);
 

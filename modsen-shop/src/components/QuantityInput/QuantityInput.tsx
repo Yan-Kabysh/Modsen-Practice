@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { updateItemQuantity } from '@/firebaseControl/cartControl';
 import { useAppSelector } from '@/hooks/redux';
 import { updateQuantity } from '@/store/reducers/CartReducer/CartReducer';
 
-import { updateItemQuantity } from '../../firebaseControl/cartControl';
 import {
   CountQuantity,
   QuantityButton,

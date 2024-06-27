@@ -1,25 +1,18 @@
 import { ProductProps } from '@/../types/types';
 import { ROUTES } from '@/constants/Path';
 
-import {
-  ImageWrapper,
-  Img,
-  Price,
-  StyledNavLink,
-  Title,
-  Wrapper,
-} from './StyledProduct'; // Импорт нового стилизованного компонента
+import * as S from './StyledProduct';
 const Product: React.FC<ProductProps> = ({ product, width, height }) => {
   return (
-    <StyledNavLink to={ROUTES.SHOP + '/' + product.id}>
-      <Wrapper width={width}>
-        <ImageWrapper height={height}>
-          <Img src={product.image} alt="" />
-        </ImageWrapper>
-        <Title>{product.title}</Title>
-        <Price>$ {product.price}</Price>
-      </Wrapper>
-    </StyledNavLink>
+    <S.StyledNavLink to={ROUTES.SHOP + '/' + product.id}>
+      <S.Wrapper width={width}>
+        <S.ImageWrapper height={height}>
+          <S.Img src={product.image} alt="" />
+        </S.ImageWrapper>
+        <S.Title>{product.title}</S.Title>
+        <S.Price>$ {product.price}</S.Price>
+      </S.Wrapper>
+    </S.StyledNavLink>
   );
 };
 

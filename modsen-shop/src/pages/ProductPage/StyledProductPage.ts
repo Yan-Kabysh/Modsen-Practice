@@ -96,14 +96,12 @@ const Description = styled.span<IDescriptionProps>`
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: 12px;
     line-height: 20px;
-    /* margin-bottom: 40px; */
     display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
   }
 `;
 
 const ProductWrapper = styled.div`
   display: flex;
-  /* justify-content: space-between; */
   gap: 40px;
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
@@ -166,7 +164,6 @@ const Rating = styled.div`
 
 const DescDiv = styled.div`
   width: 100%;
-  /* padding-bottom: 30px; */
 `;
 
 const DescDivTitle = styled.div`
@@ -181,8 +178,6 @@ const DescDivTitle = styled.div`
 
 const TitleSpan = styled.div`
   width: 7%;
-  /* margin-bottom: 30px; */
-  /* border-bottom: 1px solid #000000; */
   font-family: 'DM Sans';
   font-size: 20px;
   font-weight: 400;

@@ -13,14 +13,11 @@ const StyledSlider = styled(Slider)`
     top: 0;
     bottom: 0;
     background: ${(props) =>
-      props.theme.title === 'dark'
-        ? '#9A9A9A'
-        : '#d8d8d8'}; // Цвет трека слайдера
+      props.theme.title === 'dark' ? '#9A9A9A' : '#d8d8d8'};
   }
 
   .track-1 {
-    background: ${(props) =>
-      props.theme.colors.text}; // Цвет выбранного диапазона
+    background: ${(props) => props.theme.colors.text};
   }
 
   .thumb {

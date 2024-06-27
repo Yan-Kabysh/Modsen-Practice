@@ -4,9 +4,9 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Button } from '@/components/Button/Button';
 import { StyledInput } from '@/components/Input/StyledInput';
 import { StyledTextArea } from '@/components/TextArea/StyledTextArea';
+import { EMAIL_REGEX } from '@/constants/Regular';
 
 import { ButtonDiv, H1, InputsDiv, Span, Wrapper } from './StyledContactUs';
-import { EMAIL_REGEX } from '@/constants/Regular';
 
 type FormValues = {
   firstName: string;

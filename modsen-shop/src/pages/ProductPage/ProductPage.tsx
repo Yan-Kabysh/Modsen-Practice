@@ -8,6 +8,7 @@ import { Products } from '@/components/Products/Products';
 import { StarRating } from '@/components/StarRating/StarRating';
 import { ROUTES } from '@/constants/Path';
 import { auth } from '@/firebase';
+import { addItemToCart, getUserCart } from '@/firebaseControl/cartControl';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { ReactComponent as FacebookIcon } from '@/images/facebook.svg';
 import { ReactComponent as InstagramIcon } from '@/images/instagram.svg';
@@ -17,7 +18,6 @@ import { addItem, setCart } from '@/store/reducers/CartReducer/CartReducer';
 import { selectedProductFetch } from '@/store/reducers/ProductReducer/ProductActionCreators';
 import { userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
 
-import { addItemToCart, getUserCart } from '../../firebaseControl/cartControl';
 import * as S from './StyledProductPage';
 
 const ProductPage = () => {

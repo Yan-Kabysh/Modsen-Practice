@@ -23,6 +23,8 @@ module.exports = {
       '@/store': path.resolve(__dirname, 'src/store'),
       '@/constants': path.resolve(__dirname, 'src/constants'),
       '@/firebase': path.resolve(__dirname, 'src/firebase'),
+      '@/firebaseControl': path.resolve(__dirname, 'src/firebaseControl'),  
+      '@/pages': path.resolve(__dirname, 'src/pages'),
     },
   },
   module: {

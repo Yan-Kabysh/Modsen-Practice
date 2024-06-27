@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import { CustomSwiperProps } from '@/../types/types';
-import { slides } from './Slides';
 
+import { slides } from './Slides';
 import {
   Pagination,
   PaginationDot,

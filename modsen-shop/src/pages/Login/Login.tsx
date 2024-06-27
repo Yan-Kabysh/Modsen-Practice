@@ -6,16 +6,16 @@ import { ExtendedUser } from '@/../types/types';
 import { Button } from '@/components/Button/Button';
 import { StyledInput } from '@/components/Input/StyledInput';
 import { ROUTES } from '@/constants/Path';
+import { EMAIL_REGEX } from '@/constants/Regular';
 import { useAppDispatch } from '@/hooks/redux';
+import { H1 } from '@/pages/Error/StyledError';
 import {
   userFetching,
   userFetchingError,
   userFetchingSuccess,
 } from '@/store/reducers/UserReducer/UserSlice';
 
-import { H1 } from '../Error/StyledError';
 import { Form, Span, StyledNavLink, Wrapper } from './StyledLogin';
-import { EMAIL_REGEX } from '@/constants/Regular';
 
 type FormValues = {
   email: string;

@@ -1,5 +1,6 @@
-import { breakpoints } from '@/constants/Breakpoints';
 import { styled } from 'styled-components';
+
+import { breakpoints } from '@/constants/Breakpoints';
 
 const Wrapper = styled.div`
   display: flex;
@@ -23,11 +24,11 @@ const FiltersDiv = styled.div`
 `;
 
 const FiltersTitle = styled.span`
-font-family: 'DM Sans';
-font-size: 12px;
-font-weight: 400;
-line-height: 20px;
-color: #A18A68;
+  font-family: 'DM Sans';
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #a18a68;
 `;
 
 const H1 = styled.h1`
@@ -44,4 +45,4 @@ const H1 = styled.h1`
   }
 `;
 
-export { Container, H1, Wrapper, FiltersDiv, FiltersTitle };
+export { Container, FiltersDiv, FiltersTitle, H1, Wrapper };

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
+import { Button } from '@/components/Button/Button';
+import { PriceSlider } from '@/components/PriceSlider/PriceSlider';
 import { SearchInput } from '@/components/SearchInput/SearchInput';
+import { Select } from '@/components/Select/Select';
 
-import { Button } from '../Button/Button';
-import { PriceSlider } from '../PriceSlider/PriceSlider';
-import { Select } from '../Select/Select';
 import { Filters, Wrapper } from './StyledSortMenu';
 
 const selectData = {
@@ -24,7 +24,6 @@ const SortMenu = ({
   const [selectShopBy, setSelectShopBy] = useState<any[]>([]);
   const [resetInput, setResetInput] = useState(false);
   const [resetSelect, setResetSelect] = useState(false);
-  // const [resetSlider, setResetSlider] = useState(false);
 
   const clickHandler = () => {
     onSearch();

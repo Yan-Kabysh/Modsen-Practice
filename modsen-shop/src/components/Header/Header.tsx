@@ -1,32 +1,19 @@
+import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Switch from 'react-switch';
 
-import {
-  ButtonCart,
-  Count,
-  HeaderWrapper,
-  HOPPE,
-  StyledCartIcon,
-  StyledHeaderButtonsBlock,
-  StyledHeaderButtonsBlockMedia,
-  StyledIcon,
-  StyledLogo,
-  StyledSearchIcon,
-  StyledShopButton,
-} from '@/components/Header/StyledHeader';
+import { IProduct } from '@/../types/types';
+import * as S from '@/components/Header/StyledHeader';
+import { Menu } from '@/components/Menu/Menu';
 import { ROUTES } from '@/constants/Path';
 import THEME_TYPES from '@/constants/ThemeTypes';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { uiSlice } from '@/store/reducers/UIReducer/UISlice';
-
-import { Menu } from '../Menu/Menu';
-import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/firebase';
-import { userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
-import { IProduct } from '@/../types/types';
+import { getUserCart } from '@/firebaseControl/cartControl';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { setCart } from '@/store/reducers/CartReducer/CartReducer';
-import { getUserCart } from '../../firebaseControl/cartControl';
+import { uiSlice } from '@/store/reducers/UIReducer/UISlice';
+import { userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -86,14 +73,14 @@ const Header: React.FC = () => {
   };
 
   return (
-    <HeaderWrapper>
-      <StyledLogo onClick={handleLogoClick}>
-        Modsen S<HOPPE>HOPPE</HOPPE>{' '}
-      </StyledLogo>
-      <StyledHeaderButtonsBlock>
-        <StyledShopButton onClick={handleShopButtonClick}>
+    <S.HeaderWrapper>
+      <S.StyledLogo onClick={handleLogoClick}>
+        Modsen S<S.HOPPE>HOPPE</S.HOPPE>{' '}
+      </S.StyledLogo>
+      <S.StyledHeaderButtonsBlock>
+        <S.StyledShopButton onClick={handleShopButtonClick}>
           Shop
-        </StyledShopButton>
+        </S.StyledShopButton>
         <Switch
           onChange={handleThemeChange}
           checked={currentTheme.title === THEME_TYPES.DARK}
@@ -105,20 +92,20 @@ const Header: React.FC = () => {
           offColor="#D8D8D8"
           onColor="#707070"
         />
-        <StyledSearchIcon />
-        <ButtonCart onClick={handleCartButtonClick}>
-          <StyledCartIcon></StyledCartIcon>
-          {items.length !== 0 && <Count>{items.length}</Count>}
-        </ButtonCart>
-      </StyledHeaderButtonsBlock>
-      <StyledHeaderButtonsBlockMedia>
-        <ButtonCart onClick={handleCartButtonClick}>
-          <StyledCartIcon></StyledCartIcon>
-          {items.length !== 0 && <Count>{items.length}</Count>}
-        </ButtonCart>
-      </StyledHeaderButtonsBlockMedia>
+        <S.StyledSearchIcon />
+        <S.ButtonCart onClick={handleCartButtonClick}>
+          <S.StyledCartIcon />
+          {items.length !== 0 && <S.Count>{items.length}</S.Count>}
+        </S.ButtonCart>
+      </S.StyledHeaderButtonsBlock>
+      <S.StyledHeaderButtonsBlockMedia>
+        <S.ButtonCart onClick={handleCartButtonClick}>
+          <S.StyledCartIcon></S.StyledCartIcon>
+          {items.length !== 0 && <S.Count>{items.length}</S.Count>}
+        </S.ButtonCart>
+      </S.StyledHeaderButtonsBlockMedia>
       <Menu />
-    </HeaderWrapper>
+    </S.HeaderWrapper>
   );
 };
 

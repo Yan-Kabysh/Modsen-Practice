@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 
 import { IProduct } from '@/../types/types';
+import { Product } from '@/components/Product/Product';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import {
   fetchCategorieProducts,
   fetchProducts,
 } from '@/store/reducers/ProductReducer/ProductActionCreators';
 
-import { Product } from '../Product/Product';
 import { Container, Wrapper } from './StyledProducts';
 
 const Products = ({

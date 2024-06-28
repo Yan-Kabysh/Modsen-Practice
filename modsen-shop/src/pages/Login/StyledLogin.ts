@@ -1,3 +1,4 @@
+import { breakpoints } from '@/constants/Breakpoints';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -13,6 +14,9 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   border: 1px solid ${(props) => props.theme.colors.text};
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 100%;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`

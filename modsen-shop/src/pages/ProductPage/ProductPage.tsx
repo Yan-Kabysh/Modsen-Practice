@@ -8,7 +8,11 @@ import { Products } from '@/components/Products/Products';
 import { StarRating } from '@/components/StarRating/StarRating';
 import { ROUTES } from '@/constants/Path';
 import { auth } from '@/firebase';
-import { addItemToCart, getUserCart } from '@/helpers/cartControl';
+import {
+  getUserCart,
+  handleAddToCart,
+  handleItemsLoad,
+} from '@/helpers/cartControl';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { ReactComponent as FacebookIcon } from '@/images/facebook.svg';
 import { ReactComponent as InstagramIcon } from '@/images/instagram.svg';
@@ -28,7 +32,7 @@ const ProductPage = () => {
   const [selectedImage, setSelectedImage] = useState('');
   const [similarItems, setSimilarItems] = useState('');
   const user = useAppSelector((state) => state.userReducer.user);
-  const navigate = useNavigate(); // for redirection
+  const navigate = useNavigate();
   const [add, setAdd] = useState(false);
   const [descriptionSpan, setDecriptionSpan] = useState(false);
 
@@ -50,53 +54,15 @@ const ProductPage = () => {
   }, [product]);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      onAuthStateChanged(auth, async (currentUser) => {
-        if (currentUser) {
-          const userId = currentUser.uid;
-          dispatch(
-            userFetchingSuccess({ id: userId, email: currentUser.email, token })
-          );
-          try {
-            const items = await getUserCart(userId);
-            const itemsWithQuantity = items.map((item: IProduct) => ({
-              ...item,
-              quantity: item.quantity || 1,
-            }));
-            dispatch(setCart(itemsWithQuantity));
-          } catch (error) {
-            console.error('Failed to load cart items:', error);
-          }
-        } else {
-          navigate(ROUTES.LOGIN);
-        }
-      });
-    }
+    handleItemsLoad(auth, dispatch, navigate);
   }, [auth, dispatch, navigate]);
 
   if (!product) {
-    return <div>Loading...</div>; // Loading indicator
+    return <div>Loading...</div>;
   }
 
-  const handleAddToCart = async () => {
-    if (localStorage.getItem('token')) {
-      if (user && user.id) {
-        try {
-          setAdd(true);
-          await addItemToCart(user.id, product);
-          dispatch(addItem(product)); // Update Redux state
-          setAdd(false);
-          // alert('Product added to cart');
-        } catch (error) {
-          alert('Failed to add product to cart. Please try again later.');
-        }
-      } else {
-        alert('Please log in to add items to your cart');
-      }
-    } else {
-      navigate(ROUTES.LOGIN);
-    }
+  const addHandler = () => {
+    handleAddToCart(user, product, setAdd, dispatch, navigate);
   };
 
   const handleGoToCart = () => {
@@ -107,6 +73,10 @@ const ProductPage = () => {
     setDecriptionSpan((prev) => !prev);
   };
 
+  const imgClickHandler = () => {
+    setSelectedImage(product.image);
+  };
+
   const isProductInCart = cartItems.some((item) => item.id === product.id);
 
   return (
@@ -115,10 +85,7 @@ const ProductPage = () => {
         <S.ImageContainer>
           <S.SmallImages>
             <S.SmallImgWrapper>
-              <S.SmallImg
-                src={product.image}
-                onClick={() => setSelectedImage(product.image)}
-              />
+              <S.SmallImg src={product.image} onClick={imgClickHandler} />
             </S.SmallImgWrapper>
           </S.SmallImages>
           <S.SelectedImgWrapper>
@@ -138,7 +105,7 @@ const ProductPage = () => {
           {isProductInCart ? (
             <Button onClick={handleGoToCart}>Go to Cart</Button>
           ) : (
-            <Button onClick={handleAddToCart}>
+            <Button onClick={addHandler}>
               {add ? 'Adding...' : 'Add to Cart'}
             </Button>
           )}

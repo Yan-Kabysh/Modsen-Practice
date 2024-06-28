@@ -23,9 +23,13 @@ const Ref = styled.a`
   line-height: var(--line-height-26);
   color: ${({ theme }) => theme.colors.accent};
   text-decoration: none;
+  transition: color 0.3s ease;
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-14);
     line-height: var(--line-height-22);
+  }
+  &:hover{
+    color: ${({ theme }) => theme.colors.text};
   }
 `;
 

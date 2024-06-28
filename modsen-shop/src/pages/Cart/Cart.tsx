@@ -95,7 +95,9 @@ const Cart = () => {
         </Items>
       )}
       <TotalWrapper>
-        <Empty>Total cost: {<Price>$ {total.toFixed(2)}</Price>}</Empty>
+        {cartItems.length !== 0 && (
+          <Empty>Total cost: {<Price>$ {total.toFixed(2)}</Price>}</Empty>
+        )}
       </TotalWrapper>
     </>
   );

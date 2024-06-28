@@ -34,11 +34,8 @@ const StyledShopButton = styled.button`
   line-height: var(--line-height-27);
   background: none;
   border: none;
-  transition: color 0.3s ease;
+  cursor: pointer;
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.darkGray};
-  }
 `;
 
 const StyledIcon = styled.a``;

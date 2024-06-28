@@ -99,6 +99,14 @@ interface CommonThemeInterface{
     mobileContentMarginBottom:  string;
 }
 
+interface WrapperProps {
+  width?: string;
+}
+
+interface ImageWrapperProps {
+  height?: string;
+}
+
 export type {
   IProduct,
   ProductState,
@@ -115,4 +123,6 @@ export type {
   IMenuButtonProps,
   IDescriptionProps,
   CommonThemeInterface,
+  WrapperProps,
+  ImageWrapperProps,
 };

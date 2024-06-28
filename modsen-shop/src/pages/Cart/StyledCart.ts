@@ -1,6 +1,8 @@
 import { styled } from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
+import '@/styles/variables.css'
+
 
 const ColumsTitles = styled.div`
   display: flex;
@@ -27,17 +29,17 @@ const CartHeader = styled.div`
 `;
 
 const H1 = styled.h1`
-  font-family: 'DM Sans';
-  font-size: 33px;
-  font-weight: 500;
-  line-height: 43px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-33);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-43);
 `;
 
 const Empty = styled.span`
-  font-family: 'DM Sans';
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 26px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-300);
+  line-height: var(--line-height-26);
 `;
 
 const TotalWrapper = styled.div`

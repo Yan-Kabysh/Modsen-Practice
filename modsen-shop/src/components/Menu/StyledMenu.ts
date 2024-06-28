@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { IDescriptionProps, IMenuButtonProps } from '@/../types/types';
 import { breakpoints } from '@/constants/Breakpoints';
+import '@/styles/variables.css'
 
 const MenuButton = styled.button<IMenuButtonProps>`
   border: none;
@@ -56,10 +57,10 @@ const Block = styled.div`
 
 const ThemeTitle = styled.span`
   color: ${({ theme }) => theme.colors.text};
-  font-family: 'DM Sans';
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 26px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-26);
 `;
 
 const MenuWrapper = styled.div<IDescriptionProps>`
@@ -84,10 +85,10 @@ const MenuWrapper = styled.div<IDescriptionProps>`
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.text};
-  font-family: 'DM Sans';
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 26px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-26);
 `;
 
 const Theme = styled.div`

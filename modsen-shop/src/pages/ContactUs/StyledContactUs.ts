@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
+import '@/styles/variables.css'
+
 
 const Wrapper = styled.div`
   width: 80%;
@@ -15,10 +17,10 @@ const Wrapper = styled.div`
 `;
 
 const Span = styled.span`
-  font-family: 'DM Sans';
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 26px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-26);
   text-align: center;
   margin-bottom: 50px;
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -43,15 +45,15 @@ const ButtonDiv = styled.div`
 `;
 
 const H1 = styled.h1`
-  font-family: 'DM Sans';
-  font-size: 33px;
-  font-weight: 500;
-  line-height: 43px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-33);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-43);
   margin-top: 100px;
   margin-bottom: 40px;
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: var(--font-size-20);
+    line-height: var(--line-height-26);
     margin-top: 50px;
     margin-bottom: 20px;
     text-align: left;

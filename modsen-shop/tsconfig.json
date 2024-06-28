@@ -11,7 +11,9 @@
       "@/constants/*": ["constants/*"],
       "@/firebase/*": ["firebase/*"],
       "@/helpers/*": ["helpers/*"],
-      "@/pages/*": ["pages/*"]
+      "@/pages/*": ["pages/*"],
+      "@/styles/*": ["assets/styles/*"]
+
 
     },
     "rootDir": "./",

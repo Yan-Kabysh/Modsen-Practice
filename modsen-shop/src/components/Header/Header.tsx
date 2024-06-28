@@ -16,6 +16,7 @@ const Header: React.FC = () => {
   const dispatch = useAppDispatch();
   const { currentTheme } = useAppSelector((state) => state.uiReducer);
   const products = useAppSelector((state) => state.cartReducer.items);
+  const theme = useAppSelector((state) => state.uiReducer.currentTheme);
   const [items, setItems] = useState(products);
   useEffect(() => {
     setItems(products);
@@ -60,8 +61,8 @@ const Header: React.FC = () => {
           width={45}
           height={21}
           handleDiameter={19}
-          offColor="#D8D8D8"
-          onColor="#707070"
+          offColor={theme.colors.gray}
+          onColor={theme.colors.lightGray}
         />
         <S.StyledSearchIcon />
         <S.ButtonCart onClick={handleCartButtonClick}>

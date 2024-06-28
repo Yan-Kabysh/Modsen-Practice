@@ -1,6 +1,8 @@
 import { styled } from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
+import '@/styles/variables.css'
+
 
 const Wrapper = styled.div`
   display: flex;

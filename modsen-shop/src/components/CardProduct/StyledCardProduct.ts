@@ -2,6 +2,8 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
+import '@/styles/variables.css'
+
 
 const Img = styled.img`
   max-width: 100%;
@@ -34,11 +36,11 @@ const StyledLink = styled(NavLink)`
 `;
 
 const Price = styled.span`
-  font-family: 'DM Sans';
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 26px;
-  color: #a18a68;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-26);
+  color: ${({theme}) => theme.colors.accent};
   width: 15%;
   text-align: center;
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -48,10 +50,10 @@ const Price = styled.span`
 `;
 
 const H2 = styled.h2`
-  font-family: 'DM Sans';
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 35px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-35);
   text-align: center;
   max-width: 250px;
   width: 15%;
@@ -66,11 +68,11 @@ const PricesSpan = styled.span`
   display: none;
   @media screen and (max-width: ${breakpoints.medium}) {
     display: block;
-    font-family: 'DM Sans';
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 35px;
-    color: #707070;
+    font-family: var(--font-family-dm-sans);
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-35);
+    color: ${({theme}) => theme.colors.darkGray};
   }
 `;
 

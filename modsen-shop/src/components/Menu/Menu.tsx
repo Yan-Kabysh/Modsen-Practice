@@ -70,8 +70,8 @@ const Menu: React.FC = () => {
                 width={45}
                 height={21}
                 handleDiameter={19}
-                offColor="#D8D8D8"
-                onColor="#707070"
+                offColor={currentTheme.colors.gray}
+                onColor={currentTheme.colors.darkGray}
               />
             </Theme>
           </MenuWrapper>

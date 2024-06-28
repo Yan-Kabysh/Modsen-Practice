@@ -5,13 +5,17 @@ declare module 'styled-components' {
     title: THEME_TYPES;
 
     colors: {
-      primary: string;
-      secondary: string;
-
+      white: string,
+      black: string,
+      accent: string; 
       background: string;
       text: string;
       buttonBackground: string;
       buttonText: string;
+      error: string;
+      lightGray: string;
+      gray: string;
+      darkGray: string;
     };
   }
 }

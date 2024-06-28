@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { IDescriptionProps } from '@/../types/types';
 import { breakpoints } from '@/constants/Breakpoints';
 import { ReactComponent as ArrowIcon } from '@/images/smallArrow.svg';
+import '@/styles/variables.css'
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -62,40 +64,40 @@ const SelectedImgWrapper = styled.div`
 `;
 
 const H2 = styled.h2`
-  font-family: 'DM Sans';
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 35px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-26);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-35);
   text-align: left;
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: var(--font-size-20);
+    line-height: var(--line-height-26);
   }
 `;
 
 const Price = styled.span`
-  font-family: 'DM Sans';
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 26px;
-  color: #a18a68;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-26);
+  color: ${({theme}) => theme.colors.accent};
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 16px;
-    line-height: 27px;
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-27);
     margin: 20px 0;
   }
 `;
 
 const Description = styled.span<IDescriptionProps>`
-  font-family: 'DM Sans';
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 27px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-27);
   text-align: left;
-  color: #707070;
+  color: ${({theme}) => theme.colors.darkGray};
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
-    line-height: 20px;
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-20);
     display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
   }
 `;
@@ -109,15 +111,15 @@ const ProductWrapper = styled.div`
 `;
 
 const Desc = styled.p`
-  font-family: 'DM Sans';
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 27px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-27);
   text-align: left;
-  color: #707070;
+  color: ${({theme}) => theme.colors.darkGray};
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
-    line-height: 20px;
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-20);
     margin-bottom: 20px;
   }
 `;
@@ -143,13 +145,13 @@ const Categories = styled.div`
 `;
 
 const Category = styled.span`
-  font-family: 'DM Sans';
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 27px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-27);
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
-    line-height: 20px;
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-20);
     margin-bottom: 20px;
   }
 `;
@@ -168,7 +170,7 @@ const DescDiv = styled.div`
 
 const DescDivTitle = styled.div`
   width: 100%;
-  border-bottom: 1px solid #d8d8d8;
+  border-bottom: 1px solid ${({theme}) => theme.colors.gray};
   margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
@@ -178,14 +180,14 @@ const DescDivTitle = styled.div`
 
 const TitleSpan = styled.div`
   width: 7%;
-  font-family: 'DM Sans';
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 26px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-26);
   text-align: left;
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
-    line-height: 20px;
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-20);
     border-bottom: none;
   }
 `;

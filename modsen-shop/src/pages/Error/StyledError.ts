@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
+import '@/styles/variables.css'
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,27 +14,27 @@ const Wrapper = styled.div`
 `;
 
 const H1 = styled.h1`
-  font-family: 'DM Sans';
-  font-size: 33px;
-  font-weight: 500;
-  line-height: 43px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-33);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-43);
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: var(--font-size-20);
+    line-height: var(--line-height-26);
   }
 `;
 
 const Span = styled.span`
-  font-family: 'DM Sans';
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 26px;
-  color: #707070;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-26);
+  color: ${({theme}) => theme.colors.darkGray};
   text-align: center;
   margin-bottom: 40px;
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
-    line-height: 20px;
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-20);
   }
 `;
 

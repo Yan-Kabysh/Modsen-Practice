@@ -1,6 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 
+import '@/styles/variables.css'
+
+
 import { breakpoints } from '@/constants/Breakpoints';
 interface WrapperProps {
   width?: string;
@@ -20,31 +23,31 @@ const Wrapper = styled.div<WrapperProps>`
 `;
 
 const Title = styled.span`
-  font-family: 'DM Sans';
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 26px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-26);
   text-overflow: ellipsis;
   overflow: hidden;
   -webkit-line-clamp: 1;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 14px;
-    line-height: 22px;
+    font-size: var(--font-size-14);
+    line-height: var(--line-height-22);
     -webkit-line-clamp: 2;
   }
 `;
 
 const Price = styled.span`
-  font-family: 'DM Sans';
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 26px;
-  color: #a18a68;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-26);
+  color: ${({theme}) => theme.colors.accent};
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
-    line-height: 20px;
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-20);
   }
 `;
 

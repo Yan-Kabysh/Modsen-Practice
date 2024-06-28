@@ -1,4 +1,6 @@
 import { styled } from 'styled-components';
+import '@/styles/variables.css'
+
 
 const Wrapper = styled.div`
   margin-top: 20px;
@@ -11,16 +13,16 @@ const SelectBox = styled.select`
   width: 100%;
   padding: 10px;
   appearance: none;
-  background-color: white;
-  border: 1px solid #ccc;
+  background-color: ${({theme}) => theme.colors.white};
+  border: 1px solid ${({theme}) => theme.colors.gray};
   border-radius: 4px;
-  color: #000;
-  font-family: 'DM Sans';
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 22px;
+  color: ${({theme}) => theme.colors.darkGray};
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-22);
   background: transparent;
-  color: ${(props) => props.theme.colors.text};
+  color: ${({theme}) => theme.colors.text};
 
   &:focus {
     outline: none;
@@ -28,7 +30,7 @@ const SelectBox = styled.select`
   }
 
   option {
-    background: ${(props) => props.theme.colors.background};
+    background: ${({theme}) => theme.colors.background};
   }
 `;
 
@@ -38,7 +40,7 @@ const Arrow = styled.div`
   right: 10px;
   pointer-events: none;
   transform: translateY(-50%);
-  border: solid ${(props) => props.theme.colors.text};
+  border: solid ${({theme}) => theme.colors.text};
   border-width: 0 2px 2px 0;
   display: inline-block;
   padding: 4px;

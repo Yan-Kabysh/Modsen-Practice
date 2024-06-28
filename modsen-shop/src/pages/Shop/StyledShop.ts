@@ -1,6 +1,8 @@
 import { styled } from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
+import '@/styles/variables.css'
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -24,23 +26,23 @@ const FiltersDiv = styled.div`
 `;
 
 const FiltersTitle = styled.span`
-  font-family: 'DM Sans';
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 20px;
-  color: #a18a68;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-20);
+  color: ${({theme}) => theme.colors.accent};
 `;
 
 const H1 = styled.h1`
-  font-family: 'DM Sans';
-  font-size: 33px;
-  font-weight: 500;
-  line-height: 43px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-33);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-43);
   margin-top: 100px;
   margin-bottom: 40px;
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: var(--font-size-20);
+    line-height: var(--line-height-26);
     margin-top: 40px;
   }
 `;

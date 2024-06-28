@@ -1,36 +1,38 @@
 import { styled } from 'styled-components';
+import '@/styles/variables.css'
+
 
 const Input = styled.input`
   height: 40px;
   width: 100%;
   border: none;
-  border-bottom: 1px solid #d8d8d8;
-  font-family: 'DM Sans';
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 27px;
+  border-bottom: 1px solid ${({theme}) => theme.colors.gray};
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-27);
   outline: none;
   background: transparent;
   &:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px
-      ${(props) => props.theme.colors.background} inset;
-    box-shadow: 0 0 0px 1000px ${(props) => props.theme.colors.background} inset;
-    -webkit-text-fill-color: ${(props) => props.theme.colors.text};
+      ${({theme}) => theme.colors.background} inset;
+    box-shadow: 0 0 0px 1000px ${({theme}) => theme.colors.background} inset;
+    -webkit-text-fill-color: ${({theme}) => theme.colors.text};
   }
 
   &:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px
-      ${(props) => props.theme.colors.background} inset;
-    box-shadow: 0 0 0px 1000px ${(props) => props.theme.colors.background} inset;
-    -webkit-text-fill-color: ${(props) => props.theme.colors.text};
+      ${({theme}) => theme.colors.background} inset;
+    box-shadow: 0 0 0px 1000px ${({theme}) => theme.colors.background} inset;
+    -webkit-text-fill-color: ${({theme}) => theme.colors.text};
   }
 
   &:-webkit-autofill:hover,
   &:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0px 1000px
-      ${(props) => props.theme.colors.background} inset;
-    box-shadow: 0 0 0px 1000px ${(props) => props.theme.colors.background} inset;
-    -webkit-text-fill-color: ${(props) => props.theme.colors.text};
+      ${({theme}) => theme.colors.background} inset;
+    box-shadow: 0 0 0px 1000px ${({theme}) => theme.colors.background} inset;
+    -webkit-text-fill-color: ${({theme}) => theme.colors.text};
   }
 `;
 

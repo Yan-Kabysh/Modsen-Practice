@@ -1,9 +1,9 @@
+import '@/styles/variables.css';
+
 import { styled } from 'styled-components';
 
 import { PaginationDotProps, SlideContainerProps } from '@/../types/types';
 import { breakpoints } from '@/constants/Breakpoints';
-import '@/styles/variables.css'
-
 
 const SliderWrapper = styled.div`
   position: relative;
@@ -36,16 +36,18 @@ const Pagination = styled.div`
 `;
 
 const PaginationDot = styled.span<PaginationDotProps>`
-  width: ${({active}) => (active ? '20px' : '10px')};
-  height: ${({active}) => (active ? '20px' : '10px')};
+  width: ${({ active }) => (active ? '20px' : '10px')};
+  height: ${({ active }) => (active ? '20px' : '10px')};
   margin: 0 5px;
   border-radius: 50%;
-  background-color: ${({active, theme}) => (active ? 'transparent' : theme.colors.lightGray)};
-  border: 1px solid ${({active, theme}) => (active ? theme.colors.white : 'transparent')};
+  background-color: ${({ active, theme }) =>
+    active ? 'transparent' : theme.colors.lightGray};
+  border: 1px solid
+    ${({ active, theme }) => (active ? theme.colors.white : 'transparent')};
   cursor: pointer;
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: ${({active}) => (active ? '10px' : '5px')};
-    height: ${({active}) => (active ? '10px' : '5px')};
+    width: ${({ active }) => (active ? '10px' : '5px')};
+    height: ${({ active }) => (active ? '10px' : '5px')};
   }
 `;
 

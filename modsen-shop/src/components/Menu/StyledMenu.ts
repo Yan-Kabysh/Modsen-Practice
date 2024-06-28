@@ -1,9 +1,10 @@
+import '@/styles/variables.css';
+
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { IDescriptionProps, IMenuButtonProps } from '@/../types/types';
 import { breakpoints } from '@/constants/Breakpoints';
-import '@/styles/variables.css'
 
 const MenuButton = styled.button<IMenuButtonProps>`
   border: none;

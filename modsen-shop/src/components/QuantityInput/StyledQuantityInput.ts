@@ -1,12 +1,12 @@
+import '@/styles/variables.css';
+
 import styled from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
-import '@/styles/variables.css'
-
 
 const QuantityButton = styled.button`
-  background: ${({theme}) => theme.colors.background};
-  border: 1px solid ${({theme}) => theme.colors.text};
+  background: ${({ theme }) => theme.colors.background};
+  border: 1px solid ${({ theme }) => theme.colors.text};
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -14,21 +14,21 @@ const QuantityButton = styled.button`
   align-items: center;
   justify-content: center;
   font-size: var(--font-size-20);
-  color: ${({theme}) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.text};
   cursor: pointer;
   transition:
     background 0.3s,
     color 0.3s;
 
   &:hover {
-    background: ${({theme}) => theme.colors.text};
-    color: ${({theme}) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.background};
   }
 
   &:disabled {
-    background: ${({theme}) => theme.colors.lightGray};
-    color: ${({theme}) => theme.colors.darkGray};
-    border-color: ${({theme}) => theme.colors.darkGray};
+    background: ${({ theme }) => theme.colors.lightGray};
+    color: ${({ theme }) => theme.colors.darkGray};
+    border-color: ${({ theme }) => theme.colors.darkGray};
     cursor: not-allowed;
   }
 `;

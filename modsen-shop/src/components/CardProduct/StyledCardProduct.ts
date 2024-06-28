@@ -1,9 +1,9 @@
+import '@/styles/variables.css';
+
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
-import '@/styles/variables.css'
-
 
 const Img = styled.img`
   max-width: 100%;
@@ -40,7 +40,7 @@ const Price = styled.span`
   font-size: var(--font-size-20);
   font-weight: var(--font-weight-500);
   line-height: var(--line-height-26);
-  color: ${({theme}) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.accent};
   width: 15%;
   text-align: center;
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -72,7 +72,7 @@ const PricesSpan = styled.span`
     font-size: var(--font-size-16);
     font-weight: var(--font-weight-400);
     line-height: var(--line-height-35);
-    color: ${({theme}) => theme.colors.darkGray};
+    color: ${({ theme }) => theme.colors.darkGray};
   }
 `;
 

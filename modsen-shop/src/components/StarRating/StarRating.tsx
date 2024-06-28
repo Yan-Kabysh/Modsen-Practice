@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 
+import { useAppSelector } from '@/hooks/redux';
 import { ReactComponent as StarIcon } from '@/images/star.svg';
 
 import { Wrapper } from './StyledStarrating';
-import { useAppSelector } from '@/hooks/redux';
 
 type StarRatingPropsType = {
   value: number;

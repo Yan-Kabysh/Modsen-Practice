@@ -1,10 +1,10 @@
+import '@/styles/variables.css';
+
 import styled from 'styled-components';
 
 import { IDescriptionProps } from '@/../types/types';
 import { breakpoints } from '@/constants/Breakpoints';
 import { ReactComponent as ArrowIcon } from '@/images/smallArrow.svg';
-import '@/styles/variables.css'
-
 
 const Wrapper = styled.div`
   display: flex;
@@ -80,7 +80,7 @@ const Price = styled.span`
   font-size: var(--font-size-20);
   font-weight: var(--font-weight-500);
   line-height: var(--line-height-26);
-  color: ${({theme}) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.accent};
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-16);
     line-height: var(--line-height-27);
@@ -94,7 +94,7 @@ const Description = styled.span<IDescriptionProps>`
   font-weight: var(--font-weight-400);
   line-height: var(--line-height-27);
   text-align: left;
-  color: ${({theme}) => theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);
     line-height: var(--line-height-20);
@@ -116,7 +116,7 @@ const Desc = styled.p`
   font-weight: var(--font-weight-400);
   line-height: var(--line-height-27);
   text-align: left;
-  color: ${({theme}) => theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);
     line-height: var(--line-height-20);
@@ -170,7 +170,7 @@ const DescDiv = styled.div`
 
 const DescDivTitle = styled.div`
   width: 100%;
-  border-bottom: 1px solid ${({theme}) => theme.colors.gray};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
   margin-bottom: 30px;
   display: flex;
   justify-content: space-between;

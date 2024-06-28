@@ -1,8 +1,8 @@
+import '@/styles/variables.css';
+
 import { styled } from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
-import '@/styles/variables.css'
-
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,7 +30,7 @@ const FiltersTitle = styled.span`
   font-size: var(--font-size-12);
   font-weight: var(--font-weight-400);
   line-height: var(--line-height-20);
-  color: ${({theme}) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.accent};
 `;
 
 const H1 = styled.h1`

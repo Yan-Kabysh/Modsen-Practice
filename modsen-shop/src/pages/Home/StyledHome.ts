@@ -1,6 +1,6 @@
-import { styled } from 'styled-components';
+import '@/styles/variables.css';
 
-import '@/styles/variables.css'
+import { styled } from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
 const Wrapper = styled.div`
@@ -21,7 +21,7 @@ const Ref = styled.a`
   font-size: var(--font-size-20);
   font-weight: var(--font-weight-500);
   line-height: var(--line-height-26);
-  color: ${({theme}) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.accent};
   text-decoration: none;
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-14);

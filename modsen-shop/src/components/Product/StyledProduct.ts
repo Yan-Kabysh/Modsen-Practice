@@ -1,8 +1,7 @@
+import '@/styles/variables.css';
+
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
-
-import '@/styles/variables.css'
-
 
 import { breakpoints } from '@/constants/Breakpoints';
 interface WrapperProps {
@@ -44,7 +43,7 @@ const Price = styled.span`
   font-size: var(--font-size-20);
   font-weight: var(--font-weight-500);
   line-height: var(--line-height-26);
-  color: ${({theme}) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.accent};
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);
     line-height: var(--line-height-20);

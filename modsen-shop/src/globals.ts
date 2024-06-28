@@ -7,20 +7,20 @@ const Global = createGlobalStyle`
     box-sizing: border-box;
    }
    body{
-    background: ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.text};
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.text};
    }
    button{
-    color: ${({theme}) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.text};
    }
    .iconPath{
-    fill: ${({theme}) => theme.colors.text};
+    fill: ${({ theme }) => theme.colors.text};
    }
    input{
-    color: ${({theme}) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.text};
    }
    .thumb{
-    background: ${({theme}) => theme.colors.text};
+    background: ${({ theme }) => theme.colors.text};
    }
    @font-face {
       font-family: "Allerta Stencil";

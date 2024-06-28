@@ -1,11 +1,11 @@
+import '@/styles/variables.css';
+
 import styled from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
-import '@/styles/variables.css'
-
 
 const Wrapper = styled.div`
-  border-top: 1px solid ${({theme}) => theme.colors.gray};
+  border-top: 1px solid ${({ theme }) => theme.colors.gray};
   margin: 200px 0 50px 0;
   @media screen and (max-width: ${breakpoints.medium}) {
     margin: 50px 0 30px 0;
@@ -28,7 +28,7 @@ const Policy = styled.span`
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-400);
   line-height: var(--line-height-27);
-  color: ${({theme}) => theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
   order: 1;
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);
@@ -47,7 +47,7 @@ const PolicyNetworks = styled.div`
 const ArrowButton = styled.button`
   background: none;
   border: none;
-  border-bottom: 1px solid ${({theme}) => theme.colors.text};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.text};
   height: 36px;
   @media screen and (max-width: ${breakpoints.medium}) {
     height: 30px;
@@ -88,7 +88,7 @@ const Ref = styled.a`
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-400);
   line-height: var(--line-height-27);
-  color: ${({theme}) => theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
   text-decoration: none;
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);
@@ -100,34 +100,34 @@ const Input = styled.input`
   /* width: 100%; */
   height: 40px;
   border: none;
-  border-bottom: 1px solid ${({theme}) => theme.colors.text};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.text};
   font-family: var(--font-family-dm-sans);
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-400);
   line-height: var(--line-height-27);
   outline: none;
   background: transparent;
-  color: ${({theme}) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.text};
   &:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px
-      ${({theme}) => theme.colors.background} inset;
-    box-shadow: 0 0 0px 1000px ${({theme}) => theme.colors.background} inset;
-    -webkit-text-fill-color: ${({theme}) => theme.colors.text};
+    -webkit-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.colors.background}
+      inset;
+    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.colors.background} inset;
+    -webkit-text-fill-color: ${({ theme }) => theme.colors.text};
   }
 
   &:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px
-      ${({theme}) => theme.colors.background} inset;
-    box-shadow: 0 0 0px 1000px ${({theme}) => theme.colors.background} inset;
-    -webkit-text-fill-color: ${({theme}) => theme.colors.text};
+    -webkit-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.colors.background}
+      inset;
+    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.colors.background} inset;
+    -webkit-text-fill-color: ${({ theme }) => theme.colors.text};
   }
 
   &:-webkit-autofill:hover,
   &:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0px 1000px
-      ${({theme}) => theme.colors.background} inset;
-    box-shadow: 0 0 0px 1000px ${({theme}) => theme.colors.background} inset;
-    -webkit-text-fill-color: ${({theme}) => theme.colors.text};
+    -webkit-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.colors.background}
+      inset;
+    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.colors.background} inset;
+    -webkit-text-fill-color: ${({ theme }) => theme.colors.text};
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);

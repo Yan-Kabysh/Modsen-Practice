@@ -1,12 +1,19 @@
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { arrayUnion, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
 
 import { IProduct } from '@/../types/types';
-import { auth, db } from '@/firebase';
-import { removeItem, setCart, updateQuantity } from '@/store/reducers/CartReducer/CartReducer';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { ROUTES } from '@/constants/Path';
-import { removeUser, userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
+import { auth, db } from '@/firebase';
+import {
+  removeItem,
+  setCart,
+  updateQuantity,
+} from '@/store/reducers/CartReducer/CartReducer';
+import {
+  removeUser,
+  userFetchingSuccess,
+} from '@/store/reducers/UserReducer/UserSlice';
 
 const getUserCartRef = (userId: string) => doc(db, 'carts', userId);
 
@@ -104,7 +111,12 @@ export const getUserCart = async (userId: string) => {
   }
 };
 
-export const useQuantityChangeHandler = (userId: any, productId: number, setQuantity: (arg0: any) => void, onQuantityChange: (arg0: any) => void) => {
+export const useQuantityChangeHandler = (
+  userId: any,
+  productId: number,
+  setQuantity: (arg0: any) => void,
+  onQuantityChange: (arg0: any) => void
+) => {
   const dispatch = useDispatch();
 
   const handleQuantityChange = async (newQuantity: number) => {
@@ -126,7 +138,12 @@ export const useQuantityChangeHandler = (userId: any, productId: number, setQuan
   return handleQuantityChange;
 };
 
-export const handleAuthStateChange = async ({ auth, dispatch, navigate, setLoading }: any) => {
+export const handleAuthStateChange = async ({
+  auth,
+  dispatch,
+  navigate,
+  setLoading,
+}: any) => {
   const token = localStorage.getItem('token');
   if (!token) {
     navigate(ROUTES.LOGIN);
@@ -143,7 +160,7 @@ export const handleAuthStateChange = async ({ auth, dispatch, navigate, setLoadi
       );
       try {
         const items = await getUserCart(userId);
-        const itemsWithQuantity = items.map((item: { quantity: any; }) => ({
+        const itemsWithQuantity = items.map((item: { quantity: any }) => ({
           ...item,
           quantity: item.quantity || 1,
         }));
@@ -160,7 +177,13 @@ export const handleAuthStateChange = async ({ auth, dispatch, navigate, setLoadi
   });
 };
 
-export const handleRemoveItem = async ({ user, dispatch, id, setRemovingItems, removeItemFromCart }: any) => {
+export const handleRemoveItem = async ({
+  user,
+  dispatch,
+  id,
+  setRemovingItems,
+  removeItemFromCart,
+}: any) => {
   if (user && user.id) {
     try {
       setRemovingItems((prev: any) => ({ ...prev, [id]: true }));
@@ -176,7 +199,13 @@ export const handleRemoveItem = async ({ user, dispatch, id, setRemovingItems, r
   }
 };
 
-export const handleQuantityChange = async ({ user, dispatch, updateItemQuantity, productId, newQuantity }: any) => {
+export const handleQuantityChange = async ({
+  user,
+  dispatch,
+  updateItemQuantity,
+  productId,
+  newQuantity,
+}: any) => {
   if (user && user.id) {
     try {
       await updateItemQuantity(user.id, productId, newQuantity);

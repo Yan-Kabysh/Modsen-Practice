@@ -7,9 +7,9 @@ import { Menu } from '@/components/Menu/Menu';
 import { ROUTES } from '@/constants/Path';
 import THEME_TYPES from '@/constants/ThemeTypes';
 import { auth } from '@/firebase';
+import { useAuthCheck } from '@/helpers/authHelpers';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { uiSlice } from '@/store/reducers/UIReducer/UISlice';
-import { useAuthCheck } from '@/helpers/authHelpers';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();

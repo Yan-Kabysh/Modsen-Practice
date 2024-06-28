@@ -4,9 +4,9 @@ import { Button } from '@/components/Button/Button';
 import { PriceSlider } from '@/components/PriceSlider/PriceSlider';
 import { SearchInput } from '@/components/SearchInput/SearchInput';
 import { Select } from '@/components/Select/Select';
+import { fetchCategories } from '@/helpers/fetchHelpers';
 
 import { Filters, Wrapper } from './StyledSortMenu';
-import { fetchCategories } from '@/helpers/fetchHelpers';
 
 const selectData = {
   options: [

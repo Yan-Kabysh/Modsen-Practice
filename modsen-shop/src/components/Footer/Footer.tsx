@@ -1,9 +1,9 @@
-import emailjs from 'emailjs-com';
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { ROUTES } from '@/constants/Path';
 import { EMAIL_REGEX } from '@/constants/Regular';
+import { submit } from '@/helpers/emailhelpers';
 import { ReactComponent as ArrowIcon } from '@/images/arrow.svg';
 import { ReactComponent as FacebookIcon } from '@/images/facebook.svg';
 import { ReactComponent as InstagramIcon } from '@/images/instagram.svg';
@@ -38,25 +38,8 @@ const Footer: React.FC = () => {
     defaultValues: {},
   });
 
-  const submit: SubmitHandler<IEmailForm> = (data) => {
-    emailjs
-      .send(
-        'service_9lhh6nk',
-        'template_wrw1o9w',
-        {
-          to_email: data.email,
-        },
-        'LDLNleshsehnRHFNt'
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-    reset();
+  const onSubmit: SubmitHandler<IEmailForm> = (data) => {
+    submit(data, reset);
   };
 
   return (
@@ -68,7 +51,7 @@ const Footer: React.FC = () => {
           <Ref href="">SHOPPING AND RETURNS</Ref>
         </Refs>
         <Email>
-          <form onSubmit={handleSubmit(submit)}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Input
               placeholder="Give an email, get the newsletter."
               type="text"

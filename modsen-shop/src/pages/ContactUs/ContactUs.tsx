@@ -1,10 +1,10 @@
-import emailjs from 'emailjs-com';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button } from '@/components/Button/Button';
 import { StyledInput } from '@/components/Input/StyledInput';
 import { StyledTextArea } from '@/components/TextArea/StyledTextArea';
 import { EMAIL_REGEX } from '@/constants/Regular';
+import { emailFormSubmit } from '@/helpers/emailhelpers';
 
 import { ButtonDiv, H1, InputsDiv, Span, Wrapper } from './StyledContactUs';
 
@@ -25,28 +25,7 @@ const ContactUs = () => {
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    emailjs
-      .send(
-        'service_9lhh6nk',
-        'template_265lc4i',
-        {
-          first_name: data.firstName,
-          last_name: data.lastName,
-          email: data.email,
-          subject: data.subject,
-          message: data.message,
-        },
-        'LDLNleshsehnRHFNt'
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-    reset();
+    emailFormSubmit(data, reset);
   };
 
   return (

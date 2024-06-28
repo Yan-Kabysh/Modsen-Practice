@@ -1,16 +1,17 @@
 // Login.js
 
-import { H1 } from '@/pages/Error/StyledError';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useAppDispatch } from '@/hooks/redux';
-import { StyledInput } from '@/components/Input/StyledInput';
+import { useNavigate } from 'react-router-dom';
+
 import { Button } from '@/components/Button/Button';
+import { StyledInput } from '@/components/Input/StyledInput';
 import { ROUTES } from '@/constants/Path';
+import { EMAIL_REGEX } from '@/constants/Regular';
 import { handleLogin } from '@/helpers/authHelpers'; // Импортируем наш хелпер
+import { useAppDispatch } from '@/hooks/redux';
+import { H1 } from '@/pages/Error/StyledError';
 
 import { Form, Span, StyledNavLink, Wrapper } from './StyledLogin';
-import { useNavigate } from 'react-router-dom';
-import { EMAIL_REGEX } from '@/constants/Regular';
 
 type FormValues = {
   email: string;

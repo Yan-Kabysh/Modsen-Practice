@@ -1,16 +1,14 @@
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { ExtendedUser } from '@/../types/types';
 import { Button } from '@/components/Button/Button';
 import { StyledInput } from '@/components/Input/StyledInput';
 import { ROUTES } from '@/constants/Path';
 import { EMAIL_REGEX } from '@/constants/Regular';
+import { authFormSubmit } from '@/helpers/authHelpers';
 import { useAppDispatch } from '@/hooks/redux';
 import { H1 } from '@/pages/Error/StyledError';
 import { Form, Span, StyledNavLink, Wrapper } from '@/pages/Login/StyledLogin';
-import { userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
 
 type FormValues = {
   email: string;
@@ -27,22 +25,8 @@ const Register = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then((credential) => {
-        const user = credential.user as ExtendedUser;
-        console.log(user);
-        dispatch(
-          userFetchingSuccess({
-            email: user.email!,
-            id: user.uid,
-            token: user.accessToken,
-          })
-        );
-        localStorage.setItem('token', user.accessToken);
-        navigate(ROUTES.HOME);
-      })
-      .catch(console.error);
+    authFormSubmit(data, dispatch, navigate);
+    // reset();
   };
 
   return (

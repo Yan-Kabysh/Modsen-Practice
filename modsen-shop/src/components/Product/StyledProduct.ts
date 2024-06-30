@@ -4,21 +4,13 @@ import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
-interface WrapperProps {
-  width?: string;
-}
+import { WrapperProps, ImageWrapperProps } from '@/../types/types';
 
-interface ImageWrapperProps {
-  height?: string;
-}
 const Wrapper = styled.div<WrapperProps>`
   width: ${({ width }) => width || '100%'};
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* @media screen and (max-width: ${breakpoints.medium}) {
-    width: 100%;
-  } */
 `;
 
 const Title = styled.span`
@@ -64,15 +56,44 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
+const Button = styled.button`
+  width: 100%;
+  height: 15%;
+  text-align: center;
+  font-family: var(--font-family-dm-sans);
+font-size: var(--font-size-14);
+font-weight: var(--font-weight-500);
+line-height: var(--line-height-22);
+background: ${({ theme }) => theme.colors.lightGray};
+cursor: pointer;
+position: absolute;
+z-index: 1;
+/* display: none; */
+bottom: 0;
+border: none;
+border-radius: 0 0 6px 6px; 
+transform: translateY(100%);
+opacity: 0;
+transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background 0.3s ease-in-out;
+  &:hover {
+   background: ${({ theme }) => theme.colors.gray};
+      }
+`;
+
 const ImageWrapper = styled.div<ImageWrapperProps>`
   width: 100%;
   height: ${({ height }) => height || '380px'};
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   @media screen and (max-width: ${breakpoints.medium}) {
     height: 180px;
   }
+  &:hover ${Button} {
+    transform: translateY(0);
+    opacity: 1;
+      }
 `;
 
 const Img = styled.img`
@@ -81,4 +102,4 @@ const Img = styled.img`
   object-fit: contain;
 `;
 
-export { ImageWrapper, Img, Price, StyledNavLink, Title, Wrapper };
+export { ImageWrapper, Img, Price, StyledNavLink, Title, Wrapper, Button };

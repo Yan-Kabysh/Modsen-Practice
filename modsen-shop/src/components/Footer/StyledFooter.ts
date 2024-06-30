@@ -90,8 +90,12 @@ const Ref = styled.a`
   line-height: var(--line-height-27);
   color: ${({ theme }) => theme.colors.darkGray};
   text-decoration: none;
+  transition: color 0.3s ease;
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);
+  }
+  &:hover{
+    color: ${({ theme }) => theme.colors.text}
   }
 `;
 

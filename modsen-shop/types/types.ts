@@ -81,6 +81,10 @@ interface IDescriptionProps {
   isOpen: boolean;
 }
 
+interface IHeaderButtons{
+  isActive: boolean;
+}
+
 interface CommonThemeInterface{
   xxxs: string;
     xxs: string;
@@ -99,6 +103,14 @@ interface CommonThemeInterface{
     mobileContentMarginBottom:  string;
 }
 
+interface WrapperProps {
+  width?: string;
+}
+
+interface ImageWrapperProps {
+  height?: string;
+}
+
 export type {
   IProduct,
   ProductState,
@@ -115,4 +127,7 @@ export type {
   IMenuButtonProps,
   IDescriptionProps,
   CommonThemeInterface,
+  WrapperProps,
+  ImageWrapperProps,
+  IHeaderButtons,
 };

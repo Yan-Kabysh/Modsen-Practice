@@ -22,6 +22,7 @@ import {
   RefsEmail,
   Wrapper,
 } from './StyledFooter';
+import { SocialRefs } from '@/constants/SocialRefs';
 
 interface IEmailForm {
   email: string;
@@ -72,10 +73,34 @@ const Footer: React.FC = () => {
       <PolicyNetworks>
         <Policy>© 2023 Shelly. Terms of use and privacy policy.</Policy>
         <Networks>
-          <LinkIcon />
-          <FacebookIcon />
-          <InstagramIcon />
-          <TwitterIcon />
+          <a
+            href={SocialRefs.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkIcon />
+          </a>
+          <a
+            href={SocialRefs.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FacebookIcon />
+          </a>
+          <a
+            href={SocialRefs.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <InstagramIcon />
+          </a>
+          <a
+            href={SocialRefs.twitter}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <TwitterIcon />
+          </a>
         </Networks>
       </PolicyNetworks>
     </Wrapper>

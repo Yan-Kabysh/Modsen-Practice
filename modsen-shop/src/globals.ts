@@ -22,6 +22,12 @@ const Global = createGlobalStyle`
    .thumb{
     background: ${({ theme }) => theme.colors.text};
    }
+   svg path{
+    transition: fill 0.3s ease;
+   }
+   svg:hover path {
+    fill: ${({ theme }) => theme.colors.text};
+  }
    @font-face {
       font-family: "Allerta Stencil";
       src: url(${require('@/fonts/AllertaStencil-Regular.ttf')})

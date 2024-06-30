@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { breakpoints } from '@/constants/Breakpoints';
 import { ReactComponent as CartIcon } from '@/images/cart.svg';
 import { ReactComponent as SearchIcon } from '@/images/search.svg';
+import { IHeaderButtons } from '@/../types/types';
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -27,7 +28,7 @@ const StyledLogo = styled.div`
   }
 `;
 
-const StyledShopButton = styled.button`
+const StyledShopButton = styled.button<IHeaderButtons>`
   font-family: var(--font-family-dm-sans);
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-400);
@@ -35,6 +36,7 @@ const StyledShopButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+  border-bottom: ${({ isActive, theme }) => (isActive ? `2px solid ${theme.colors.text}` : 'none')};
 
 `;
 
@@ -57,11 +59,12 @@ const StyledHeaderButtonsBlockMedia = styled.div`
   }
 `;
 
-const ButtonCart = styled.button`
+const ButtonCart = styled.button<IHeaderButtons>`
   background: transparent;
   border: none;
   cursor: pointer;
   position: relative;
+  border-bottom: ${({ isActive, theme }) => (isActive ? `2px solid ${theme.colors.text}` : 'none')};
 `;
 
 const HOPPE = styled.span`

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Switch from 'react-switch';
 
 import * as S from '@/components/Header/StyledHeader';
@@ -18,6 +18,7 @@ const Header: React.FC = () => {
   const products = useAppSelector((state) => state.cartReducer.items);
   const theme = useAppSelector((state) => state.uiReducer.currentTheme);
   const [items, setItems] = useState(products);
+
   useEffect(() => {
     setItems(products);
   }, [products]);
@@ -50,7 +51,10 @@ const Header: React.FC = () => {
         Modsen S<S.HOPPE>HOPPE</S.HOPPE>{' '}
       </S.StyledLogo>
       <S.StyledHeaderButtonsBlock>
-        <S.StyledShopButton onClick={handleShopButtonClick}>
+        <S.StyledShopButton
+          isActive={window.location.pathname.includes('shop')}
+          onClick={handleShopButtonClick}
+        >
           Shop
         </S.StyledShopButton>
         <Switch
@@ -65,13 +69,19 @@ const Header: React.FC = () => {
           onColor={theme.colors.lightGray}
         />
         <S.StyledSearchIcon />
-        <S.ButtonCart onClick={handleCartButtonClick}>
+        <S.ButtonCart
+          isActive={window.location.pathname.includes('cart')}
+          onClick={handleCartButtonClick}
+        >
           <S.StyledCartIcon />
           {items.length !== 0 && <S.Count>{items.length}</S.Count>}
         </S.ButtonCart>
       </S.StyledHeaderButtonsBlock>
       <S.StyledHeaderButtonsBlockMedia>
-        <S.ButtonCart onClick={handleCartButtonClick}>
+        <S.ButtonCart
+          isActive={window.location.pathname.includes('cart')}
+          onClick={handleCartButtonClick}
+        >
           <S.StyledCartIcon></S.StyledCartIcon>
           {items.length !== 0 && <S.Count>{items.length}</S.Count>}
         </S.ButtonCart>

@@ -23,6 +23,7 @@ import { selectedProductFetch } from '@/store/reducers/ProductReducer/ProductAct
 import { userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
 
 import * as S from './StyledProductPage';
+import { SocialRefs } from '@/constants/SocialRefs';
 
 const ProductPage = () => {
   const { id = '' } = useParams();
@@ -110,10 +111,30 @@ const ProductPage = () => {
             </Button>
           )}
           <S.Icons>
-            <MailIcon />
-            <FacebookIcon />
-            <InstagramIcon />
-            <TwitterIcon />
+            <a href={SocialRefs.mail} target="_blank" rel="noopener noreferrer">
+              <MailIcon />
+            </a>
+            <a
+              href={SocialRefs.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FacebookIcon />
+            </a>
+            <a
+              href={SocialRefs.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <InstagramIcon />
+            </a>
+            <a
+              href={SocialRefs.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <TwitterIcon />
+            </a>
           </S.Icons>
           <S.Categories>
             <S.Category>Categories:</S.Category>

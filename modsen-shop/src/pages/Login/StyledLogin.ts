@@ -25,11 +25,12 @@ const Wrapper = styled.div`
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: inherit;
+  transition: color 0.3s ease;
   &:hover,
   &:focus {
     text-decoration: none;
     color: ${({ theme }) => theme.colors.text};
-    font-weight: bold;
+    /* font-weight: bold; */
   }
 `;
 

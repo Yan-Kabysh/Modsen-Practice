@@ -81,6 +81,10 @@ interface IDescriptionProps {
   isOpen: boolean;
 }
 
+interface IHeaderButtons{
+  isActive: boolean;
+}
+
 interface CommonThemeInterface{
   xxxs: string;
     xxs: string;
@@ -125,4 +129,5 @@ export type {
   CommonThemeInterface,
   WrapperProps,
   ImageWrapperProps,
+  IHeaderButtons,
 };

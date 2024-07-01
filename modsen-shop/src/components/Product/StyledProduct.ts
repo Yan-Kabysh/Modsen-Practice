@@ -3,8 +3,8 @@ import '@/styles/variables.css';
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 
+import { ImageWrapperProps, WrapperProps } from '@/../types/types';
 import { breakpoints } from '@/constants/Breakpoints';
-import { WrapperProps, ImageWrapperProps } from '@/../types/types';
 
 const Wrapper = styled.div<WrapperProps>`
   width: ${({ width }) => width || '100%'};
@@ -61,23 +61,26 @@ const Button = styled.button`
   height: 15%;
   text-align: center;
   font-family: var(--font-family-dm-sans);
-font-size: var(--font-size-14);
-font-weight: var(--font-weight-500);
-line-height: var(--line-height-22);
-background: ${({ theme }) => theme.colors.lightGray};
-cursor: pointer;
-position: absolute;
-z-index: 1;
-/* display: none; */
-bottom: 0;
-border: none;
-border-radius: 0 0 6px 6px; 
-transform: translateY(100%);
-opacity: 0;
-transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background 0.3s ease-in-out;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-22);
+  background: ${({ theme }) => theme.colors.lightGray};
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  /* display: none; */
+  bottom: 0;
+  border: none;
+  border-radius: 0 0 6px 6px;
+  transform: translateY(100%);
+  opacity: 0;
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out,
+    background 0.3s ease-in-out;
   &:hover {
-   background: ${({ theme }) => theme.colors.gray};
-      }
+    background: ${({ theme }) => theme.colors.gray};
+  }
 `;
 
 const ImageWrapper = styled.div<ImageWrapperProps>`
@@ -93,7 +96,7 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   &:hover ${Button} {
     transform: translateY(0);
     opacity: 1;
-      }
+  }
 `;
 
 const Img = styled.img`
@@ -102,4 +105,4 @@ const Img = styled.img`
   object-fit: contain;
 `;
 
-export { ImageWrapper, Img, Price, StyledNavLink, Title, Wrapper, Button };
+export { Button, ImageWrapper, Img, Price, StyledNavLink, Title, Wrapper };

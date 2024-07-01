@@ -41,7 +41,7 @@ const PaginationDot = styled.span<PaginationDotProps>`
   margin: 0 5px;
   border-radius: 50%;
   background-color: ${({ active, theme }) =>
-    active ? 'transparent' : theme.colors.lightGray};
+    active ? theme.colors.gray : theme.colors.lightGray};
   border: 1px solid
     ${({ active, theme }) => (active ? theme.colors.white : 'transparent')};
   cursor: pointer;
@@ -53,13 +53,35 @@ const PaginationDot = styled.span<PaginationDotProps>`
 
 const Img = styled.img`
   width: 100%;
+  height: auto;
   max-height: 646px;
-  object-fit: cover;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  object-fit: contain;
   border-radius: 8px;
+
   @media screen and (max-width: ${breakpoints.medium}) {
     height: 300px;
   }
 `;
 
-export { Img, Pagination, PaginationDot, Slide, SlideContainer, SliderWrapper };
+const SlideWrapper = styled.div`
+  position: relative;
+`;
+
+const SlideBtnDiv = styled.div`
+  position: absolute;
+  z-index: 10;
+  bottom: 40px; /* Подстроить под ваш дизайн */
+  left: 5%;
+  width: 10%;
+`;
+
+export {
+  Img,
+  Pagination,
+  PaginationDot,
+  Slide,
+  SlideBtnDiv,
+  SlideContainer,
+  SliderWrapper,
+  SlideWrapper,
+};

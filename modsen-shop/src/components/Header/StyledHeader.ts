@@ -2,10 +2,10 @@ import '@/styles/variables.css';
 
 import styled from 'styled-components';
 
+import { IHeaderButtons } from '@/../types/types';
 import { breakpoints } from '@/constants/Breakpoints';
 import { ReactComponent as CartIcon } from '@/images/cart.svg';
 import { ReactComponent as SearchIcon } from '@/images/search.svg';
-import { IHeaderButtons } from '@/../types/types';
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -36,8 +36,8 @@ const StyledShopButton = styled.button<IHeaderButtons>`
   background: none;
   border: none;
   cursor: pointer;
-  border-bottom: ${({ isActive, theme }) => (isActive ? `2px solid ${theme.colors.text}` : 'none')};
-
+  border-bottom: ${({ isActive, theme }) =>
+    isActive ? `2px solid ${theme.colors.text}` : 'none'};
 `;
 
 const StyledIcon = styled.a``;
@@ -64,7 +64,8 @@ const ButtonCart = styled.button<IHeaderButtons>`
   border: none;
   cursor: pointer;
   position: relative;
-  border-bottom: ${({ isActive, theme }) => (isActive ? `2px solid ${theme.colors.text}` : 'none')};
+  border-bottom: ${({ isActive, theme }) =>
+    isActive ? `2px solid ${theme.colors.text}` : 'none'};
 `;
 
 const HOPPE = styled.span`

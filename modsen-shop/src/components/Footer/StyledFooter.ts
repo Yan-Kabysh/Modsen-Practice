@@ -94,8 +94,8 @@ const Ref = styled.a`
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);
   }
-  &:hover{
-    color: ${({ theme }) => theme.colors.text}
+  &:hover {
+    color: ${({ theme }) => theme.colors.text};
   }
 `;
 

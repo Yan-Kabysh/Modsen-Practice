@@ -1,29 +1,21 @@
-import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { IProduct } from '@/../types/types';
 import { Button } from '@/components/Button/Button';
 import { Products } from '@/components/Products/Products';
 import { StarRating } from '@/components/StarRating/StarRating';
 import { ROUTES } from '@/constants/Path';
+import { SocialRefs } from '@/constants/SocialRefs';
 import { auth } from '@/firebase';
-import {
-  getUserCart,
-  handleAddToCart,
-  handleItemsLoad,
-} from '@/helpers/cartControl';
+import { handleAddToCart, handleItemsLoad } from '@/helpers/cartControl';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { ReactComponent as FacebookIcon } from '@/images/facebook.svg';
 import { ReactComponent as InstagramIcon } from '@/images/instagram.svg';
 import { ReactComponent as MailIcon } from '@/images/mail.svg';
 import { ReactComponent as TwitterIcon } from '@/images/twiter.svg';
-import { addItem, setCart } from '@/store/reducers/CartReducer/CartReducer';
 import { selectedProductFetch } from '@/store/reducers/ProductReducer/ProductActionCreators';
-import { userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
 
 import * as S from './StyledProductPage';
-import { SocialRefs } from '@/constants/SocialRefs';
 
 const ProductPage = () => {
   const { id = '' } = useParams();

@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { ROUTES } from '@/constants/Path';
 import { EMAIL_REGEX } from '@/constants/Regular';
+import { SocialRefs } from '@/constants/SocialRefs';
 import { submit } from '@/helpers/emailhelpers';
 import { ReactComponent as ArrowIcon } from '@/images/arrow.svg';
 import { ReactComponent as FacebookIcon } from '@/images/facebook.svg';
@@ -22,7 +23,6 @@ import {
   RefsEmail,
   Wrapper,
 } from './StyledFooter';
-import { SocialRefs } from '@/constants/SocialRefs';
 
 interface IEmailForm {
   email: string;

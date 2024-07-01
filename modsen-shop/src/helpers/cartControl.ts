@@ -229,7 +229,13 @@ export const handleLogOut = async ({ dispatch }: any) => {
   }
 };
 
-export const handleAddToCart = async (user: any, product: IProduct, setAdd: any, dispatch: any, navigate: any) => {
+export const handleAddToCart = async (
+  user: any,
+  product: IProduct,
+  setAdd: any,
+  dispatch: any,
+  navigate: any
+) => {
   if (localStorage.getItem('token')) {
     if (user && user.id) {
       try {

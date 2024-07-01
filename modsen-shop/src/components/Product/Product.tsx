@@ -1,9 +1,10 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { ProductProps } from '@/../types/types';
 import { ROUTES } from '@/constants/Path';
 import { handleAddToCart } from '@/helpers/cartControl';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import * as S from './StyledProduct';
 const Product: React.FC<ProductProps> = ({ product, width, height }) => {

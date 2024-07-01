@@ -12,6 +12,8 @@ import { useAppDispatch } from '@/hooks/redux';
 import { H1 } from '@/pages/Error/StyledError';
 
 import { Form, Span, StyledNavLink, Wrapper } from './StyledLogin';
+import { ErrorMessage } from '@/components/Footer/StyledFooter';
+import { useState } from 'react';
 
 type FormValues = {
   email: string;
@@ -26,9 +28,13 @@ const Login = () => {
   } = useForm<FormValues>();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [error, setError] = useState<string>('');
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    handleLogin(dispatch, data, navigate);
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    const errorMessage = await handleLogin(dispatch, data, navigate);
+    if (errorMessage) {
+      setError('Invalid email or password');
+    }
   };
 
   return (
@@ -38,7 +44,7 @@ const Login = () => {
         <div>
           <StyledInput
             {...register('email', {
-              required: 'Email is required',
+              required: 'Required field.',
               pattern: {
                 value: EMAIL_REGEX,
                 message: 'Invalid email address',
@@ -47,12 +53,12 @@ const Login = () => {
             width="90%"
             placeholder="E-mail"
           />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
         </div>
         <div>
           <StyledInput
             {...register('password', {
-              required: 'Password is required',
+              required: 'Required field.',
               minLength: {
                 value: 6,
                 message: 'Password must be at least 6 characters long',
@@ -62,8 +68,11 @@ const Login = () => {
             type="password"
             placeholder="Password"
           />
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && (
+            <ErrorMessage>{errors.password.message}</ErrorMessage>
+          )}
         </div>
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         <Span>
           {"Don't have an account? "}
           <StyledNavLink to={ROUTES.REGISTER}>Register</StyledNavLink>

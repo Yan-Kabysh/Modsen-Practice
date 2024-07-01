@@ -140,6 +140,16 @@ const Input = styled.input`
   }
 `;
 
+const ErrorMessage = styled.p`
+color: ${({ theme }) => theme.colors.error};
+font-size: var(--font-size-14);
+font-weight: var(--font-weight-400);
+  line-height: var(--line-height-10);
+  font-family: var(--font-family-dm-sans);
+margin-top: 10px;
+`
+
+
 export {
   ArrowButton,
   Email,
@@ -151,4 +161,5 @@ export {
   Refs,
   RefsEmail,
   Wrapper,
+  ErrorMessage,
 };

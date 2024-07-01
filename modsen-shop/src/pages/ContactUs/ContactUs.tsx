@@ -6,7 +6,15 @@ import { StyledTextArea } from '@/components/TextArea/StyledTextArea';
 import { EMAIL_REGEX } from '@/constants/Regular';
 import { emailFormSubmit } from '@/helpers/emailhelpers';
 
-import { ButtonDiv, H1, InputsDiv, Span, Wrapper } from './StyledContactUs';
+import {
+  ButtonDiv,
+  ErrorWrapper,
+  H1,
+  InputsDiv,
+  Span,
+  Wrapper,
+} from './StyledContactUs';
+import { ErrorMessage } from '@/components/Footer/StyledFooter';
 
 type FormValues = {
   firstName: string;
@@ -37,39 +45,63 @@ const ContactUs = () => {
       </Span>
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputsDiv>
-          <StyledInput
-            placeholder="First name"
-            type="text"
-            {...register('firstName')}
-          />
-          {errors.firstName && <span>{errors.firstName.message}</span>}
-          <StyledInput
-            placeholder="Last name"
-            type="text"
-            {...register('lastName')}
-          />
-          {errors.lastName && <span>{errors.lastName.message}</span>}
-          <StyledInput
-            placeholder="Email"
-            type="text"
-            {...register('email', {
-              // required: 'Поле обязательно для заполнения',
-              pattern: {
-                value: EMAIL_REGEX,
-                message: 'Введите корректный email',
-              },
-            })}
-          />
-          {errors.email && <span>{errors.email.message}</span>}
-          <StyledInput
-            placeholder="Subject"
-            type="text"
-            {...register('subject')}
-          />
-          {errors.subject && <span>{errors.subject.message}</span>}
+          <ErrorWrapper>
+            <StyledInput
+              placeholder="First name"
+              type="text"
+              {...register('firstName', { required: 'Required field.' })}
+            />
+            {errors.firstName && (
+              <ErrorMessage>{errors.firstName.message}</ErrorMessage>
+            )}
+          </ErrorWrapper>
+          <ErrorWrapper>
+            <StyledInput
+              placeholder="Last name"
+              type="text"
+              {...register('lastName', { required: 'Required field.' })}
+            />
+            {errors.lastName && (
+              <ErrorMessage>{errors.lastName.message}</ErrorMessage>
+            )}
+          </ErrorWrapper>
+          <ErrorWrapper>
+            <StyledInput
+              placeholder="Email"
+              type="text"
+              {...register('email', {
+                required: 'Required field.',
+                pattern: {
+                  value: EMAIL_REGEX,
+                  message: 'Enter the correct email',
+                },
+              })}
+            />
+            {errors.email && (
+              <ErrorMessage>{errors.email.message}</ErrorMessage>
+            )}
+          </ErrorWrapper>
+          <ErrorWrapper>
+            <StyledInput
+              placeholder="Subject"
+              type="text"
+              {...register('subject', { required: 'Required field.' })}
+            />
+            {errors.subject && (
+              <ErrorMessage>{errors.subject.message}</ErrorMessage>
+            )}
+          </ErrorWrapper>
         </InputsDiv>
-        <StyledTextArea placeholder="Message" {...register('message')} />
-        {errors.message && <span>{errors.message.message}</span>}
+        <ErrorWrapper>
+          <StyledTextArea
+            placeholder="Message"
+            {...register('message', { required: 'Required field.' })}
+          />
+          {errors.message && (
+            <ErrorMessage>{errors.message.message}</ErrorMessage>
+          )}
+        </ErrorWrapper>
+
         <ButtonDiv>
           <Button maxWidth={'60%'} height={'40px'} type="submit">
             SEND

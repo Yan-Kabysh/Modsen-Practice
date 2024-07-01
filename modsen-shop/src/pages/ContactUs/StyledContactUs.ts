@@ -60,4 +60,14 @@ const H1 = styled.h1`
   }
 `;
 
-export { ButtonDiv, H1, InputsDiv, Span, Wrapper };
+const ErrorWrapper = styled.div`
+display flex;
+flex-direction: column;
+width: 45%;
+text-align: left;
+`;
+
+
+
+
+export { ButtonDiv, H1, InputsDiv, Span, Wrapper, ErrorWrapper };

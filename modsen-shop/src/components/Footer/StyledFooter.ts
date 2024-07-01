@@ -36,6 +36,12 @@ const Policy = styled.span`
   }
 `;
 
+const Form = styled.form`
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+`;
+
 const PolicyNetworks = styled.div`
   display: flex;
   justify-content: space-between;
@@ -48,9 +54,11 @@ const ArrowButton = styled.button`
   background: none;
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.text};
-  height: 36px;
+  height: 40px; /* Высота кнопки */
+  display: flex;
+  align-items: center; /* Центрирование иконки */
   @media screen and (max-width: ${breakpoints.medium}) {
-    height: 30px;
+    height: 30px; /* Высота кнопки на маленьких экранах */
   }
 `;
 
@@ -76,6 +84,8 @@ const Refs = styled.div`
 `;
 
 const Email = styled.div`
+  display: flex;
+  align-items: flex-end;
   order: 2;
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 100%;
@@ -94,15 +104,14 @@ const Ref = styled.a`
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);
   }
-  &:hover{
-    color: ${({ theme }) => theme.colors.text}
+  &:hover {
+    color: ${({ theme }) => theme.colors.text};
   }
 `;
 
 const Input = styled.input`
   width: 400px;
-  /* width: 100%; */
-  height: 40px;
+  height: 40px; /* Высота инпута */
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.text};
   font-family: var(--font-family-dm-sans);
@@ -136,13 +145,24 @@ const Input = styled.input`
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);
     width: 93%;
-    height: 30px;
+    height: 30px; /* Высота инпута на маленьких экранах */
   }
+`;
+
+const ErrorMessage = styled.p`
+  color: ${({ theme }) => theme.colors.error};
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-10);
+  font-family: var(--font-family-dm-sans);
+  margin-top: 10px;
 `;
 
 export {
   ArrowButton,
   Email,
+  ErrorMessage,
+  Form,
   Input,
   Networks,
   Policy,

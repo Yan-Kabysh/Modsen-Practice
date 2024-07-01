@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { ROUTES } from '@/constants/Path';
 import { EMAIL_REGEX } from '@/constants/Regular';
+import { SocialRefs } from '@/constants/SocialRefs';
 import { submit } from '@/helpers/emailhelpers';
 import { ReactComponent as ArrowIcon } from '@/images/arrow.svg';
 import { ReactComponent as FacebookIcon } from '@/images/facebook.svg';
@@ -10,19 +11,7 @@ import { ReactComponent as InstagramIcon } from '@/images/instagram.svg';
 import { ReactComponent as LinkIcon } from '@/images/linkedin.svg';
 import { ReactComponent as TwitterIcon } from '@/images/twiter.svg';
 
-import {
-  ArrowButton,
-  Email,
-  Input,
-  Networks,
-  Policy,
-  PolicyNetworks,
-  Ref,
-  Refs,
-  RefsEmail,
-  Wrapper,
-} from './StyledFooter';
-import { SocialRefs } from '@/constants/SocialRefs';
+import * as S from './StyledFooter';
 
 interface IEmailForm {
   email: string;
@@ -44,35 +33,39 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <Wrapper>
-      <RefsEmail>
-        <Refs>
-          <Ref href={ROUTES.CONTACT}>CONTACT</Ref>
-          <Ref href="">TERMS OF SERVICES</Ref>
-          <Ref href="">SHOPPING AND RETURNS</Ref>
-        </Refs>
-        <Email>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Input
+    <S.Wrapper>
+      <S.RefsEmail>
+        <S.Refs>
+          <S.Ref href={ROUTES.CONTACT}>CONTACT</S.Ref>
+          <S.Ref href="">TERMS OF SERVICES</S.Ref>
+          <S.Ref href="">SHOPPING AND RETURNS</S.Ref>
+        </S.Refs>
+        <S.Email>
+          <S.Form onSubmit={handleSubmit(onSubmit)}>
+            <S.Input
               placeholder="Give an email, get the newsletter."
               type="text"
               {...register('email', {
                 pattern: {
                   value: EMAIL_REGEX,
-                  message: 'Введите корректный email',
+                  message: 'Enter the correct email',
                 },
               })}
             />
-            <ArrowButton type="submit">
+            <S.ArrowButton type="submit">
               <ArrowIcon />
-            </ArrowButton>
-          </form>
-          <>{isSubmitted && errors.email && <p>{errors.email.message}</p>}</>
-        </Email>
-      </RefsEmail>
-      <PolicyNetworks>
-        <Policy>© 2023 Shelly. Terms of use and privacy policy.</Policy>
-        <Networks>
+            </S.ArrowButton>
+          </S.Form>
+          <>
+            {isSubmitted && errors.email && (
+              <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>
+            )}
+          </>
+        </S.Email>
+      </S.RefsEmail>
+      <S.PolicyNetworks>
+        <S.Policy>© 2023 Shelly. Terms of use and privacy policy.</S.Policy>
+        <S.Networks>
           <a
             href={SocialRefs.linkedin}
             target="_blank"
@@ -101,9 +94,9 @@ const Footer: React.FC = () => {
           >
             <TwitterIcon />
           </a>
-        </Networks>
-      </PolicyNetworks>
-    </Wrapper>
+        </S.Networks>
+      </S.PolicyNetworks>
+    </S.Wrapper>
   );
 };
 

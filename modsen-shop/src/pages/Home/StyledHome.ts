@@ -28,7 +28,7 @@ const Ref = styled.a`
     font-size: var(--font-size-14);
     line-height: var(--line-height-22);
   }
-  &:hover{
+  &:hover {
     color: ${({ theme }) => theme.colors.text};
   }
 `;

@@ -2,6 +2,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/Button/Button';
+import { ErrorMessage } from '@/components/Footer/StyledFooter';
 import { StyledInput } from '@/components/Input/StyledInput';
 import { ROUTES } from '@/constants/Path';
 import { EMAIL_REGEX } from '@/constants/Regular';
@@ -36,7 +37,7 @@ const Register = () => {
         <div>
           <StyledInput
             {...register('email', {
-              required: 'Email is required',
+              required: 'Required field.',
               pattern: {
                 value: EMAIL_REGEX,
                 message: 'Invalid email address',
@@ -45,12 +46,12 @@ const Register = () => {
             width={'90%'}
             placeholder="E-mail"
           />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
         </div>
         <div>
           <StyledInput
             {...register('password', {
-              required: 'Password is required',
+              required: 'Required field.',
               minLength: {
                 value: 6,
                 message: 'Password must be at least 6 characters long',
@@ -60,7 +61,9 @@ const Register = () => {
             type="password"
             placeholder="Password"
           />
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && (
+            <ErrorMessage>{errors.password.message}</ErrorMessage>
+          )}
         </div>
         <Span>
           {'Already have an account? '}

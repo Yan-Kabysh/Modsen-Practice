@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { breakpoints } from '@/constants/Breakpoints';
 
 const StyledInput = styled.input`
-  width: ${({ width }) => width || '45%'};
+  width: ${({ width }) => width || '100%'};
   height: 40px;
   background: transparent;
   border: none;

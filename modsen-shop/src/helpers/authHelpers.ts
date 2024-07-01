@@ -73,6 +73,7 @@ export const handleLogin = async (dispatch: any, data: any, navigate: any) => {
   } catch (e: any) {
     console.error(e);
     dispatch(userFetchingError(e.message));
+    return e.message;
   }
 };
 

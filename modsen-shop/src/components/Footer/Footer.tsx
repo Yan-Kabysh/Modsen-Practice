@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
           <S.Ref href="">SHOPPING AND RETURNS</S.Ref>
         </S.Refs>
         <S.Email>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <S.Form onSubmit={handleSubmit(onSubmit)}>
             <S.Input
               placeholder="Give an email, get the newsletter."
               type="text"
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
             <S.ArrowButton type="submit">
               <ArrowIcon />
             </S.ArrowButton>
-          </form>
+          </S.Form>
           <>
             {isSubmitted && errors.email && (
               <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>

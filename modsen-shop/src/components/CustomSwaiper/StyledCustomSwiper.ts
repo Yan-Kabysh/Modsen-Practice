@@ -73,6 +73,10 @@ const SlideBtnDiv = styled.div`
   bottom: 40px; /* Подстроить под ваш дизайн */
   left: 5%;
   width: 10%;
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 25%;
+    left:0;
+  }
 `;
 
 export {

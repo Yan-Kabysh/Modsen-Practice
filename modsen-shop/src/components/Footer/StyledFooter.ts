@@ -37,9 +37,9 @@ const Policy = styled.span`
 `;
 
 const Form = styled.form`
-width: 100%;
+  width: 100%;
   display: flex;
-  align-items: flex-end; 
+  align-items: flex-end;
 `;
 
 const PolicyNetworks = styled.div`
@@ -85,14 +85,13 @@ const Refs = styled.div`
 
 const Email = styled.div`
   display: flex;
-  align-items: flex-end; 
+  align-items: flex-end;
   order: 2;
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 100%;
     order: 1;
   }
 `;
-
 
 const Ref = styled.a`
   font-family: var(--font-family-dm-sans);
@@ -151,18 +150,19 @@ const Input = styled.input`
 `;
 
 const ErrorMessage = styled.p`
-color: ${({ theme }) => theme.colors.error};
-font-size: var(--font-size-14);
-font-weight: var(--font-weight-400);
+  color: ${({ theme }) => theme.colors.error};
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-400);
   line-height: var(--line-height-10);
   font-family: var(--font-family-dm-sans);
-margin-top: 10px;
-`
-
+  margin-top: 10px;
+`;
 
 export {
   ArrowButton,
   Email,
+  ErrorMessage,
+  Form,
   Input,
   Networks,
   Policy,
@@ -171,6 +171,4 @@ export {
   Refs,
   RefsEmail,
   Wrapper,
-  ErrorMessage,
-  Form,
 };

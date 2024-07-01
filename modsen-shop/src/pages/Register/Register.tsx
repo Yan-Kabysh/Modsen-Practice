@@ -2,6 +2,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/Button/Button';
+import { ErrorMessage } from '@/components/Footer/StyledFooter';
 import { StyledInput } from '@/components/Input/StyledInput';
 import { ROUTES } from '@/constants/Path';
 import { EMAIL_REGEX } from '@/constants/Regular';
@@ -9,7 +10,6 @@ import { authFormSubmit } from '@/helpers/authHelpers';
 import { useAppDispatch } from '@/hooks/redux';
 import { H1 } from '@/pages/Error/StyledError';
 import { Form, Span, StyledNavLink, Wrapper } from '@/pages/Login/StyledLogin';
-import { ErrorMessage } from '@/components/Footer/StyledFooter';
 
 type FormValues = {
   email: string;

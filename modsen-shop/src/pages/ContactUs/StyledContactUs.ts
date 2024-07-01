@@ -67,7 +67,4 @@ width: 45%;
 text-align: left;
 `;
 
-
-
-
-export { ButtonDiv, H1, InputsDiv, Span, Wrapper, ErrorWrapper };
+export { ButtonDiv, ErrorWrapper, H1, InputsDiv, Span, Wrapper };

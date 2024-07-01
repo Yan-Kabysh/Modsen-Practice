@@ -60,5 +60,4 @@ const ValueDisplay = styled.div`
   margin-top: 10px;
 `;
 
-export { Price, StyledSlider, ValueDisplay, Wrapper, SliderTrack, SliderThumb };
-
+export { Price, SliderThumb, SliderTrack, StyledSlider, ValueDisplay, Wrapper };

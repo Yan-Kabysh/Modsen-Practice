@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button } from '@/components/Button/Button';
+import { ErrorMessage } from '@/components/Footer/StyledFooter';
 import { StyledInput } from '@/components/Input/StyledInput';
 import { StyledTextArea } from '@/components/TextArea/StyledTextArea';
 import { EMAIL_REGEX } from '@/constants/Regular';
@@ -14,7 +15,6 @@ import {
   Span,
   Wrapper,
 } from './StyledContactUs';
-import { ErrorMessage } from '@/components/Footer/StyledFooter';
 
 type FormValues = {
   firstName: string;

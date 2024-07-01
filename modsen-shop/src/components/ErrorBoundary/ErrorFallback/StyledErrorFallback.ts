@@ -1,7 +1,8 @@
-import { breakpoints } from "@/constants/Breakpoints";
-import styled from "styled-components";
 import '@/styles/variables.css';
 
+import styled from 'styled-components';
+
+import { breakpoints } from '@/constants/Breakpoints';
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -15,7 +16,7 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.div`
- font-family: var(--font-family-dm-sans);
+  font-family: var(--font-family-dm-sans);
   font-size: var(--font-size-33);
   font-weight: var(--font-weight-500);
   line-height: var(--line-height-43);

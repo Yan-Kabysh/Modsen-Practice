@@ -4,11 +4,11 @@ import { useAppSelector } from '@/hooks/redux';
 
 import {
   Price,
+  SliderThumb,
+  SliderTrack,
   StyledSlider,
   ValueDisplay,
   Wrapper,
-  SliderTrack,
-  SliderThumb,
 } from './StyledSlider';
 
 const PriceSlider = ({ onPriceChange, reset }: any) => {

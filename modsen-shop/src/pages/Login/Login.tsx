@@ -1,9 +1,11 @@
 // Login.js
 
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/Button/Button';
+import { ErrorMessage } from '@/components/Footer/StyledFooter';
 import { StyledInput } from '@/components/Input/StyledInput';
 import { ROUTES } from '@/constants/Path';
 import { EMAIL_REGEX } from '@/constants/Regular';
@@ -12,8 +14,6 @@ import { useAppDispatch } from '@/hooks/redux';
 import { H1 } from '@/pages/Error/StyledError';
 
 import { Form, Span, StyledNavLink, Wrapper } from './StyledLogin';
-import { ErrorMessage } from '@/components/Footer/StyledFooter';
-import { useState } from 'react';
 
 type FormValues = {
   email: string;

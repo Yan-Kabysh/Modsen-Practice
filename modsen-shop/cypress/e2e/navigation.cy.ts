@@ -27,7 +27,7 @@ describe('Navigation', () => {
           cy.get('[data-testid="button-cart"]').click();
           cy.url().should('include', '/cart');
         } else {
-          cy.visit('http://localhost:3000/login'); // Переходим на страницу логина
+          cy.visit('http://localhost:3000/login');
           cy.url().should('include', '/login');
         }
       });
@@ -52,8 +52,8 @@ describe('Navigation', () => {
         const token = localStorage.getItem('token');
         if (token) {
              cy.visit('http://localhost:3000/');
-        cy.get('[data-testid="product"]').first().trigger('mouseover'); // Наводим курсор мыши на элемент
-        cy.contains('GO TO CART').click(); // Кликаем после того, как элемент станет видимым
+        cy.get('[data-testid="product"]').first().trigger('mouseover'); 
+        cy.contains('GO TO CART').click(); 
         cy.url().should('include', '/cart');
         }
        
@@ -64,10 +64,10 @@ describe('Navigation', () => {
         const token = localStorage.getItem('token');
        
              cy.visit('http://localhost:3000/');
-        cy.get('[data-testid="product"]').first().trigger('mouseover'); // Наводим курсор мыши на элемент
-        cy.contains('ADD TO CART').click(); // Кликаем после того, как элемент станет видимым
+        cy.get('[data-testid="product"]').first().trigger('mouseover');
+        cy.contains('ADD TO CART').click(); 
         if (!token) {
-            cy.visit('http://localhost:3000/login'); // Переходим на страницу логина
+            cy.visit('http://localhost:3000/login'); 
             cy.url().should('include', '/login');
         }
        
@@ -84,11 +84,7 @@ describe('Navigation', () => {
         cy.get('[data-testid="product"]').first().click();
         cy.url().should('include', '/');
       });
-    //   it('should navigate to the product page', () => {
-    //     cy.visit('http://localhost:3000/shop/1');
-    //     cy.contains('GO TO CART').click();
-    //     cy.url().should('include', 'http://localhost:3000/cart');
-    //   });
+
     it('should navigate to the home page', () => {
         cy.visit('http://localhost:3000/awdawd');
         cy.contains('HOMEPAGE').first().click();
@@ -100,12 +96,10 @@ describe('Navigation', () => {
    
       
       it('should navigate to the login page if token is not present', () => {
-          // Очистите localStorage перед посещением страницы
           cy.window().then((win) => {
               win.localStorage.removeItem('token');
             });
             
-            // Перезагрузите страницу
             cy.visit('http://localhost:3000/');
             
             
@@ -113,129 +107,88 @@ describe('Navigation', () => {
                 expect(win.localStorage.getItem('token')).to.be.null;
             });
             
-            // Выполните действие для перехода на страницу логина
             cy.get('[data-testid="button-cart"]').click();
             cy.url().should('include', '/login');
         });
         it('should navigate to the cart page after logging in', () => {
-            // Перейдите на страницу входа
             cy.visit('http://localhost:3000/login');
         
-            // Введите электронную почту и пароль
             cy.get('[data-testid="email"]').should('be.visible').type('test@mail.ru');
-  cy.get('[data-testid="password"]').should('be.visible').type('123456');
+            cy.get('[data-testid="password"]').should('be.visible').type('123456');
 
             cy.wait(1000);
         
-            // Нажмите кнопку входа
             cy.contains('button', 'Login').should('be.visible').click();
         
         
             cy.wait(3000);
         
-            // Нажмите кнопку перехода на страницу корзины
             cy.get('[data-testid="button-cart"]').click();
         
-            // Проверьте, что URL изменился на страницу корзины
             cy.url().should('include', '/cart');
             cy.contains('button', 'Log Out').should('be.visible').click();
         
         
             cy.wait(3000);
         
-            // Нажмите кнопку перехода на страницу корзины
          
         
-            // Проверьте, что URL изменился на страницу корзины
             cy.url().should('include', '/login');
           });
 
           it('should navigate to the cart page after logging in', () => {
-            // Перейдите на страницу входа
             cy.visit('http://localhost:3000/login');
         
-            // Введите электронную почту и пароль
             cy.get('[data-testid="email"]').should('be.visible').type('test@mail.ru');
-  cy.get('[data-testid="password"]').should('be.visible').type('123456');
+          cy.get('[data-testid="password"]').should('be.visible').type('123456');
 
             cy.wait(1000);
         
-            // Нажмите кнопку входа
             cy.contains('button', 'Login').should('be.visible').click();
         
         
             cy.wait(3000);
         
-            // Нажмите кнопку перехода на страницу корзины
             cy.get('[data-testid="product"]').first().trigger('mouseover');
             cy.contains('GO TO CART').click();
         
-            // Проверьте, что URL изменился на страницу корзины
             cy.url().should('include', '/cart');
             cy.contains('button', 'Log Out').should('be.visible').click();
-        
-        
             cy.wait(3000);
-        
-            // Нажмите кнопку перехода на страницу корзины
-         
-        
-            // Проверьте, что URL изменился на страницу корзины
             cy.url().should('include', '/login');
           });
 
   it('should navigate to the cart page after logging in', () => {
-    // Перейдите на страницу входа
     cy.visit('http://localhost:3000/login');
 
-    // Введите электронную почту и пароль
     cy.get('[data-testid="email"]').should('be.visible').type('test@mail.ru');
 cy.get('[data-testid="password"]').should('be.visible').type('123456');
 
     cy.wait(1000);
 
-    // Нажмите кнопку входа
     cy.contains('button', 'Login').should('be.visible').click();
-
-
     cy.wait(3000);
-
-    // Нажмите кнопку перехода на страницу корзины
     cy.get('[data-testid="product"]').first().click();
     cy.contains('GO TO CART').click();
-
-    // Проверьте, что URL изменился на страницу корзины
     cy.url().should('include', '/cart');
     cy.contains('button', 'Log Out').should('be.visible').click();
-
-
     cy.wait(3000);
-
-    // Нажмите кнопку перехода на страницу корзины
- 
-
-    // Проверьте, что URL изменился на страницу корзины
     cy.url().should('include', '/login');
   });
 
 
   it('should navigate to the cart page after logging in', () => {
-    // Перейдите на страницу входа
     cy.visit('http://localhost:3000/login');
 
-    // Введите электронную почту и пароль
     cy.get('[data-testid="email"]').should('be.visible').type('test@mail.ru');
-cy.get('[data-testid="password"]').should('be.visible').type('123456');
-
+    cy.get('[data-testid="password"]').should('be.visible').type('123456');
     cy.wait(1000);
 
-    // Нажмите кнопку входа
     cy.contains('button', 'Login').should('be.visible').click();
 
 
     cy.wait(3000);
 
-    // Нажмите кнопку перехода на страницу корзины
      cy.get('[data-testid="button-cart"]').click();
      cy.url().should('include', '/cart');
      cy.get('[data-testid="cart-product"]').first().click();

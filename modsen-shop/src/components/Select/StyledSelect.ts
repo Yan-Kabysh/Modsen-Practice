@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   margin-top: ${({ theme }) => theme.s};
   position: relative;
   display: inline-block;
-  width: ${({ theme }) => theme.full}; 
+  width: ${({ theme }) => theme.full};
 `;
 
 const SelectBox = styled.select`
@@ -14,7 +14,8 @@ const SelectBox = styled.select`
   padding: ${({ theme }) => theme.bigDots};
   appearance: none;
   background-color: ${({ theme }) => theme.colors.white};
-  border: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.gray};
+  border: ${({ theme }) => theme.borderSmall} solid
+    ${({ theme }) => theme.colors.gray};
   border-radius: ${({ theme }) => theme.xxs};
   color: ${({ theme }) => theme.colors.darkGray};
   font-family: var(--font-family-dm-sans);

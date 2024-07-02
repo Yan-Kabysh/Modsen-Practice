@@ -5,10 +5,12 @@ import styled from 'styled-components';
 import { breakpoints } from '@/constants/Breakpoints';
 
 const Wrapper = styled.div`
-  border-top: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.gray};
+  border-top: ${({ theme }) => theme.borderSmall} solid
+    ${({ theme }) => theme.colors.gray};
   margin: 200px 0 ${({ theme }) => theme.bigPadding} 0;
   @media screen and (max-width: ${breakpoints.medium}) {
-    margin: ${({ theme }) => theme.bigPadding} 0 ${({ theme }) => theme.mediumPadding} 0;
+    margin: ${({ theme }) => theme.bigPadding} 0
+      ${({ theme }) => theme.mediumPadding} 0;
   }
 `;
 
@@ -53,12 +55,13 @@ const PolicyNetworks = styled.div`
 const ArrowButton = styled.button`
   background: none;
   border: none;
-  border-bottom: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.text};
-  height: ${({ theme }) => theme.m}; 
+  border-bottom: ${({ theme }) => theme.borderSmall} solid
+    ${({ theme }) => theme.colors.text};
+  height: ${({ theme }) => theme.m};
   display: flex;
-  align-items: center; 
+  align-items: center;
   @media screen and (max-width: ${breakpoints.medium}) {
-    height: ${({ theme }) => theme.mediumPadding}; 
+    height: ${({ theme }) => theme.mediumPadding};
   }
 `;
 
@@ -113,7 +116,8 @@ const Input = styled.input`
   width: 400px;
   height: ${({ theme }) => theme.m}; /* Высота инпута */
   border: none;
-  border-bottom: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.text};
+  border-bottom: ${({ theme }) => theme.borderSmall} solid
+    ${({ theme }) => theme.colors.text};
   font-family: var(--font-family-dm-sans);
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-400);

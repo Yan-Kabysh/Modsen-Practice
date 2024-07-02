@@ -36,7 +36,7 @@ const QuantityInput = ({
       >
         -
       </QuantityButton>
-      <CountQuantity>{quantity}</CountQuantity>
+      <CountQuantity data-testid="quantity">{quantity}</CountQuantity>
       <QuantityButton onClick={() => handleQuantityChange(quantity + 1)}>
         +
       </QuantityButton>

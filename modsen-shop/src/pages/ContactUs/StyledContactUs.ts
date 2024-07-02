@@ -74,4 +74,12 @@ width: ${({ theme }) => theme.full};
 text-align: left;
 `;
 
-export { ButtonDiv, ErrorWrapper, H1, InputsDiv, Span, Wrapper, ErrorWrapperArea };
+export {
+  ButtonDiv,
+  ErrorWrapper,
+  ErrorWrapperArea,
+  H1,
+  InputsDiv,
+  Span,
+  Wrapper,
+};

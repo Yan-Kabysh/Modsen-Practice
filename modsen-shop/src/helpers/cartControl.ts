@@ -193,7 +193,9 @@ export const handleRemoveItem = async ({
       setRemovingItems((prev: any) => ({ ...prev, [id]: false }));
     } catch (error) {
       console.error('Failed to remove product from cart:', error);
-      console.log('Failed to remove product from cart. Please try again later.');
+      console.log(
+        'Failed to remove product from cart. Please try again later.'
+      );
     }
   } else {
     console.log('Please log in to add items to your cart');
@@ -241,7 +243,7 @@ export const handleAddToCart = async (
       try {
         setAdd(true);
         await addItemToCart(user.id, product);
-        dispatch(addItem(product)); 
+        dispatch(addItem(product));
         setAdd(false);
         console.log('Product added to cart');
       } catch (error) {

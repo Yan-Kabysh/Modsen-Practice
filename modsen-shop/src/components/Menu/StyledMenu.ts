@@ -14,8 +14,8 @@ const MenuButton = styled.button<IMenuButtonProps>`
   flex-direction: column;
   justify-content: space-around;
   width: ${({ isOpen, theme }) => (isOpen ? '42px' : theme.btnHeight)};
-  height: 30px;
-  padding: ${({ theme }) => theme.zero};
+  height: ${({ theme }) => theme.mediumPadding};
+  padding: 0;
   box-sizing: border-box;
 
   span {
@@ -27,17 +27,17 @@ const MenuButton = styled.button<IMenuButtonProps>`
       opacity ${({ theme }) => theme.time};
 
     &:nth-child(1) {
-      transform: ${({ isOpen, theme }) =>
-        isOpen ? 'rotate(45deg) translate(11px, 12px)' : `rotate(${theme.zero})`};
+      transform: ${({ isOpen }) =>
+        isOpen ? 'rotate(45deg) translate(11px, 12px)' : `rotate(0)`};
     }
 
     &:nth-child(2) {
-      opacity: ${({ isOpen, theme }) => (isOpen ? theme.zero : 1)};
+      opacity: ${({ isOpen }) => (isOpen ? 0 : 1)};
     }
 
     &:nth-child(3) {
   transform: ${({ isOpen, theme }) =>
-    isOpen ? `rotate(-45deg) translate(${theme.xxxs}, -3px)` : `rotate(${theme.zero})`};
+    isOpen ? `rotate(-45deg) translate(${theme.xxxs}, -3px)` : `rotate(0)`};
 }
   }
 `;
@@ -69,15 +69,15 @@ const MenuWrapper = styled.div<IDescriptionProps>`
   flex-direction: column;
   align-items: flex-start;
   background: ${({ theme }) => theme.colors.background};
-  padding: 10px;
+  padding: ${({ theme }) => theme.bigDots};
   width: 100vw;
   height: 90vh;
   position: fixed;
-  top: ${({ theme }) => theme.zero};
+  top: 0;
   right: -40px;
-  z-index: 1000;
-  gap: 10px;
-  margin: 10vh 4% ${({ theme }) => theme.zero} 4%;
+  z-index: 10;
+  gap: ${({ theme }) => theme.bigDots};
+  margin: 10vh 4% 0 4%;
   transition: transform ${({ theme }) => theme.time} ease-in-out;
   transform: ${({ isOpen, theme }) => (isOpen ? 'translateX(0)' : `translateX(${theme.full})`)};
   overflow-y: auto;

@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   width: 40%;
   padding: ${({ theme }) => theme.s};
   border-radius: ${({ theme }) => theme.s};
-  margin-top: 150px;
+  margin-top: ${({ theme }) => theme.cartItemSize};
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.m};
@@ -41,7 +41,7 @@ const Span = styled.span`
   line-height: var(--line-height-26);
   color: ${({ theme }) => theme.colors.darkGray};
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: ${({ theme }) => theme.bigDots};
 `;
 
 const Form = styled.form`

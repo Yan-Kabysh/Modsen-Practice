@@ -7,10 +7,10 @@ import { breakpoints } from '@/constants/Breakpoints';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: ${({ theme }) => theme.iconSize};
   justify-content: center;
   align-items: center;
-  margin-top: 250px;
+  margin-top: ${({ theme }) => theme.desktopContentMarginBottom};
 `;
 
 const H1 = styled.h1`

@@ -16,7 +16,7 @@ const StyledTextArea = styled.textarea`
   line-height: var(--line-height-27);
   color: ${({ theme }) => theme.colors.black};
   outline: none;
-  margin-top: 50px;
+  margin-top: ${({ theme }) => theme.bigPadding};
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.darkGray};

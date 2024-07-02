@@ -38,7 +38,7 @@ const Input = styled.input`
 
 const IconWrapper = styled.div`
   position: absolute;
-  top: 10px;
+  top: ${({ theme }) => theme.bigDots};
   right: 0;
 `;
 

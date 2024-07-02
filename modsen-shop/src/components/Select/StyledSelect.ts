@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 
 const SelectBox = styled.select`
   width: ${({ theme }) => theme.full};
-  padding: 10px;
+  padding: ${({ theme }) => theme.bigDots};
   appearance: none;
   background-color: ${({ theme }) => theme.colors.white};
   border: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.gray};
@@ -37,7 +37,7 @@ const SelectBox = styled.select`
 const Arrow = styled.div`
   position: absolute;
   top: 30%;
-  right: 10px;
+  right: ${({ theme }) => theme.bigDots};
   pointer-events: none;
   transform: translateY(-50%);
   border: solid ${({ theme }) => theme.colors.text};

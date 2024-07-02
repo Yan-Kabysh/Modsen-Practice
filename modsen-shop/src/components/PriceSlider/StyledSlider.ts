@@ -11,7 +11,7 @@ const SliderTrack = styled.div`
   position: relative;
   height: ${({ theme }) => theme.xxs};
   background: ${({ theme }) => theme.colors.gray};
-  margin: ${({ theme }) => theme.s} ${({ theme }) => theme.zero};
+  margin: ${({ theme }) => theme.s} 0;
 `;
 
 const SliderThumb = styled.input`
@@ -27,15 +27,15 @@ const SliderThumb = styled.input`
     -webkit-appearance: none;
     appearance: none;
     width: 3px;
-    height: 16px;
+    height: ${({ theme }) => theme.thumbSize};
     background: ${({ theme }) => theme.colors.text};
     cursor: pointer;
     pointer-events: auto;
   }
 
   &::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
+    width: ${({ theme }) => theme.thumbSize};
+    height: ${({ theme }) => theme.thumbSize};
     background: ${({ theme }) => theme.colors.text};
     cursor: pointer;
     pointer-events: auto;
@@ -57,7 +57,7 @@ const Price = styled.div`
 
 const ValueDisplay = styled.div`
   text-align: center;
-  margin-top: 10px;
+  margin-top: ${({ theme }) => theme.bigDots};
 `;
 
 export { Price, SliderThumb, SliderTrack, StyledSlider, ValueDisplay, Wrapper };

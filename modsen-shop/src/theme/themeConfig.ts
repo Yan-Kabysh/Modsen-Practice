@@ -11,16 +11,29 @@ export const commonThemeConfig: CommonThemeInterface = {
   xxl: '100px',
   xxxl: '120px',
 
+  bigDots: '10px',
+  smallDots: '5px',
+
+  iconSize: '24px',
+
+  thumbSize: '16px',
+
   half: '50%',
   full: '100%',
+  cartColumnSize: '15%',
+  mediumPadding: '30px',
+  bigPadding: '50px',
 
   time: '0.3s',
 
-  zero: '0',
-  one: '1',
+  cartItemSize: '150px',
+
 
   btnMaxWidth: '288px',
   btnHeight: '32px',
+
+  btnMaxWidthMedia: '520px',
+  btnHeightMedia: '26px',
 
   desktopContentMarginTop: '100px',
   desktopContentMarginBottom: '250px',

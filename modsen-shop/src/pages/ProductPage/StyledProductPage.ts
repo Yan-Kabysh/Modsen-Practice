@@ -171,11 +171,11 @@ const DescDiv = styled.div`
 const DescDivTitle = styled.div`
   width: ${({ theme }) => theme.full};
   border-bottom: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.gray};
-  margin-bottom: 30px;
+  margin-bottom: ${({ theme }) => theme.mediumPadding};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 30px;
+  padding-bottom: ${({ theme }) => theme.mediumPadding};
 `;
 
 const TitleSpan = styled.div`

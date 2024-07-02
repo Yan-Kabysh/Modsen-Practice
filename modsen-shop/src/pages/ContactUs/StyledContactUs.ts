@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   width: 80%;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: ${({ theme }) => theme.mediumPadding};
   margin: 0 auto;
   text-align: center;
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -22,7 +22,7 @@ const Span = styled.span`
   font-weight: var(--font-weight-400);
   line-height: var(--line-height-26);
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: ${({ theme }) => theme.bigPadding};
   @media screen and (max-width: ${breakpoints.medium}) {
     display: none;
   }
@@ -34,7 +34,7 @@ const InputsDiv = styled.div`
   row-gap: 90px;
   justify-content: space-between;
   @media screen and (max-width: ${breakpoints.medium}) {
-    row-gap: 30px;
+    row-gap: ${({ theme }) => theme.mediumPadding};
   }
 `;
 
@@ -54,7 +54,7 @@ const H1 = styled.h1`
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-20);
     line-height: var(--line-height-26);
-    margin-top: 50px;
+    margin-top: ${({ theme }) => theme.bigPadding};
     margin-bottom: ${({ theme }) => theme.s};
     text-align: left;
   }
@@ -67,4 +67,11 @@ width: 45%;
 text-align: left;
 `;
 
-export { ButtonDiv, ErrorWrapper, H1, InputsDiv, Span, Wrapper };
+const ErrorWrapperArea = styled.div`
+display flex;
+flex-direction: column;
+width: ${({ theme }) => theme.full};
+text-align: left;
+`;
+
+export { ButtonDiv, ErrorWrapper, H1, InputsDiv, Span, Wrapper, ErrorWrapperArea };

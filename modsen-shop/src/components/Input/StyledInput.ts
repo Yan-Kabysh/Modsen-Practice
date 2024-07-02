@@ -22,24 +22,24 @@ const StyledInput = styled.input`
   }
 
   &:-webkit-autofill {
-    -webkit-box-shadow: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} 1000px ${({ theme }) => theme.colors.background}
+    -webkit-box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background}
       inset;
-    box-shadow: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} 1000px ${({ theme }) => theme.colors.background} inset;
+    box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background} inset;
     -webkit-text-fill-color: ${({ theme }) => theme.colors.text};
   }
 
   &:-webkit-autofill:focus {
-    -webkit-box-shadow: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} 1000px ${({ theme }) => theme.colors.background}
+    -webkit-box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background}
       inset;
-    box-shadow: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} 1000px ${({ theme }) => theme.colors.background} inset;
+    box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background} inset;
     -webkit-text-fill-color: ${({ theme }) => theme.colors.text};
   }
 
   &:-webkit-autofill:hover,
   &:-webkit-autofill:active {
-    -webkit-box-shadow: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} 1000px ${({ theme }) => theme.colors.background}
+    -webkit-box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background}
       inset;
-    box-shadow: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} 1000px ${({ theme }) => theme.colors.background} inset;
+    box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background} inset;
     -webkit-text-fill-color: ${({ theme }) => theme.colors.text};
   }
   @media screen and (max-width: ${breakpoints.medium}) {

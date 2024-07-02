@@ -11,8 +11,8 @@ const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.gray};
-  margin: 30px ${({ theme }) => theme.zero} ${({ theme }) => theme.s} ${({ theme }) => theme.zero};
-  padding-bottom: 10px;
+  margin: ${({ theme }) => theme.mediumPadding} 0 ${({ theme }) => theme.s} 0;
+  padding-bottom: ${({ theme }) => theme.bigDots};
 `;
 
 const StyledLogo = styled.div`
@@ -73,14 +73,14 @@ const HOPPE = styled.span`
 `;
 
 const StyledCartIcon = styled(CartIcon)`
-  width: 24px;
-  height: 24px;
+  width: ${({ theme }) => theme.iconSize};
+  height: ${({ theme }) => theme.iconSize};
   fill: currentColor;
 `;
 
 const StyledSearchIcon = styled(SearchIcon)`
-  width: 24px;
-  height: 24px;
+  width: ${({ theme }) => theme.iconSize};
+  height: ${({ theme }) => theme.iconSize};
   fill: currentColor;
 `;
 

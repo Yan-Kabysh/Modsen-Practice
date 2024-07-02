@@ -24,8 +24,8 @@ const Wrapper = styled.div`
 
 const StyledLink = styled(NavLink)`
   overflow: hidden;
-  width: 150px;
-  height: 150px;
+  width: ${({ theme }) => theme.cartItemSize};
+  height: ${({ theme }) => theme.cartItemSize};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,7 +41,7 @@ const Price = styled.span`
   font-weight: var(--font-weight-500);
   line-height: var(--line-height-26);
   color: ${({ theme }) => theme.colors.accent};
-  width: 15%;
+  width: ${({ theme }) => theme.cartColumnSize};
   text-align: center;
   @media screen and (max-width: ${breakpoints.medium}) {
     width: ${({ theme }) => theme.full};
@@ -55,8 +55,8 @@ const H2 = styled.h2`
   font-weight: var(--font-weight-400);
   line-height: var(--line-height-35);
   text-align: center;
-  max-width: 250px;
-  width: 15%;
+  max-width: ${({ theme }) => theme.desktopContentMarginBottom};
+  width: ${({ theme }) => theme.cartColumnSize};
   @media screen and (max-width: ${breakpoints.medium}) {
     text-align: left;
     max-width: 100vh;

@@ -6,15 +6,15 @@ import { breakpoints } from '@/constants/Breakpoints';
 
 const Wrapper = styled.div`
   border-top: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.gray};
-  margin: 200px ${({ theme }) => theme.zero} 50px ${({ theme }) => theme.zero};
+  margin: 200px 0 ${({ theme }) => theme.bigPadding} 0;
   @media screen and (max-width: ${breakpoints.medium}) {
-    margin: 50px ${({ theme }) => theme.zero} 30px ${({ theme }) => theme.zero};
+    margin: ${({ theme }) => theme.bigPadding} 0 ${({ theme }) => theme.mediumPadding} 0;
   }
 `;
 
 const Networks = styled.div`
   display: flex;
-  gap: 30px;
+  gap: ${({ theme }) => theme.mediumPadding};
   order: 2;
   @media screen and (max-width: ${breakpoints.medium}) {
     order: 1;
@@ -54,18 +54,18 @@ const ArrowButton = styled.button`
   background: none;
   border: none;
   border-bottom: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.text};
-  height: ${({ theme }) => theme.m}; /* Высота кнопки */
+  height: ${({ theme }) => theme.m}; 
   display: flex;
-  align-items: center; /* Центрирование иконки */
+  align-items: center; 
   @media screen and (max-width: ${breakpoints.medium}) {
-    height: 30px; /* Высота кнопки на маленьких экранах */
+    height: ${({ theme }) => theme.mediumPadding}; 
   }
 `;
 
 const RefsEmail = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 50px ${({ theme }) => theme.zero};
+  margin: ${({ theme }) => theme.bigPadding} 0;
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
   }
@@ -78,7 +78,7 @@ const Refs = styled.div`
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
     order: 2;
-    gap: 10px;
+    gap: ${({ theme }) => theme.bigDots};
     margin-top: ${({ theme }) => theme.s};
   }
 `;
@@ -122,30 +122,30 @@ const Input = styled.input`
   background: transparent;
   color: ${({ theme }) => theme.colors.text};
   &:-webkit-autofill {
-    -webkit-box-shadow: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} 1000px ${({ theme }) => theme.colors.background}
+    -webkit-box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background}
       inset;
-    box-shadow: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} 1000px ${({ theme }) => theme.colors.background} inset;
+    box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background} inset;
     -webkit-text-fill-color: ${({ theme }) => theme.colors.text};
   }
 
   &:-webkit-autofill:focus {
-    -webkit-box-shadow: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} 1000px ${({ theme }) => theme.colors.background}
+    -webkit-box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background}
       inset;
-    box-shadow: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} 1000px ${({ theme }) => theme.colors.background} inset;
+    box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background} inset;
     -webkit-text-fill-color: ${({ theme }) => theme.colors.text};
   }
 
   &:-webkit-autofill:hover,
   &:-webkit-autofill:active {
-    -webkit-box-shadow: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} 1000px ${({ theme }) => theme.colors.background}
+    -webkit-box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background}
       inset;
-    box-shadow: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} 1000px ${({ theme }) => theme.colors.background} inset;
+    box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background} inset;
     -webkit-text-fill-color: ${({ theme }) => theme.colors.text};
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);
     width: 93%;
-    height: 30px; /* Высота инпута на маленьких экранах */
+    height: ${({ theme }) => theme.mediumPadding};
   }
 `;
 
@@ -155,7 +155,7 @@ const ErrorMessage = styled.p`
   font-weight: var(--font-weight-400);
   line-height: var(--line-height-10);
   font-family: var(--font-family-dm-sans);
-  margin-top: 10px;
+  margin-top: ${({ theme }) => theme.bigDots};
 `;
 
 export {

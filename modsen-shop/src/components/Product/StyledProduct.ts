@@ -58,7 +58,7 @@ const StyledNavLink = styled(NavLink)`
 
 const Button = styled.button`
   width: ${({ theme }) => theme.full};
-  height: 15%;
+  height: ${({ theme }) => theme.cartColumnSize};
   text-align: center;
   font-family: var(--font-family-dm-sans);
   font-size: var(--font-size-14);
@@ -69,11 +69,11 @@ const Button = styled.button`
   position: absolute;
   z-index: 1;
   /* display: none; */
-  bottom: ${({ theme }) => theme.zero};
+  bottom: 0;
   border: none;
-  border-radius: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} 6px 6px;
+  border-radius: 0 0 6px 6px;
   transform: translateY(100%);
-  opacity: ${({ theme }) => theme.zero};
+  opacity: 0;
   transition:
     transform ${({ theme }) => theme.time} ease-in-out,
     opacity ${({ theme }) => theme.time} ease-in-out,

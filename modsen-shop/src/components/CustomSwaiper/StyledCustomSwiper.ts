@@ -20,15 +20,15 @@ const SlideContainer = styled.div<SlideContainerProps>`
 
 const Slide = styled.div`
   position: relative;
-  flex: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} auto;
+  flex: 0 0 auto;
   width: ${({ theme }) => theme.full};
 `;
 
 const Pagination = styled.div`
   position: absolute;
   bottom: ${({ theme }) => theme.s};
-  left: ${({ theme }) => theme.zero};
-  right: ${({ theme }) => theme.zero};
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,9 +36,9 @@ const Pagination = styled.div`
 `;
 
 const PaginationDot = styled.span<PaginationDotProps>`
-  width: ${({ active, theme }) => (active ? theme.s : '10px')};
-  height: ${({ active, theme }) => (active ? theme.s : '10px')};
-  margin: ${({ theme }) => theme.zero} 5px;
+  width: ${({ active, theme }) => (active ? theme.s : theme.bigDots)};
+  height: ${({ active, theme }) => (active ? theme.s : theme.bigDots)};
+  margin: 0 ${({ theme }) =>  theme.smallDots};
   border-radius: ${({ theme }) => theme.half};
   background-color: ${({ active, theme }) =>
     active ? theme.colors.gray : theme.colors.lightGray};
@@ -46,8 +46,8 @@ const PaginationDot = styled.span<PaginationDotProps>`
     ${({ active, theme }) => (active ? theme.colors.white : 'transparent')};
   cursor: pointer;
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: ${({ active }) => (active ? '10px' : '5px')};
-    height: ${({ active }) => (active ? '10px' : '5px')};
+    width: ${({ active, theme }) => (active ? theme.bigDots : theme.smallDots)};
+    height: ${({ active, theme }) => (active ? theme.bigDots : theme.smallDots)};
   }
 `;
 
@@ -75,7 +75,7 @@ const SlideBtnDiv = styled.div`
   width: 10%;
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 25%;
-    left: ${({ theme }) => theme.zero};
+    left: 0;
   }
 `;
 

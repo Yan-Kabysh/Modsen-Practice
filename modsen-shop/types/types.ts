@@ -102,13 +102,25 @@ interface CommonThemeInterface{
     half: string,
     full: string,
 
+    iconSize: string,
+
     time: string,
 
-    zero: string,
-    one: string,
+    cartItemSize:string,
+    thumbSize: string,
+
+    bigDots: string,
+  smallDots: string,
+  mediumPadding: string,
+  bigPadding: string,
+
 
     btnMaxWidth: string,
     btnHeight: string,
+    cartColumnSize: string,
+
+    btnMaxWidthMedia: string,
+  btnHeightMedia: string,
   
     desktopContentMarginTop:  string;
     desktopContentMarginBottom:  string;

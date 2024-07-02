@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
 const Wrapper = styled.div`
-  margin-top: 50px;
+  margin-top: ${({ theme }) => theme.bigPadding};
 `;
 
 const Title = styled.div`
@@ -12,7 +12,7 @@ const Title = styled.div`
   justify-content: space-between;
   margin-bottom: ${({ theme }) => theme.l};
   @media screen and (max-width: ${breakpoints.medium}) {
-    margin-bottom: 30px;
+    margin-bottom: ${({ theme }) => theme.mediumPadding};
   }
 `;
 

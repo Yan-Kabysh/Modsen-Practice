@@ -33,9 +33,9 @@ const StyledButton = styled.button<ButtonProps>`
     border: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.buttonText};
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    max-width: 520px;
+    max-width: ${({ theme }) => theme.btnMaxWidthMedia};
     width: ${({ theme }) => theme.full};
-    height: 26px;
+    height: ${({ theme }) => theme.btnHeightMedia};
   }
 `;
 

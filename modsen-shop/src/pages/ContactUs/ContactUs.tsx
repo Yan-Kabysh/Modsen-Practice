@@ -53,7 +53,9 @@ const ContactUs = () => {
               {...register('firstName', { required: 'Required field.' })}
             />
             {errors.firstName && (
-              <ErrorMessage>{errors.firstName.message}</ErrorMessage>
+              <ErrorMessage data-testid="firstName-error">
+                {errors.firstName.message}
+              </ErrorMessage>
             )}
           </ErrorWrapper>
           <ErrorWrapper>
@@ -63,7 +65,9 @@ const ContactUs = () => {
               {...register('lastName', { required: 'Required field.' })}
             />
             {errors.lastName && (
-              <ErrorMessage>{errors.lastName.message}</ErrorMessage>
+              <ErrorMessage data-testid="lastName-error">
+                {errors.lastName.message}
+              </ErrorMessage>
             )}
           </ErrorWrapper>
           <ErrorWrapper>
@@ -79,7 +83,9 @@ const ContactUs = () => {
               })}
             />
             {errors.email && (
-              <ErrorMessage>{errors.email.message}</ErrorMessage>
+              <ErrorMessage data-testid="email-error">
+                {errors.email.message}
+              </ErrorMessage>
             )}
           </ErrorWrapper>
           <ErrorWrapper>
@@ -89,7 +95,9 @@ const ContactUs = () => {
               {...register('subject', { required: 'Required field.' })}
             />
             {errors.subject && (
-              <ErrorMessage>{errors.subject.message}</ErrorMessage>
+              <ErrorMessage data-testid="subject-error">
+                {errors.subject.message}
+              </ErrorMessage>
             )}
           </ErrorWrapper>
         </InputsDiv>
@@ -99,7 +107,9 @@ const ContactUs = () => {
             {...register('message', { required: 'Required field.' })}
           />
           {errors.message && (
-            <ErrorMessage>{errors.message.message}</ErrorMessage>
+            <ErrorMessage data-testid="message-error">
+              {errors.message.message}
+            </ErrorMessage>
           )}
         </ErrorWrapperArea>
 

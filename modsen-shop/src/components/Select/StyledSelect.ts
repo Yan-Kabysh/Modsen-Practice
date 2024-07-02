@@ -3,10 +3,10 @@ import '@/styles/variables.css';
 import { styled } from 'styled-components';
 
 const Wrapper = styled.div`
-  margin-top: ${({ theme }) => theme.s} theme }) => theme.s};
+  margin-top: ${({ theme }) => theme.s};
   position: relative;
   display: inline-block;
-  width: ${({ theme }) => theme.full}; /* Adjust width as needed */
+  width: ${({ theme }) => theme.full}; 
 `;
 
 const SelectBox = styled.select`

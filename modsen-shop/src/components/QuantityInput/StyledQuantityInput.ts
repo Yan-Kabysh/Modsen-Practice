@@ -6,10 +6,10 @@ import { breakpoints } from '@/constants/Breakpoints';
 
 const QuantityButton = styled.button`
   background: ${({ theme }) => theme.colors.background};
-  border: 1px solid ${({ theme }) => theme.colors.text};
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  border: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.text};
+  border-radius: ${({ theme }) => theme.half};
+  width: ${({ theme }) => theme.m};
+  height: ${({ theme }) => theme.m};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,8 +17,8 @@ const QuantityButton = styled.button`
   color: ${({ theme }) => theme.colors.text};
   cursor: pointer;
   transition:
-    background 0.3s,
-    color 0.3s;
+    background ${({ theme }) => theme.time},
+    color ${({ theme }) => theme.time};
 
   &:hover {
     background: ${({ theme }) => theme.colors.text};
@@ -39,9 +39,9 @@ const QuantityWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 100%;
+    width: ${({ theme }) => theme.full};
     justify-content: flex-start;
-    gap: 20px;
+    gap: ${({ theme }) => theme.s};
   }
 `;
 

@@ -10,9 +10,9 @@ import { ReactComponent as SearchIcon } from '@/images/search.svg';
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
-  margin: 30px 0 20px 0;
-  padding-bottom: 10px;
+  border-bottom: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.gray};
+  margin: ${({ theme }) => theme.mediumPadding} 0 ${({ theme }) => theme.s} 0;
+  padding-bottom: ${({ theme }) => theme.bigDots};
 `;
 
 const StyledLogo = styled.div`
@@ -37,7 +37,7 @@ const StyledShopButton = styled.button<IHeaderButtons>`
   border: none;
   cursor: pointer;
   border-bottom: ${({ isActive, theme }) =>
-    isActive ? `2px solid ${theme.colors.text}` : 'none'};
+    isActive ? `${theme.xxxs} solid ${theme.colors.text}` : 'none'};
 `;
 
 const StyledIcon = styled.a``;
@@ -65,7 +65,7 @@ const ButtonCart = styled.button<IHeaderButtons>`
   cursor: pointer;
   position: relative;
   border-bottom: ${({ isActive, theme }) =>
-    isActive ? `2px solid ${theme.colors.text}` : 'none'};
+    isActive ? `${theme.xxxs} solid ${theme.colors.text}` : 'none'};
 `;
 
 const HOPPE = styled.span`
@@ -73,20 +73,20 @@ const HOPPE = styled.span`
 `;
 
 const StyledCartIcon = styled(CartIcon)`
-  width: 24px;
-  height: 24px;
+  width: ${({ theme }) => theme.iconSize};
+  height: ${({ theme }) => theme.iconSize};
   fill: currentColor;
 `;
 
 const StyledSearchIcon = styled(SearchIcon)`
-  width: 24px;
-  height: 24px;
+  width: ${({ theme }) => theme.iconSize};
+  height: ${({ theme }) => theme.iconSize};
   fill: currentColor;
 `;
 
 const Count = styled.span`
-  border: 2px solid ${({ theme }) => theme.colors.text};
-  border-radius: 50%;
+  border: ${({ theme }) => theme.borderBig} solid ${({ theme }) => theme.colors.text};
+  border-radius: ${({ theme }) => theme.half};
   width: 18px;
   height: 18px;
   position: absolute;

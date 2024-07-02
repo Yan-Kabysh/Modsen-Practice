@@ -193,10 +193,10 @@ export const handleRemoveItem = async ({
       setRemovingItems((prev: any) => ({ ...prev, [id]: false }));
     } catch (error) {
       console.error('Failed to remove product from cart:', error);
-      alert('Failed to remove product from cart. Please try again later.');
+      console.log('Failed to remove product from cart. Please try again later.');
     }
   } else {
-    alert('Please log in to add items to your cart');
+    console.log('Please log in to add items to your cart');
   }
 };
 
@@ -241,14 +241,14 @@ export const handleAddToCart = async (
       try {
         setAdd(true);
         await addItemToCart(user.id, product);
-        dispatch(addItem(product)); // Update Redux state
+        dispatch(addItem(product)); 
         setAdd(false);
-        // alert('Product added to cart');
+        console.log('Product added to cart');
       } catch (error) {
-        alert('Failed to add product to cart. Please try again later.');
+        console.log('Failed to add product to cart. Please try again later.');
       }
     } else {
-      alert('Please log in to add items to your cart');
+      console.log('Please log in to add items to your cart');
     }
   } else {
     navigate(ROUTES.LOGIN);

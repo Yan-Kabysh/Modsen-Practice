@@ -8,10 +8,10 @@ import { breakpoints } from '@/constants/Breakpoints';
 const Wrapper = styled.div`
   width: 21%;
   min-width: 21%;
-  margin-right: 30px;
+  margin-right: ${({ theme }) => theme.mediumPadding};
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 100%;
-    margin-bottom: 40px;
+    width: ${({ theme }) => theme.full};
+    margin-bottom: ${({ theme }) => theme.m};
   }
 `;
 

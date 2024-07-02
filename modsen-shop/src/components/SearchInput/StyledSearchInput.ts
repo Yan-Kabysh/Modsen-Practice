@@ -3,10 +3,10 @@ import '@/styles/variables.css';
 import { styled } from 'styled-components';
 
 const Input = styled.input`
-  height: 40px;
-  width: 100%;
+  height: ${({ theme }) => theme.m};
+  width: ${({ theme }) => theme.full};
   border: none;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
+  border-bottom: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.gray};
   font-family: var(--font-family-dm-sans);
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-400);
@@ -38,7 +38,7 @@ const Input = styled.input`
 
 const IconWrapper = styled.div`
   position: absolute;
-  top: 10px;
+  top: ${({ theme }) => theme.bigDots};
   right: 0;
 `;
 

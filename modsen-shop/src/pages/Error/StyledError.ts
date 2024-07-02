@@ -7,10 +7,10 @@ import { breakpoints } from '@/constants/Breakpoints';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: ${({ theme }) => theme.iconSize};
   justify-content: center;
   align-items: center;
-  margin-top: 250px;
+  margin-top: ${({ theme }) => theme.desktopContentMarginBottom};
 `;
 
 const H1 = styled.h1`
@@ -31,7 +31,7 @@ const Span = styled.span`
   line-height: var(--line-height-26);
   color: ${({ theme }) => theme.colors.darkGray};
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: ${({ theme }) => theme.m};
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);
     line-height: var(--line-height-20);

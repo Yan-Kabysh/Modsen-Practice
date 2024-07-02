@@ -8,23 +8,23 @@ const ColumsTitles = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin-bottom: ${({ theme }) => theme.m};
 `;
 
 const Items = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: ${({ theme }) => theme.m};
 `;
 
 const CartHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 100px 0 40px 0;
+  margin: ${({ theme }) => theme.xxl} 0 ${({ theme }) => theme.m} 0;
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
-    gap: 40px;
-    margin: 40px 0 40px 0;
+    gap: ${({ theme }) => theme.m};
+    margin: ${({ theme }) => theme.m} 0 ${({ theme }) => theme.m} 0;
   }
 `;
 
@@ -44,7 +44,7 @@ const Empty = styled.span`
 
 const TotalWrapper = styled.div`
   text-align: right;
-  margin-top: 40px;
+  margin-top: ${({ theme }) => theme.m};
 `;
 
 export { CartHeader, ColumsTitles, Empty, H1, Items, TotalWrapper };

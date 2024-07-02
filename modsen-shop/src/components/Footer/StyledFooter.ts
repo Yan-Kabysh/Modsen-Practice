@@ -5,21 +5,21 @@ import styled from 'styled-components';
 import { breakpoints } from '@/constants/Breakpoints';
 
 const Wrapper = styled.div`
-  border-top: 1px solid ${({ theme }) => theme.colors.gray};
-  margin: 200px 0 50px 0;
+  border-top: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.gray};
+  margin: 200px 0 ${({ theme }) => theme.bigPadding} 0;
   @media screen and (max-width: ${breakpoints.medium}) {
-    margin: 50px 0 30px 0;
+    margin: ${({ theme }) => theme.bigPadding} 0 ${({ theme }) => theme.mediumPadding} 0;
   }
 `;
 
 const Networks = styled.div`
   display: flex;
-  gap: 30px;
+  gap: ${({ theme }) => theme.mediumPadding};
   order: 2;
   @media screen and (max-width: ${breakpoints.medium}) {
     order: 1;
     justify-content: space-around;
-    margin-bottom: 20px;
+    margin-bottom: ${({ theme }) => theme.s};
   }
 `;
 
@@ -37,7 +37,7 @@ const Policy = styled.span`
 `;
 
 const Form = styled.form`
-  width: 100%;
+  width: ${({ theme }) => theme.full};
   display: flex;
   align-items: flex-end;
 `;
@@ -53,19 +53,19 @@ const PolicyNetworks = styled.div`
 const ArrowButton = styled.button`
   background: none;
   border: none;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.text};
-  height: 40px; /* Высота кнопки */
+  border-bottom: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.text};
+  height: ${({ theme }) => theme.m}; 
   display: flex;
-  align-items: center; /* Центрирование иконки */
+  align-items: center; 
   @media screen and (max-width: ${breakpoints.medium}) {
-    height: 30px; /* Высота кнопки на маленьких экранах */
+    height: ${({ theme }) => theme.mediumPadding}; 
   }
 `;
 
 const RefsEmail = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 50px 0;
+  margin: ${({ theme }) => theme.bigPadding} 0;
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
   }
@@ -73,13 +73,13 @@ const RefsEmail = styled.div`
 
 const Refs = styled.div`
   display: flex;
-  gap: 40px;
+  gap: ${({ theme }) => theme.m};
   order: 1;
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
     order: 2;
-    gap: 10px;
-    margin-top: 20px;
+    gap: ${({ theme }) => theme.bigDots};
+    margin-top: ${({ theme }) => theme.s};
   }
 `;
 
@@ -88,7 +88,7 @@ const Email = styled.div`
   align-items: flex-end;
   order: 2;
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 100%;
+    width: ${({ theme }) => theme.full};
     order: 1;
   }
 `;
@@ -100,7 +100,7 @@ const Ref = styled.a`
   line-height: var(--line-height-27);
   color: ${({ theme }) => theme.colors.darkGray};
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color ${({ theme }) => theme.time} ease;
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);
   }
@@ -111,9 +111,9 @@ const Ref = styled.a`
 
 const Input = styled.input`
   width: 400px;
-  height: 40px; /* Высота инпута */
+  height: ${({ theme }) => theme.m}; /* Высота инпута */
   border: none;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.text};
+  border-bottom: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.text};
   font-family: var(--font-family-dm-sans);
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-400);
@@ -122,30 +122,30 @@ const Input = styled.input`
   background: transparent;
   color: ${({ theme }) => theme.colors.text};
   &:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.colors.background}
+    -webkit-box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background}
       inset;
-    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.colors.background} inset;
+    box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background} inset;
     -webkit-text-fill-color: ${({ theme }) => theme.colors.text};
   }
 
   &:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.colors.background}
+    -webkit-box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background}
       inset;
-    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.colors.background} inset;
+    box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background} inset;
     -webkit-text-fill-color: ${({ theme }) => theme.colors.text};
   }
 
   &:-webkit-autofill:hover,
   &:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.colors.background}
+    -webkit-box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background}
       inset;
-    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.colors.background} inset;
+    box-shadow: 0 0 0 1000px ${({ theme }) => theme.colors.background} inset;
     -webkit-text-fill-color: ${({ theme }) => theme.colors.text};
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);
     width: 93%;
-    height: 30px; /* Высота инпута на маленьких экранах */
+    height: ${({ theme }) => theme.mediumPadding};
   }
 `;
 
@@ -155,7 +155,7 @@ const ErrorMessage = styled.p`
   font-weight: var(--font-weight-400);
   line-height: var(--line-height-10);
   font-family: var(--font-family-dm-sans);
-  margin-top: 10px;
+  margin-top: ${({ theme }) => theme.bigDots};
 `;
 
 export {

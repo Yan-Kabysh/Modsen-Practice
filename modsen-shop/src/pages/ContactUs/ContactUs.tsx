@@ -10,6 +10,7 @@ import { emailFormSubmit } from '@/helpers/emailhelpers';
 import {
   ButtonDiv,
   ErrorWrapper,
+  ErrorWrapperArea,
   H1,
   InputsDiv,
   Span,
@@ -92,7 +93,7 @@ const ContactUs = () => {
             )}
           </ErrorWrapper>
         </InputsDiv>
-        <ErrorWrapper>
+        <ErrorWrapperArea>
           <StyledTextArea
             placeholder="Message"
             {...register('message', { required: 'Required field.' })}
@@ -100,7 +101,7 @@ const ContactUs = () => {
           {errors.message && (
             <ErrorMessage>{errors.message.message}</ErrorMessage>
           )}
-        </ErrorWrapper>
+        </ErrorWrapperArea>
 
         <ButtonDiv>
           <Button maxWidth={'60%'} height={'40px'} type="submit">

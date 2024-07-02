@@ -32,6 +32,7 @@ interface ProductProps {
 
 interface ThemeState {
   currentTheme: DefaultTheme;
+  commonThemeConfig: CommonThemeInterface
 }
 
 interface IEmailForm {
@@ -85,6 +86,8 @@ interface IHeaderButtons{
   isActive: boolean;
 }
 
+
+
 interface CommonThemeInterface{
   xxxs: string;
     xxs: string;
@@ -95,12 +98,38 @@ interface CommonThemeInterface{
     xl: string;
     xxl:  string;
     xxxl:  string;
+
+    half: string,
+    full: string,
+
+    iconSize: string,
+
+    time: string,
+
+    cartItemSize:string,
+    thumbSize: string,
+
+    bigDots: string,
+  smallDots: string,
+  mediumPadding: string,
+  bigPadding: string,
+
+
+    btnMaxWidth: string,
+    btnHeight: string,
+    cartColumnSize: string,
+
+    btnMaxWidthMedia: string,
+  btnHeightMedia: string,
   
     desktopContentMarginTop:  string;
     desktopContentMarginBottom:  string;
   
     mobileContentMarginTop:  string;
     mobileContentMarginBottom:  string;
+
+    borderSmall: string,
+    borderBig: string,
 }
 
 interface WrapperProps {

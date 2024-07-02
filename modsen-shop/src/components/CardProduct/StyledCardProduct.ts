@@ -6,8 +6,8 @@ import styled from 'styled-components';
 import { breakpoints } from '@/constants/Breakpoints';
 
 const Img = styled.img`
-  max-width: 100%;
-  max-height: 100%;
+  max-width: ${({ theme }) => theme.full};
+  max-height: ${({ theme }) => theme.full};
   object-fit: contain;
 `;
 
@@ -18,20 +18,20 @@ const Wrapper = styled.div`
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: ${({ theme }) => theme.s};
   }
 `;
 
 const StyledLink = styled(NavLink)`
   overflow: hidden;
-  width: 150px;
-  height: 150px;
+  width: ${({ theme }) => theme.cartItemSize};
+  height: ${({ theme }) => theme.cartItemSize};
   display: flex;
   align-items: center;
   justify-content: center;
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 100%;
-    height: 100%;
+    width: ${({ theme }) => theme.full};
+    height: ${({ theme }) => theme.full};
   }
 `;
 
@@ -41,10 +41,10 @@ const Price = styled.span`
   font-weight: var(--font-weight-500);
   line-height: var(--line-height-26);
   color: ${({ theme }) => theme.colors.accent};
-  width: 15%;
+  width: ${({ theme }) => theme.cartColumnSize};
   text-align: center;
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 100%;
+    width: ${({ theme }) => theme.full};
     text-align: left;
   }
 `;
@@ -55,12 +55,12 @@ const H2 = styled.h2`
   font-weight: var(--font-weight-400);
   line-height: var(--line-height-35);
   text-align: center;
-  max-width: 250px;
-  width: 15%;
+  max-width: ${({ theme }) => theme.desktopContentMarginBottom};
+  width: ${({ theme }) => theme.cartColumnSize};
   @media screen and (max-width: ${breakpoints.medium}) {
     text-align: left;
     max-width: 100vh;
-    width: 100%;
+    width: ${({ theme }) => theme.full};
   }
 `;
 

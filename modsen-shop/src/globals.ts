@@ -23,7 +23,7 @@ const Global = createGlobalStyle`
     background: ${({ theme }) => theme.colors.text};
    }
    svg path{
-    transition: fill 0.3s ease;
+    transition: fill ${({ theme }) => theme.time} ease;
    }
    svg:hover path {
     fill: ${({ theme }) => theme.colors.text};

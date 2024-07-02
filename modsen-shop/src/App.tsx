@@ -16,13 +16,15 @@ import { Shop } from '@/pages/Shop/Shop';
 
 import { Global } from './globals';
 import { Wrapper } from './StyledApp';
+import { getMergedTheme } from './store/reducers/UIReducer/UISlice';
 
 const App = () => {
   const { currentTheme } = useAppSelector((state) => state.uiReducer);
+  const mergedTheme = getMergedTheme(currentTheme);
 
   return (
     <Wrapper>
-      <ThemeProvider theme={currentTheme}>
+      <ThemeProvider theme={mergedTheme}>
         <Global />
         <Header />
         <Routes>

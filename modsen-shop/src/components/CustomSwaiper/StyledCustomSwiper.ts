@@ -8,8 +8,8 @@ import { breakpoints } from '@/constants/Breakpoints';
 const SliderWrapper = styled.div`
   position: relative;
   overflow: hidden;
-  width: 100%;
-  border-radius: 8px;
+  width: ${({ theme }) => theme.full};
+  border-radius: ${({ theme }) => theme.xs};
 `;
 
 const SlideContainer = styled.div<SlideContainerProps>`
@@ -21,12 +21,12 @@ const SlideContainer = styled.div<SlideContainerProps>`
 const Slide = styled.div`
   position: relative;
   flex: 0 0 auto;
-  width: 100%;
+  width: ${({ theme }) => theme.full};
 `;
 
 const Pagination = styled.div`
   position: absolute;
-  bottom: 20px;
+  bottom: ${({ theme }) => theme.s};
   left: 0;
   right: 0;
   display: flex;
@@ -36,27 +36,27 @@ const Pagination = styled.div`
 `;
 
 const PaginationDot = styled.span<PaginationDotProps>`
-  width: ${({ active }) => (active ? '20px' : '10px')};
-  height: ${({ active }) => (active ? '20px' : '10px')};
-  margin: 0 5px;
-  border-radius: 50%;
+  width: ${({ active, theme }) => (active ? theme.s : theme.bigDots)};
+  height: ${({ active, theme }) => (active ? theme.s : theme.bigDots)};
+  margin: 0 ${({ theme }) =>  theme.smallDots};
+  border-radius: ${({ theme }) => theme.half};
   background-color: ${({ active, theme }) =>
     active ? theme.colors.gray : theme.colors.lightGray};
-  border: 1px solid
+  border: ${({ theme }) => theme.borderSmall} solid
     ${({ active, theme }) => (active ? theme.colors.white : 'transparent')};
   cursor: pointer;
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: ${({ active }) => (active ? '10px' : '5px')};
-    height: ${({ active }) => (active ? '10px' : '5px')};
+    width: ${({ active, theme }) => (active ? theme.bigDots : theme.smallDots)};
+    height: ${({ active, theme }) => (active ? theme.bigDots : theme.smallDots)};
   }
 `;
 
 const Img = styled.img`
-  width: 100%;
+  width: ${({ theme }) => theme.full};
   height: auto;
   max-height: 646px;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: ${({ theme }) => theme.xs};
 
   @media screen and (max-width: ${breakpoints.medium}) {
     height: 300px;
@@ -70,7 +70,7 @@ const SlideWrapper = styled.div`
 const SlideBtnDiv = styled.div`
   position: absolute;
   z-index: 10;
-  bottom: 40px; /* Подстроить под ваш дизайн */
+  bottom: ${({ theme }) => theme.m}; 
   left: 5%;
   width: 10%;
   @media screen and (max-width: ${breakpoints.medium}) {

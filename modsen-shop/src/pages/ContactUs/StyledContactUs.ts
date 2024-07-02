@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
   text-align: center;
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 100%;
+    width: ${({ theme }) => theme.full};
   }
 `;
 
@@ -41,7 +41,7 @@ const InputsDiv = styled.div`
 const ButtonDiv = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: ${({ theme }) => theme.m};
 `;
 
 const H1 = styled.h1`
@@ -49,13 +49,13 @@ const H1 = styled.h1`
   font-size: var(--font-size-33);
   font-weight: var(--font-weight-500);
   line-height: var(--line-height-43);
-  margin-top: 100px;
-  margin-bottom: 40px;
+  margin-top: ${({ theme }) => theme.xxl};
+  margin-bottom: ${({ theme }) => theme.m};
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-20);
     line-height: var(--line-height-26);
     margin-top: 50px;
-    margin-bottom: 20px;
+    margin-bottom: ${({ theme }) => theme.s};
     text-align: left;
   }
 `;

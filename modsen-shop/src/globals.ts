@@ -2,8 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 const Global = createGlobalStyle`
   * {
-    margin: 0;
-    padding: 0;
+    margin: ${({ theme }) => theme.zero};
+    padding: ${({ theme }) => theme.zero};
     box-sizing: border-box;
    }
    body{
@@ -23,7 +23,7 @@ const Global = createGlobalStyle`
     background: ${({ theme }) => theme.colors.text};
    }
    svg path{
-    transition: fill 0.3s ease;
+    transition: fill ${({ theme }) => theme.time} ease;
    }
    svg:hover path {
     fill: ${({ theme }) => theme.colors.text};

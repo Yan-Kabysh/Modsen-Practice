@@ -12,13 +12,13 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  width: 100%;
+  width: ${({ theme }) => theme.full};
 `;
 
 const FiltersDiv = styled.div`
   display: none;
-  gap: 20px;
-  margin-bottom: 40px;
+  gap: ${({ theme }) => theme.s};
+  margin-bottom: ${({ theme }) => theme.m};
   @media screen and (max-width: ${breakpoints.medium}) {
     display: flex;
     align-items: center;
@@ -38,12 +38,12 @@ const H1 = styled.h1`
   font-size: var(--font-size-33);
   font-weight: var(--font-weight-500);
   line-height: var(--line-height-43);
-  margin-top: 100px;
-  margin-bottom: 40px;
+  margin-top: ${({ theme }) => theme.xxl};
+  margin-bottom: ${({ theme }) => theme.m};
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-20);
     line-height: var(--line-height-26);
-    margin-top: 40px;
+    margin-top: ${({ theme }) => theme.m};
   }
 `;
 

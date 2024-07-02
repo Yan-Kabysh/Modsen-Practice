@@ -4,22 +4,22 @@ import styled from 'styled-components';
 
 const StyledSlider = styled.div`
   position: relative;
-  width: 100%;
+  width: ${({ theme }) => theme.full};
 `;
 
 const SliderTrack = styled.div`
   position: relative;
-  height: 4px;
+  height: ${({ theme }) => theme.xxs};
   background: ${({ theme }) => theme.colors.gray};
-  margin: 20px 0;
+  margin: ${({ theme }) => theme.s} ${({ theme }) => theme.zero};
 `;
 
 const SliderThumb = styled.input`
   position: absolute;
   -webkit-appearance: none;
   appearance: none;
-  width: 100%;
-  height: 4px;
+  width: ${({ theme }) => theme.full};
+  height: ${({ theme }) => theme.xxs};
   background: transparent;
   pointer-events: none;
 

@@ -31,7 +31,7 @@ const Span = styled.span`
   line-height: var(--line-height-26);
   color: ${({ theme }) => theme.colors.darkGray};
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: ${({ theme }) => theme.m};
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-12);
     line-height: var(--line-height-20);

@@ -11,9 +11,23 @@ export const commonThemeConfig: CommonThemeInterface = {
   xxl: '100px',
   xxxl: '120px',
 
+  half: '50%',
+  full: '100%',
+
+  time: '0.3s',
+
+  zero: '0',
+  one: '1',
+
+  btnMaxWidth: '288px',
+  btnHeight: '32px',
+
   desktopContentMarginTop: '100px',
   desktopContentMarginBottom: '250px',
 
   mobileContentMarginTop: '40px',
   mobileContentMarginBottom: '100px',
+
+  borderSmall: '1px',
+  borderBig: '2px'
 };

@@ -7,10 +7,10 @@ import { ImageWrapperProps, WrapperProps } from '@/../types/types';
 import { breakpoints } from '@/constants/Breakpoints';
 
 const Wrapper = styled.div<WrapperProps>`
-  width: ${({ width }) => width || '100%'};
+  width: ${({ width, theme }) => width || theme.full};
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: ${({ theme }) => theme.s};
 `;
 
 const Title = styled.span`
@@ -57,7 +57,7 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 const Button = styled.button`
-  width: 100%;
+  width: ${({ theme }) => theme.full};
   height: 15%;
   text-align: center;
   font-family: var(--font-family-dm-sans);
@@ -69,22 +69,22 @@ const Button = styled.button`
   position: absolute;
   z-index: 1;
   /* display: none; */
-  bottom: 0;
+  bottom: ${({ theme }) => theme.zero};
   border: none;
-  border-radius: 0 0 6px 6px;
+  border-radius: ${({ theme }) => theme.zero} ${({ theme }) => theme.zero} 6px 6px;
   transform: translateY(100%);
-  opacity: 0;
+  opacity: ${({ theme }) => theme.zero};
   transition:
-    transform 0.3s ease-in-out,
-    opacity 0.3s ease-in-out,
-    background 0.3s ease-in-out;
+    transform ${({ theme }) => theme.time} ease-in-out,
+    opacity ${({ theme }) => theme.time} ease-in-out,
+    background ${({ theme }) => theme.time} ease-in-out;
   &:hover {
     background: ${({ theme }) => theme.colors.gray};
   }
 `;
 
 const ImageWrapper = styled.div<ImageWrapperProps>`
-  width: 100%;
+  width: ${({ theme }) => theme.full};
   height: ${({ height }) => height || '380px'};
   display: flex;
   justify-content: center;
@@ -100,8 +100,8 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
 `;
 
 const Img = styled.img`
-  max-width: 100%;
-  max-height: 100%;
+  max-width: ${({ theme }) => theme.full};
+  max-height: ${({ theme }) => theme.full};
   object-fit: contain;
 `;
 

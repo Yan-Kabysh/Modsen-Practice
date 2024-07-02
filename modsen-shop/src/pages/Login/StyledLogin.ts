@@ -8,24 +8,24 @@ import { breakpoints } from '@/constants/Breakpoints';
 const Wrapper = styled.div`
   margin: 0 auto;
   width: 40%;
-  padding: 20px;
-  border-radius: 20px;
+  padding: ${({ theme }) => theme.s};
+  border-radius: ${({ theme }) => theme.s};
   margin-top: 150px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: ${({ theme }) => theme.m};
   justify-content: center;
   align-items: center;
-  border: 1px solid ${({ theme }) => theme.colors.text};
+  border: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.text};
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 100%;
+    width: ${({ theme }) => theme.full};
   }
 `;
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: inherit;
-  transition: color 0.3s ease;
+  transition: color ${({ theme }) => theme.time} ease;
   &:hover,
   &:focus {
     text-decoration: none;
@@ -47,7 +47,7 @@ const Span = styled.span`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: ${({ theme }) => theme.m};
 `;
 
 export { Form, Span, StyledNavLink, Wrapper };

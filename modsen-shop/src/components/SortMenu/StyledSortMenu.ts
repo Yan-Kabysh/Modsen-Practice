@@ -10,8 +10,8 @@ const Wrapper = styled.div`
   min-width: 21%;
   margin-right: 30px;
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 100%;
-    margin-bottom: 40px;
+    width: ${({ theme }) => theme.full};
+    margin-bottom: ${({ theme }) => theme.m};
   }
 `;
 

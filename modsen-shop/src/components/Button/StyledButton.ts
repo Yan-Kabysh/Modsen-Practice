@@ -12,11 +12,11 @@ type ButtonProps = {
 } & React.ComponentProps<'button'>;
 
 const StyledButton = styled.button<ButtonProps>`
-  max-width: ${({ maxWidth }) => maxWidth || '288px'};
-  width: ${({ width }) => width || '100%'};
-  height: ${({ height }) => height || '32px'};
-  border: 1px solid ${({ theme }) => theme.colors.buttonText};
-  border-radius: 4px;
+  max-width: ${({ maxWidth, theme }) => maxWidth || theme.btnMaxWidth};
+  width: ${({ width, theme }) => width || theme.full};
+  height: ${({ height, theme }) => height || theme.btnHeight};
+  border: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.buttonText};
+  border-radius: ${({ theme }) => theme.xxs};
   font-family: var(--font-family-dm-sans);
   font-size: var(--font-size-12);
   font-weight: var(--font-weight-500);
@@ -24,17 +24,17 @@ const StyledButton = styled.button<ButtonProps>`
   color: ${({ theme }) => theme.colors.buttonText};
   background: ${({ theme }) => theme.colors.buttonBackground};
   transition:
-    background 0.3s,
-    color 0.3s;
+    background ${({ theme }) => theme.time},
+    color ${({ theme }) => theme.time};
 
   &:hover {
     color: ${({ theme }) => theme.colors.buttonBackground};
     background: ${({ theme }) => theme.colors.buttonText};
-    border: 1px solid ${({ theme }) => theme.colors.buttonText};
+    border: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.buttonText};
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     max-width: 520px;
-    width: 100%;
+    width: ${({ theme }) => theme.full};
     height: 26px;
   }
 `;

@@ -3,19 +3,19 @@ import '@/styles/variables.css';
 import { styled } from 'styled-components';
 
 const Wrapper = styled.div`
-  margin-top: 20px;
+  margin-top: ${({ theme }) => theme.s} theme }) => theme.s};
   position: relative;
   display: inline-block;
-  width: 100%; /* Adjust width as needed */
+  width: ${({ theme }) => theme.full}; /* Adjust width as needed */
 `;
 
 const SelectBox = styled.select`
-  width: 100%;
+  width: ${({ theme }) => theme.full};
   padding: 10px;
   appearance: none;
   background-color: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors.gray};
-  border-radius: 4px;
+  border: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.gray};
+  border-radius: ${({ theme }) => theme.xxs};
   color: ${({ theme }) => theme.colors.darkGray};
   font-family: var(--font-family-dm-sans);
   font-size: var(--font-size-14);
@@ -41,9 +41,9 @@ const Arrow = styled.div`
   pointer-events: none;
   transform: translateY(-50%);
   border: solid ${({ theme }) => theme.colors.text};
-  border-width: 0 2px 2px 0;
+  border-width: 0 ${({ theme }) => theme.xxxs} ${({ theme }) => theme.xxxs} 0;
   display: inline-block;
-  padding: 4px;
+  padding: ${({ theme }) => theme.xxs};
   transform: rotate(45deg);
 `;
 

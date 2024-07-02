@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 const Title = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 60px;
+  margin-bottom: ${({ theme }) => theme.l};
   @media screen and (max-width: ${breakpoints.medium}) {
     margin-bottom: 30px;
   }
@@ -23,7 +23,7 @@ const Ref = styled.a`
   line-height: var(--line-height-26);
   color: ${({ theme }) => theme.colors.accent};
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color ${({ theme }) => theme.time} ease;
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: var(--font-size-14);
     line-height: var(--line-height-22);

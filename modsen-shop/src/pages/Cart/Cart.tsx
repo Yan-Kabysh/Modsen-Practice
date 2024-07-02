@@ -83,6 +83,7 @@ const Cart = () => {
         <Items>
           {cartItems.map((item: IProduct) => (
             <CardProduct
+              data-testid="cart-product"
               key={item.id}
               product={item}
               remove={removingItems[item.id]}

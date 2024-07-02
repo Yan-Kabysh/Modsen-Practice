@@ -31,7 +31,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "sourceMap": true,
+    // "sourceMap": true,
     "noEmit": true,
     "incremental": true,
     "declaration": true,
@@ -47,6 +47,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
-  "include": ["src/**/*", "types/types.ts"],
+  "include": ["cypress", "src/**/*", "types/types.ts"],
   "exclude": ["node_modules", "build", "dist"]
 }

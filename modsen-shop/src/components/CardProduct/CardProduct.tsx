@@ -25,7 +25,10 @@ const CardProduct = ({
 }) => {
   return (
     <Wrapper>
-      <StyledLink to={ROUTES.SHOP + '/' + product.id}>
+      <StyledLink
+        data-testid="cart-product"
+        to={ROUTES.SHOP + '/' + product.id}
+      >
         <Img src={product.image} alt={product.title} />
       </StyledLink>
       <H2>{product.title}</H2>

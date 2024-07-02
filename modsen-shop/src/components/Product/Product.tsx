@@ -26,7 +26,7 @@ const Product: React.FC<ProductProps> = ({ product, width, height }) => {
     handleAddToCart(user, product, setAdd, dispatch, navigate);
   };
   return (
-    <S.StyledNavLink to={ROUTES.SHOP + '/' + product.id}>
+    <S.StyledNavLink data-testid="product" to={ROUTES.SHOP + '/' + product.id}>
       <S.Wrapper width={width}>
         <S.ImageWrapper height={height}>
           <S.Img src={product.image} alt="" />

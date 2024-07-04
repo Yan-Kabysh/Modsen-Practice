@@ -16,6 +16,7 @@
 
 
     },
+    "types": ["jest", "@testing-library/jest-dom"],
     "rootDir": "./",
     "outDir": "./build",
     "target": "ESNext",
@@ -47,6 +48,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
-  "include": ["cypress", "src/**/*", "types/types.ts"],
+  "include": ["units", "cypress", "src/**/*", "types/types.ts"],
   "exclude": ["node_modules", "build", "dist"]
 }

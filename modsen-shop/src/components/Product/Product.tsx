@@ -39,7 +39,7 @@ const Product: React.FC<ProductProps> = ({ product, width, height }) => {
           )}
         </S.ImageWrapper>
         <S.Title>{product.title}</S.Title>
-        <S.Price>$ {product.price}</S.Price>
+        <S.Price data-testid="product-price">$ {product.price}</S.Price>
       </S.Wrapper>
     </S.StyledNavLink>
   );

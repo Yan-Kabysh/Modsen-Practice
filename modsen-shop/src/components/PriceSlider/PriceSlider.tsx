@@ -60,6 +60,7 @@ const PriceSlider = ({ onPriceChange, reset }: any) => {
           <StyledSlider>
             <SliderTrack>
               <SliderThumb
+                data-testid="slider-min"
                 type="range"
                 step={0.01}
                 min={Math.min(...priceRange)}
@@ -68,6 +69,7 @@ const PriceSlider = ({ onPriceChange, reset }: any) => {
                 onChange={(e: any) => handleSliderChange(e, 0)}
               />
               <SliderThumb
+                data-testid="slider-max"
                 type="range"
                 step={0.01}
                 min={Math.min(...priceRange)}

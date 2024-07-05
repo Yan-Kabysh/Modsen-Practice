@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { CustomSwiperProps } from '@/../types/types';
 
+
 import {
+  Img,
   Pagination,
   PaginationDot,
   Slide,
+  SlideBtnDiv,
   SlideContainer,
   SliderWrapper,
+  SlideWrapper,
 } from './StyledCustomSwiper';
 
 import { Button } from '@/components/Button/Button';
@@ -30,40 +35,55 @@ const slides = [
 ];
 
 const CustomSwiper: React.FC<CustomSwiperProps> = ({
-  autoScrollInterval = 3000,
+  autoScrollInterval = 5000,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const navigate = useNavigate();
+  const products = useAppSelector(
+    (state) => state.productReducer.swiperProducts
+  );
+  const nextSlide = useCallback(() => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === products.length - 1 ? 0 : prevIndex + 1
+    );
+  }, [products.length]);
+
   useEffect(() => {
     const interval = setInterval(nextSlide, autoScrollInterval);
     return () => clearInterval(interval);
-  }, [autoScrollInterval]);
+  }, [autoScrollInterval, nextSlide]);
 
-  const nextSlide = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const goToSlide = (index: number) => {
+  const goToSlide = useCallback((index: number) => {
     setActiveIndex(index);
+  }, []);
+
+  const viewClickHandler = () => {
+    navigate(ROUTES.SHOP + '/' + (activeIndex + 1));
   };
+
+  const slides = products.map((product, index) => (
+    <Slide key={index}>
+      <SlideWrapper key={'slide' + (index + 1)}>
+        <Img src={product.image} alt={product.title} />
+        <SlideBtnDiv>
+          <Button onClick={viewClickHandler}>View Product</Button>
+        </SlideBtnDiv>
+      </SlideWrapper>
+    </Slide>
+  ));
+
+  const dots = products.map((_, index) => (
+    <PaginationDot
+      key={index}
+      active={index === activeIndex}
+      onClick={() => goToSlide(index)}
+    />
+  ));
 
   return (
     <SliderWrapper>
-      <SlideContainer activeIndex={activeIndex}>
-        {slides.map((slide, index) => (
-          <Slide key={index}>{slide}</Slide>
-        ))}
-      </SlideContainer>
-      <Pagination>
-        {slides.map((_, index) => (
-          <PaginationDot
-            key={index}
-            active={index === activeIndex}
-            onClick={() => goToSlide(index)}
-          />
-        ))}
-      </Pagination>
+      <SlideContainer activeIndex={activeIndex}>{slides}</SlideContainer>
+      <Pagination>{dots}</Pagination>
     </SliderWrapper>
   );
 };

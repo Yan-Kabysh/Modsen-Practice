@@ -1,26 +1,29 @@
+import '@/styles/variables.css';
+
 import { styled } from 'styled-components';
 
 const Wrapper = styled.div`
-  margin-top: 20px;
+  margin-top: ${({ theme }) => theme.s};
   position: relative;
   display: inline-block;
-  width: 100%; /* Adjust width as needed */
+  width: ${({ theme }) => theme.full};
 `;
 
 const SelectBox = styled.select`
-  width: 100%;
-  padding: 10px;
+  width: ${({ theme }) => theme.full};
+  padding: ${({ theme }) => theme.bigDots};
   appearance: none;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: #000;
-  font-family: 'DM Sans';
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 22px;
+  background-color: ${({ theme }) => theme.colors.white};
+  border: ${({ theme }) => theme.borderSmall} solid
+    ${({ theme }) => theme.colors.gray};
+  border-radius: ${({ theme }) => theme.xxs};
+  color: ${({ theme }) => theme.colors.darkGray};
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-22);
   background: transparent;
-  color: ${(props) => props.theme.colors.text};
+  color: ${({ theme }) => theme.colors.text};
 
   &:focus {
     outline: none;
@@ -28,20 +31,20 @@ const SelectBox = styled.select`
   }
 
   option {
-    background: ${(props) => props.theme.colors.background};
+    background: ${({ theme }) => theme.colors.background};
   }
 `;
 
 const Arrow = styled.div`
   position: absolute;
   top: 30%;
-  right: 10px;
+  right: ${({ theme }) => theme.bigDots};
   pointer-events: none;
   transform: translateY(-50%);
-  border: solid ${(props) => props.theme.colors.text};
-  border-width: 0 2px 2px 0;
+  border: solid ${({ theme }) => theme.colors.text};
+  border-width: 0 ${({ theme }) => theme.xxxs} ${({ theme }) => theme.xxxs} 0;
   display: inline-block;
-  padding: 4px;
+  padding: ${({ theme }) => theme.xxs};
   transform: rotate(45deg);
 `;
 

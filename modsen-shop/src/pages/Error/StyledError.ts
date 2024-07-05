@@ -1,3 +1,5 @@
+import '@/styles/variables.css';
+
 import styled from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
@@ -5,34 +7,34 @@ import { breakpoints } from '@/constants/Breakpoints';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: ${({ theme }) => theme.iconSize};
   justify-content: center;
   align-items: center;
-  margin-top: 250px;
+  margin-top: ${({ theme }) => theme.desktopContentMarginBottom};
 `;
 
 const H1 = styled.h1`
-  font-family: 'DM Sans';
-  font-size: 33px;
-  font-weight: 500;
-  line-height: 43px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-33);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-43);
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: var(--font-size-20);
+    line-height: var(--line-height-26);
   }
 `;
 
 const Span = styled.span`
-  font-family: 'DM Sans';
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 26px;
-  color: #707070;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-26);
+  color: ${({ theme }) => theme.colors.darkGray};
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: ${({ theme }) => theme.m};
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
-    line-height: 20px;
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-20);
   }
 `;
 

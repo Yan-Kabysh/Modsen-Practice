@@ -1,5 +1,8 @@
-import { breakpoints } from '@/constants/Breakpoints';
+import '@/styles/variables.css';
+
 import { styled } from 'styled-components';
+
+import { breakpoints } from '@/constants/Breakpoints';
 
 const Wrapper = styled.div`
   display: flex;
@@ -9,13 +12,13 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  width: 100%;
+  width: ${({ theme }) => theme.full};
 `;
 
 const FiltersDiv = styled.div`
   display: none;
-  gap: 20px;
-  margin-bottom: 40px;
+  gap: ${({ theme }) => theme.s};
+  margin-bottom: ${({ theme }) => theme.m};
   @media screen and (max-width: ${breakpoints.medium}) {
     display: flex;
     align-items: center;
@@ -23,25 +26,25 @@ const FiltersDiv = styled.div`
 `;
 
 const FiltersTitle = styled.span`
-font-family: 'DM Sans';
-font-size: 12px;
-font-weight: 400;
-line-height: 20px;
-color: #A18A68;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-20);
+  color: ${({ theme }) => theme.colors.accent};
 `;
 
 const H1 = styled.h1`
-  font-family: 'DM Sans';
-  font-size: 33px;
-  font-weight: 500;
-  line-height: 43px;
-  margin-top: 100px;
-  margin-bottom: 40px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-33);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-43);
+  margin-top: ${({ theme }) => theme.xxl};
+  margin-bottom: ${({ theme }) => theme.m};
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 20px;
-    line-height: 26px;
-    margin-top: 40px;
+    font-size: var(--font-size-20);
+    line-height: var(--line-height-26);
+    margin-top: ${({ theme }) => theme.m};
   }
 `;
 
-export { Container, H1, Wrapper, FiltersDiv, FiltersTitle };
+export { Container, FiltersDiv, FiltersTitle, H1, Wrapper };

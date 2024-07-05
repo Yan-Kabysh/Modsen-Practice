@@ -1,3 +1,5 @@
+import '@/styles/variables.css';
+
 import styled from 'styled-components';
 
 import { IDescriptionProps } from '@/../types/types';
@@ -7,11 +9,11 @@ import { ReactComponent as ArrowIcon } from '@/images/smallArrow.svg';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 100px;
-  margin-top: 100px;
+  gap: ${({ theme }) => theme.xxl};
+  margin-top: ${({ theme }) => theme.xxl};
   @media screen and (max-width: ${breakpoints.medium}) {
-    margin-top: 20px;
-    gap: 20px;
+    margin-top: ${({ theme }) => theme.s};
+    gap: ${({ theme }) => theme.s};
   }
 `;
 const StyledArrowIcon = styled(ArrowIcon)<IDescriptionProps>`
@@ -19,7 +21,7 @@ const StyledArrowIcon = styled(ArrowIcon)<IDescriptionProps>`
 
   @media screen and (max-width: ${breakpoints.medium}) {
     display: block;
-    transition: transform 0.3s;
+    transition: transform ${({ theme }) => theme.time};
     transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(0)')};
   }
 `;
@@ -31,7 +33,7 @@ const ImageContainer = styled.div`
 const SmallImages = styled.div`
   display: flex;
   flex-direction: column;
-  margin-right: 20px;
+  margin-right: ${({ theme }) => theme.s};
   justify-content: space-between;
   @media screen and (max-width: ${breakpoints.medium}) {
     display: none;
@@ -43,15 +45,15 @@ const SmallImgWrapper = styled.div`
 `;
 
 const SmallImg = styled.img`
-  width: 80px;
-  height: 80px;
+  width: ${({ theme }) => theme.xl};
+  height: ${({ theme }) => theme.xl};
   cursor: pointer;
   object-fit: contain;
 `;
 
 const SelectedImg = styled.img`
-  width: 100%;
-  height: 100%;
+  width: ${({ theme }) => theme.full};
+  height: ${({ theme }) => theme.full};
   object-fit: contain;
 `;
 
@@ -62,65 +64,63 @@ const SelectedImgWrapper = styled.div`
 `;
 
 const H2 = styled.h2`
-  font-family: 'DM Sans';
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 35px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-26);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-35);
   text-align: left;
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: var(--font-size-20);
+    line-height: var(--line-height-26);
   }
 `;
 
 const Price = styled.span`
-  font-family: 'DM Sans';
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 26px;
-  color: #a18a68;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-26);
+  color: ${({ theme }) => theme.colors.accent};
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 16px;
-    line-height: 27px;
-    margin: 20px 0;
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-27);
+    margin: ${({ theme }) => theme.s} 0;
   }
 `;
 
 const Description = styled.span<IDescriptionProps>`
-  font-family: 'DM Sans';
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 27px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-27);
   text-align: left;
-  color: #707070;
+  color: ${({ theme }) => theme.colors.darkGray};
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
-    line-height: 20px;
-    /* margin-bottom: 40px; */
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-20);
     display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
   }
 `;
 
 const ProductWrapper = styled.div`
   display: flex;
-  /* justify-content: space-between; */
-  gap: 40px;
+  gap: ${({ theme }) => theme.m};
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
   }
 `;
 
 const Desc = styled.p`
-  font-family: 'DM Sans';
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 27px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-27);
   text-align: left;
-  color: #707070;
+  color: ${({ theme }) => theme.colors.darkGray};
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
-    line-height: 20px;
-    margin-bottom: 20px;
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-20);
+    margin-bottom: ${({ theme }) => theme.s};
   }
 `;
 
@@ -129,7 +129,7 @@ const Icons = styled.div`
   gap: 25px;
   @media screen and (max-width: ${breakpoints.medium}) {
     justify-content: space-around;
-    margin: 20px 0;
+    margin: ${({ theme }) => theme.s} 0;
   }
 `;
 
@@ -141,56 +141,55 @@ const Info = styled.div`
 
 const Categories = styled.div`
   display: flex;
-  gap: 20px;
+  gap: ${({ theme }) => theme.s};
 `;
 
 const Category = styled.span`
-  font-family: 'DM Sans';
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 27px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-27);
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
-    line-height: 20px;
-    margin-bottom: 20px;
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-20);
+    margin-bottom: ${({ theme }) => theme.s};
   }
 `;
 
 const Rating = styled.div`
   display: flex;
-  gap: 20px;
+  gap: ${({ theme }) => theme.s};
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
   }
 `;
 
 const DescDiv = styled.div`
-  width: 100%;
-  /* padding-bottom: 30px; */
+  width: ${({ theme }) => theme.full};
 `;
 
 const DescDivTitle = styled.div`
-  width: 100%;
-  border-bottom: 1px solid #d8d8d8;
-  margin-bottom: 30px;
+  width: ${({ theme }) => theme.full};
+  border-bottom: ${({ theme }) => theme.borderSmall} solid
+    ${({ theme }) => theme.colors.gray};
+  margin-bottom: ${({ theme }) => theme.mediumPadding};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 30px;
+  padding-bottom: ${({ theme }) => theme.mediumPadding};
 `;
 
 const TitleSpan = styled.div`
-  width: 7%;
-  /* margin-bottom: 30px; */
-  /* border-bottom: 1px solid #000000; */
-  font-family: 'DM Sans';
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 26px;
+  max-width: 7%;
+  width: 100%;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-26);
   text-align: left;
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
-    line-height: 20px;
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-20);
     border-bottom: none;
   }
 `;
@@ -198,9 +197,9 @@ const TitleSpan = styled.div`
 const Similar = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  gap: ${({ theme }) => theme.xxl};
   @media screen and (max-width: ${breakpoints.medium}) {
-    gap: 20px;
+    gap: ${({ theme }) => theme.s};
   }
 `;
 

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import { Products } from '@/components/Products/Products';
 import { SortMenu } from '@/components/SortMenu/SortMenu';
+import { ReactComponent as FiltersIcon } from '@/images/filters.svg';
 
 import { Container, FiltersDiv, FiltersTitle, H1, Wrapper } from './StyledShop';
-import { ReactComponent as FiltersIcon } from '@/images/filters.svg';
 
 const Shop = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -34,8 +34,6 @@ const Shop = () => {
           <FiltersTitle>{isOpen ? 'Hide filters' : 'Filters'}</FiltersTitle>
         </FiltersDiv>
         <Products
-          // width="300px"
-          // height="300px"
           searchTerm={searchTerm}
           priceRange={priceRange}
           sortBy={sortSelect}

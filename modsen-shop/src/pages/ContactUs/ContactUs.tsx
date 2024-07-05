@@ -1,11 +1,21 @@
-import emailjs from 'emailjs-com';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button } from '@/components/Button/Button';
+import { ErrorMessage } from '@/components/Footer/StyledFooter';
 import { StyledInput } from '@/components/Input/StyledInput';
 import { StyledTextArea } from '@/components/TextArea/StyledTextArea';
+import { EMAIL_REGEX } from '@/constants/Regular';
+import { emailFormSubmit } from '@/helpers/emailhelpers';
 
-import { ButtonDiv, H1, InputsDiv, Span, Wrapper } from './StyledContactUs';
+import {
+  ButtonDiv,
+  ErrorWrapper,
+  ErrorWrapperArea,
+  H1,
+  InputsDiv,
+  Span,
+  Wrapper,
+} from './StyledContactUs';
 
 type FormValues = {
   firstName: string;
@@ -24,28 +34,7 @@ const ContactUs = () => {
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    emailjs
-      .send(
-        'service_9lhh6nk', // Ваш ID сервиса emailjs
-        'template_265lc4i', // Ваш ID шаблона emailjs
-        {
-          first_name: data.firstName,
-          last_name: data.lastName,
-          email: data.email,
-          subject: data.subject,
-          message: data.message,
-        },
-        'LDLNleshsehnRHFNt' // Ваш пользовательский ID emailjs
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-    reset();
+    emailFormSubmit(data, reset);
   };
 
   return (
@@ -57,39 +46,73 @@ const ContactUs = () => {
       </Span>
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputsDiv>
-          <StyledInput
-            placeholder="First name"
-            type="text"
-            {...register('firstName')}
-          />
-          {errors.firstName && <span>{errors.firstName.message}</span>}
-          <StyledInput
-            placeholder="Last name"
-            type="text"
-            {...register('lastName')}
-          />
-          {errors.lastName && <span>{errors.lastName.message}</span>}
-          <StyledInput
-            placeholder="Email"
-            type="text"
-            {...register('email', {
-              // required: 'Поле обязательно для заполнения',
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: 'Введите корректный email',
-              },
-            })}
-          />
-          {errors.email && <span>{errors.email.message}</span>}
-          <StyledInput
-            placeholder="Subject"
-            type="text"
-            {...register('subject')}
-          />
-          {errors.subject && <span>{errors.subject.message}</span>}
+          <ErrorWrapper>
+            <StyledInput
+              placeholder="First name"
+              type="text"
+              {...register('firstName', { required: 'Required field.' })}
+            />
+            {errors.firstName && (
+              <ErrorMessage data-testid="firstName-error">
+                {errors.firstName.message}
+              </ErrorMessage>
+            )}
+          </ErrorWrapper>
+          <ErrorWrapper>
+            <StyledInput
+              placeholder="Last name"
+              type="text"
+              {...register('lastName', { required: 'Required field.' })}
+            />
+            {errors.lastName && (
+              <ErrorMessage data-testid="lastName-error">
+                {errors.lastName.message}
+              </ErrorMessage>
+            )}
+          </ErrorWrapper>
+          <ErrorWrapper>
+            <StyledInput
+              placeholder="Email"
+              type="text"
+              {...register('email', {
+                required: 'Required field.',
+                pattern: {
+                  value: EMAIL_REGEX,
+                  message: 'Enter the correct email',
+                },
+              })}
+            />
+            {errors.email && (
+              <ErrorMessage data-testid="email-error">
+                {errors.email.message}
+              </ErrorMessage>
+            )}
+          </ErrorWrapper>
+          <ErrorWrapper>
+            <StyledInput
+              placeholder="Subject"
+              type="text"
+              {...register('subject', { required: 'Required field.' })}
+            />
+            {errors.subject && (
+              <ErrorMessage data-testid="subject-error">
+                {errors.subject.message}
+              </ErrorMessage>
+            )}
+          </ErrorWrapper>
         </InputsDiv>
-        <StyledTextArea placeholder="Message" {...register('message')} />
-        {errors.message && <span>{errors.message.message}</span>}
+        <ErrorWrapperArea>
+          <StyledTextArea
+            placeholder="Message"
+            {...register('message', { required: 'Required field.' })}
+          />
+          {errors.message && (
+            <ErrorMessage data-testid="message-error">
+              {errors.message.message}
+            </ErrorMessage>
+          )}
+        </ErrorWrapperArea>
+
         <ButtonDiv>
           <Button maxWidth={'60%'} height={'40px'} type="submit">
             SEND

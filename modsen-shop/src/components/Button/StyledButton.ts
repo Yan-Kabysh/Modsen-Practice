@@ -1,3 +1,5 @@
+import '@/styles/variables.css';
+
 import React from 'react';
 import styled from 'styled-components';
 
@@ -10,30 +12,32 @@ type ButtonProps = {
 } & React.ComponentProps<'button'>;
 
 const StyledButton = styled.button<ButtonProps>`
-  max-width: ${(props) => props.maxWidth || '288px'};
-  width: ${(props) => props.width || '100%'};
-  height: ${(props) => props.height || '32px'};
-  border: 1px solid ${(props) => props.theme.colors.buttonText};
-  border-radius: 4px;
-  font-family: 'DM Sans';
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 15.62px;
-  color: ${(props) => props.theme.colors.buttonText};
-  background: ${(props) => props.theme.colors.buttonBackground};
+  max-width: ${({ maxWidth, theme }) => maxWidth || theme.btnMaxWidth};
+  width: ${({ width, theme }) => width || theme.full};
+  height: ${({ height, theme }) => height || theme.btnHeight};
+  border: ${({ theme }) => theme.borderSmall} solid
+    ${({ theme }) => theme.colors.buttonText};
+  border-radius: ${({ theme }) => theme.xxs};
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-16);
+  color: ${({ theme }) => theme.colors.buttonText};
+  background: ${({ theme }) => theme.colors.buttonBackground};
   transition:
-    background 0.3s,
-    color 0.3s;
+    background ${({ theme }) => theme.time},
+    color ${({ theme }) => theme.time};
 
   &:hover {
-    color: ${(props) => props.theme.colors.buttonBackground};
-    background: ${(props) => props.theme.colors.buttonText};
-    border: 1px solid ${(props) => props.theme.colors.buttonText};
+    color: ${({ theme }) => theme.colors.buttonBackground};
+    background: ${({ theme }) => theme.colors.buttonText};
+    border: ${({ theme }) => theme.borderSmall} solid
+      ${({ theme }) => theme.colors.buttonText};
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    max-width: 520px;
-    width: 100%;
-    height: 26px;
+    max-width: ${({ theme }) => theme.btnMaxWidthMedia};
+    width: ${({ theme }) => theme.full};
+    height: ${({ theme }) => theme.btnHeightMedia};
   }
 `;
 

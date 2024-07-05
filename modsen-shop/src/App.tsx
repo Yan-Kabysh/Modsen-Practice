@@ -1,28 +1,30 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 
+import { Footer } from '@/components/Footer/Footer';
 import { Header } from '@/components/Header/Header';
+import { ROUTES } from '@/constants/Path';
+import { useAppSelector } from '@/hooks/redux';
+import { Cart } from '@/pages/Cart/Cart';
+import { ContactUs } from '@/pages/ContactUs/ContactUs';
+import { Error } from '@/pages/Error/Error';
+import { Home } from '@/pages/Home/Home';
+import { Login } from '@/pages/Login/Login';
+import { ProductPage } from '@/pages/ProductPage/ProductPage';
+import { Register } from '@/pages/Register/Register';
+import { Shop } from '@/pages/Shop/Shop';
 
-import { Footer } from './components/Footer/Footer';
-import { ROUTES } from './constants/Path';
 import { Global } from './globals';
-import { useAppSelector } from './hooks/redux';
-import { Cart } from './pages/Cart/Cart';
-import { ContactUs } from './pages/ContactUs/ContactUs';
-import { Error } from './pages/Error/Error';
-import { Home } from './pages/Home/Home';
-import { Login } from './pages/Login/Login';
-import { ProductPage } from './pages/ProductPage/ProductPage';
-import { Register } from './pages/Register/Register';
-import { Shop } from './pages/Shop/Shop';
+import { getMergedTheme } from './store/reducers/UIReducer/UISlice';
 import { Wrapper } from './StyledApp';
 
 const App = () => {
   const { currentTheme } = useAppSelector((state) => state.uiReducer);
+  const mergedTheme = getMergedTheme(currentTheme);
 
   return (
     <Wrapper>
-      <ThemeProvider theme={currentTheme}>
+      <ThemeProvider theme={mergedTheme}>
         <Global />
         <Header />
         <Routes>

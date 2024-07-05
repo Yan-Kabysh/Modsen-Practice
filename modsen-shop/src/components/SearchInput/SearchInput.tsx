@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { StyledSearchIcon } from '../Header/StyledHeader';
+import { StyledSearchIcon } from '@/components/Header/StyledHeader';
+
 import { IconWrapper, Input, Wrapper } from './StyledSearchInput';
 
 const SearchInput = ({ onSearch, resetInput }: any) => {

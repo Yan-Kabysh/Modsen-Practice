@@ -10,7 +10,13 @@
       "@/store/*": ["store/*"],
       "@/constants/*": ["constants/*"],
       "@/firebase/*": ["firebase/*"],
+      "@/helpers/*": ["helpers/*"],
+      "@/pages/*": ["pages/*"],
+      "@/styles/*": ["assets/styles/*"]
+
+
     },
+    "types": ["jest", "@testing-library/jest-dom"],
     "rootDir": "./",
     "outDir": "./build",
     "target": "ESNext",
@@ -26,7 +32,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "sourceMap": true,
     "noEmit": true,
     "incremental": true,
     "declaration": true,
@@ -42,6 +47,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
-  "include": ["src/**/*", "types/types.ts"],
+  "include": ["units", "cypress", "src/**/*", "types/types.ts"],
   "exclude": ["node_modules", "build", "dist"]
 }

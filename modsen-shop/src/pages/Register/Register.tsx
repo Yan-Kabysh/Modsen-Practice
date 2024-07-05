@@ -1,16 +1,15 @@
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { ExtendedUser } from '@/../types/types';
 import { Button } from '@/components/Button/Button';
+import { ErrorMessage } from '@/components/Footer/StyledFooter';
 import { StyledInput } from '@/components/Input/StyledInput';
 import { ROUTES } from '@/constants/Path';
+import { EMAIL_REGEX } from '@/constants/Regular';
+import { authFormSubmit } from '@/helpers/authHelpers';
 import { useAppDispatch } from '@/hooks/redux';
-import { userFetchingSuccess } from '@/store/reducers/UserReducer/UserSlice';
-
-import { H1 } from '../Error/StyledError';
-import { Form, Span, StyledNavLink, Wrapper } from '../Login/StyledLogin';
+import { H1 } from '@/pages/Error/StyledError';
+import { Form, Span, StyledNavLink, Wrapper } from '@/pages/Login/StyledLogin';
 
 type FormValues = {
   email: string;
@@ -27,23 +26,7 @@ const Register = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then((credential) => {
-        const user = credential.user as ExtendedUser; // Приведение к расширенному типу
-        console.log(user);
-        // user.accessToken = credential.user.getIdToken(); // Получение токена пользователя
-        dispatch(
-          userFetchingSuccess({
-            email: user.email!,
-            id: user.uid,
-            token: user.accessToken,
-          })
-        );
-        localStorage.setItem('token', user.accessToken);
-        navigate(ROUTES.HOME);
-      })
-      .catch(console.error);
+    authFormSubmit(data, dispatch, navigate);
   };
 
   return (
@@ -53,21 +36,21 @@ const Register = () => {
         <div>
           <StyledInput
             {...register('email', {
-              required: 'Email is required',
+              required: 'Required field.',
               pattern: {
-                value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                value: EMAIL_REGEX,
                 message: 'Invalid email address',
               },
             })}
             width={'90%'}
             placeholder="E-mail"
           />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
         </div>
         <div>
           <StyledInput
             {...register('password', {
-              required: 'Password is required',
+              required: 'Required field.',
               minLength: {
                 value: 6,
                 message: 'Password must be at least 6 characters long',
@@ -77,7 +60,9 @@ const Register = () => {
             type="password"
             placeholder="Password"
           />
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && (
+            <ErrorMessage>{errors.password.message}</ErrorMessage>
+          )}
         </div>
         <Span>
           {'Already have an account? '}

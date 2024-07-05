@@ -1,53 +1,63 @@
-import Slider from 'react-slider';
+import '@/styles/variables.css';
+
 import styled from 'styled-components';
 
-// StyledSlider.js
-const StyledSlider = styled(Slider)`
-  height: 2px;
-  margin: 20px auto;
+const StyledSlider = styled.div`
   position: relative;
-  background: #d8d8d8;
+  width: ${({ theme }) => theme.full};
+`;
 
-  .track {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    background: ${(props) =>
-      props.theme.title === 'dark'
-        ? '#9A9A9A'
-        : '#d8d8d8'}; // Цвет трека слайдера
-  }
+const SliderTrack = styled.div`
+  position: relative;
+  height: ${({ theme }) => theme.xxs};
+  background: ${({ theme }) => theme.colors.gray};
+  margin: ${({ theme }) => theme.s} 0;
+`;
 
-  .track-1 {
-    background: ${(props) =>
-      props.theme.colors.text}; // Цвет выбранного диапазона
-  }
+const SliderThumb = styled.input`
+  position: absolute;
+  -webkit-appearance: none;
+  appearance: none;
+  width: ${({ theme }) => theme.full};
+  height: ${({ theme }) => theme.xxs};
+  background: transparent;
+  pointer-events: none;
 
-  .thumb {
-    height: 10px;
-    width: 2px;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 3px;
+    height: ${({ theme }) => theme.thumbSize};
+    background: ${({ theme }) => theme.colors.text};
     cursor: pointer;
-    position: absolute;
-    top: 1px;
-    margin-top: -5px;
+    pointer-events: auto;
   }
+
+  &::-moz-range-thumb {
+    width: ${({ theme }) => theme.thumbSize};
+    height: ${({ theme }) => theme.thumbSize};
+    background: ${({ theme }) => theme.colors.text};
+    cursor: pointer;
+    pointer-events: auto;
+  }
+`;
+
+const Wrapper = styled.div`
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-22);
+  color: ${({ theme }) => theme.colors.darkGray};
+`;
+
+const Price = styled.div`
+  color: ${({ theme }) => theme.colors.text};
+  text-align: left;
 `;
 
 const ValueDisplay = styled.div`
   text-align: center;
-  margin-top: 10px;
+  margin-top: ${({ theme }) => theme.bigDots};
 `;
 
-const Wrapper = styled.div`
-  font-family: 'DM Sans';
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 22px;
-  color: #707070;
-`;
-
-const Price = styled.div`
-  text-align: left;
-`;
-
-export { Price, StyledSlider, ValueDisplay, Wrapper };
+export { Price, SliderThumb, SliderTrack, StyledSlider, ValueDisplay, Wrapper };

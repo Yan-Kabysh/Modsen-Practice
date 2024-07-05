@@ -7,21 +7,27 @@ const Global = createGlobalStyle`
     box-sizing: border-box;
    }
    body{
-    background: ${(props) => props.theme.colors.background};
-    color: ${(props) => props.theme.colors.text};
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.text};
    }
    button{
-    color: ${(props) => props.theme.colors.text};
+    color: ${({ theme }) => theme.colors.text};
    }
    .iconPath{
-    fill: ${(props) => props.theme.colors.text};
+    fill: ${({ theme }) => theme.colors.text};
    }
    input{
-    color: ${(props) => props.theme.colors.text};
+    color: ${({ theme }) => theme.colors.text};
    }
    .thumb{
-    background: ${(props) => props.theme.colors.text};
+    background: ${({ theme }) => theme.colors.text};
    }
+   svg path{
+    transition: fill ${({ theme }) => theme.time} ease;
+   }
+   svg:hover path {
+    fill: ${({ theme }) => theme.colors.text};
+  }
    @font-face {
       font-family: "Allerta Stencil";
       src: url(${require('@/fonts/AllertaStencil-Regular.ttf')})

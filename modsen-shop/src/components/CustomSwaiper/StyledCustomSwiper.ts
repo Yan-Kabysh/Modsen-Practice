@@ -1,3 +1,5 @@
+import '@/styles/variables.css';
+
 import { styled } from 'styled-components';
 
 import { PaginationDotProps, SlideContainerProps } from '@/../types/types';
@@ -6,8 +8,8 @@ import { breakpoints } from '@/constants/Breakpoints';
 const SliderWrapper = styled.div`
   position: relative;
   overflow: hidden;
-  width: 100%;
-  border-radius: 8px;
+  width: ${({ theme }) => theme.full};
+  border-radius: ${({ theme }) => theme.xs};
 `;
 
 const SlideContainer = styled.div<SlideContainerProps>`
@@ -19,12 +21,12 @@ const SlideContainer = styled.div<SlideContainerProps>`
 const Slide = styled.div`
   position: relative;
   flex: 0 0 auto;
-  width: 100%;
+  width: ${({ theme }) => theme.full};
 `;
 
 const Pagination = styled.div`
   position: absolute;
-  bottom: 20px;
+  bottom: ${({ theme }) => theme.s};
   left: 0;
   right: 0;
   display: flex;
@@ -34,28 +36,59 @@ const Pagination = styled.div`
 `;
 
 const PaginationDot = styled.span<PaginationDotProps>`
-  width: ${(props) => (props.active ? '20px' : '10px')};
-  height: ${(props) => (props.active ? '20px' : '10px')};
-  margin: 0 5px;
-  border-radius: 50%;
-  background-color: ${(props) => (props.active ? 'transparent' : '#ccc')};
-  border: 1px solid ${(props) => (props.active ? '#fff' : 'transparent')}; /* Прозрачная с белой обводкой */
+  width: ${({ active, theme }) => (active ? theme.s : theme.bigDots)};
+  height: ${({ active, theme }) => (active ? theme.s : theme.bigDots)};
+  margin: 0 ${({ theme }) => theme.smallDots};
+  border-radius: ${({ theme }) => theme.half};
+  background-color: ${({ active, theme }) =>
+    active ? theme.colors.gray : theme.colors.lightGray};
+  border: ${({ theme }) => theme.borderSmall} solid
+    ${({ active, theme }) => (active ? theme.colors.white : 'transparent')};
   cursor: pointer;
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: ${(props) => (props.active ? '10px' : '5px')};
-    height: ${(props) => (props.active ? '10px' : '5px')};
+    width: ${({ active, theme }) => (active ? theme.bigDots : theme.smallDots)};
+    height: ${({ active, theme }) =>
+      active ? theme.bigDots : theme.smallDots};
   }
 `;
 
 const Img = styled.img`
-  width: 100%;
+  width: ${({ theme }) => theme.full};
+  height: auto;
   max-height: 646px;
-  object-fit: cover;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-  border-radius: 8px;
+  object-fit: contain;
+  border-radius: ${({ theme }) => theme.xs};
+
   @media screen and (max-width: ${breakpoints.medium}) {
     height: 300px;
   }
 `;
 
-export { Img, Pagination, PaginationDot, Slide, SlideContainer, SliderWrapper };
+const SlideWrapper = styled.div`
+  position: relative;
+`;
+
+const SlideBtnDiv = styled.div`
+  position: absolute;
+  z-index: 10;
+  bottom: ${({ theme }) => theme.m};
+  left: 5%;
+  max-width: 10%;
+  width: 100%;
+  @media screen and (max-width: ${breakpoints.medium}) {
+    max-width: 25%;
+    width: 100%;
+    left: 0;
+  }
+`;
+
+export {
+  Img,
+  Pagination,
+  PaginationDot,
+  Slide,
+  SlideBtnDiv,
+  SlideContainer,
+  SliderWrapper,
+  SlideWrapper,
+};

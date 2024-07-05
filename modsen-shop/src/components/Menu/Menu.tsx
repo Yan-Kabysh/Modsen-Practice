@@ -15,6 +15,7 @@ import {
   Theme,
   ThemeTitle,
 } from './StyledMenu';
+import useBodyScrollLock from '@/hooks/useBodyScrollLock';
 
 const Menu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,20 +23,10 @@ const Menu: React.FC = () => {
   const { currentTheme } = useAppSelector((state) => state.uiReducer);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
+  useBodyScrollLock(isOpen);
 
   const handleThemeChange = () => {
     dispatch(uiSlice.actions.toggleTheme());
@@ -70,8 +61,8 @@ const Menu: React.FC = () => {
                 width={45}
                 height={21}
                 handleDiameter={19}
-                offColor="#D8D8D8"
-                onColor="#707070"
+                offColor={currentTheme.colors.gray}
+                onColor={currentTheme.colors.darkGray}
               />
             </Theme>
           </MenuWrapper>

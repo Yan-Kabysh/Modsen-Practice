@@ -1,40 +1,46 @@
+import '@/styles/variables.css';
+
 import { styled } from 'styled-components';
 
 import { breakpoints } from '@/constants/Breakpoints';
 const Wrapper = styled.div`
-  margin-top: 50px;
+  margin-top: ${({ theme }) => theme.bigPadding};
 `;
 
 const Title = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 60px;
+  margin-bottom: ${({ theme }) => theme.l};
   @media screen and (max-width: ${breakpoints.medium}) {
-    margin-bottom: 30px;
+    margin-bottom: ${({ theme }) => theme.mediumPadding};
   }
 `;
 
 const Ref = styled.a`
-  font-family: 'DM Sans';
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 26px;
-  color: #a18a68;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-26);
+  color: ${({ theme }) => theme.colors.accent};
   text-decoration: none;
+  transition: color ${({ theme }) => theme.time} ease;
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 14px;
-    line-height: 22px;
+    font-size: var(--font-size-14);
+    line-height: var(--line-height-22);
+  }
+  &:hover {
+    color: ${({ theme }) => theme.colors.text};
   }
 `;
 
 const H1 = styled.h1`
-  font-family: 'DM Sans';
-  font-size: 33px;
-  font-weight: 500;
-  line-height: 43px;
+  font-family: var(--font-family-dm-sans);
+  font-size: var(--font-size-33);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-43);
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 16px;
-    line-height: 27px;
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-27);
   }
 `;
 

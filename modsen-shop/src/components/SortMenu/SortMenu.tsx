@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
+import { Button } from '@/components/Button/Button';
+import { PriceSlider } from '@/components/PriceSlider/PriceSlider';
 import { SearchInput } from '@/components/SearchInput/SearchInput';
+import { Select } from '@/components/Select/Select';
+import { fetchCategories } from '@/helpers/fetchHelpers';
 
-import { Button } from '../Button/Button';
-import { PriceSlider } from '../PriceSlider/PriceSlider';
-import { Select } from '../Select/Select';
 import { Filters, Wrapper } from './StyledSortMenu';
 
 const selectData = {
@@ -24,7 +25,6 @@ const SortMenu = ({
   const [selectShopBy, setSelectShopBy] = useState<any[]>([]);
   const [resetInput, setResetInput] = useState(false);
   const [resetSelect, setResetSelect] = useState(false);
-  // const [resetSlider, setResetSlider] = useState(false);
 
   const clickHandler = () => {
     onSearch();
@@ -36,17 +36,8 @@ const SortMenu = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch(
-          'https://fakestoreapi.com/products/categories'
-        );
-        const data = await response.json();
-        setSelectShopBy(
-          data.map((category: string) => ({ value: category, label: category }))
-        );
-      } catch (error) {
-        console.error('Failed to fetch categories:', error);
-      }
+      const data = await fetchCategories();
+      setSelectShopBy(data);
     };
 
     fetchData();
@@ -71,7 +62,9 @@ const SortMenu = ({
           reset={resetSelect}
         />
         <PriceSlider onPriceChange={onPriceChange} reset={resetInput} />
-        <Button onClick={clickHandler}>Clean filters</Button>
+        <Button maxWidth="100%" onClick={clickHandler}>
+          Clean filters
+        </Button>
       </Filters>
     </Wrapper>
   );

@@ -2,9 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { CustomSwiperProps } from '@/../types/types';
-import { Button } from '@/components/Button/Button';
-import { ROUTES } from '@/constants/Path';
-import { useAppSelector } from '@/hooks/redux';
+
 
 import {
   Img,
@@ -16,6 +14,25 @@ import {
   SliderWrapper,
   SlideWrapper,
 } from './StyledCustomSwiper';
+
+import { Button } from '@/components/Button/Button';
+import { ROUTES } from '@/constants/Path';
+import { useAppSelector } from '@/hooks/redux';
+import { Img } from '@/components/CustomSwaiper/StyledCustomSwiper';
+import blackAndWhiteImage from '@/images/black-white.jpg';
+import natureImage from '@/images/nature.jpg';
+import tuscanyImage from '@/images/tuscany.jpg';
+const slides = [
+  <div key="slide1">
+    <Img src={blackAndWhiteImage} alt="" />
+  </div>,
+  <div key="slide2">
+    <Img src={natureImage} alt="" />
+  </div>,
+  <div key="slide3">
+    <Img src={tuscanyImage} alt="" />
+  </div>,
+];
 
 const CustomSwiper: React.FC<CustomSwiperProps> = ({
   autoScrollInterval = 5000,

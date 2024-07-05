@@ -22,6 +22,7 @@ interface ProductState {
   isLoading: boolean;
   error: string;
   product: IProduct;
+  swiperProducts: IProduct[];
 }
 
 interface ProductProps {

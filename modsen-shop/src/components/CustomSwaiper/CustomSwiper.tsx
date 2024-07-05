@@ -23,8 +23,8 @@ const CustomSwiper: React.FC<CustomSwiperProps> = ({
   const [activeIndex, setActiveIndex] = useState(0);
   const navigate = useNavigate();
   const products = useAppSelector(
-    (state) => state.productReducer.products
-  ).slice(0, 4);
+    (state) => state.productReducer.swiperProducts
+  );
   const nextSlide = useCallback(() => {
     setActiveIndex((prevIndex) =>
       prevIndex === products.length - 1 ? 0 : prevIndex + 1

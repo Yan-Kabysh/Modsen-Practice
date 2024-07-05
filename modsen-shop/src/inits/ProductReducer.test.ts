@@ -10,6 +10,7 @@ describe('productSlice reducer', () => {
     isLoading: false,
     error: '',
     product: {} as IProduct,
+    swiperProducts: []
   };
 
   it('should handle productsFetching action', () => {

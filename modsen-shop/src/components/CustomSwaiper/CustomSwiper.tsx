@@ -44,28 +44,24 @@ const CustomSwiper: React.FC<CustomSwiperProps> = ({
     navigate(ROUTES.SHOP + '/' + (activeIndex + 1));
   };
 
-  const slides = useMemo(() => {
-    return products.map((product, index) => (
-      <Slide key={index}>
-        <SlideWrapper key={'slide' + (index + 1)}>
-          <Img src={product.image} alt={product.title} />
-          <SlideBtnDiv>
-            <Button onClick={viewClickHandler}>View Product</Button>
-          </SlideBtnDiv>
-        </SlideWrapper>
-      </Slide>
-    ));
-  }, [products]);
+  const slides = products.map((product, index) => (
+    <Slide key={index}>
+      <SlideWrapper key={'slide' + (index + 1)}>
+        <Img src={product.image} alt={product.title} />
+        <SlideBtnDiv>
+          <Button onClick={viewClickHandler}>View Product</Button>
+        </SlideBtnDiv>
+      </SlideWrapper>
+    </Slide>
+  ));
 
-  const dots = useMemo(() => {
-    return products.map((_, index) => (
-      <PaginationDot
-        key={index}
-        active={index === activeIndex}
-        onClick={() => goToSlide(index)}
-      />
-    ));
-  }, [activeIndex, goToSlide, products]);
+  const dots = products.map((_, index) => (
+    <PaginationDot
+      key={index}
+      active={index === activeIndex}
+      onClick={() => goToSlide(index)}
+    />
+  ));
 
   return (
     <SliderWrapper>

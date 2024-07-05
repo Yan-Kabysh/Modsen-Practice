@@ -43,7 +43,8 @@ const Price = styled.span`
 `;
 
 const StyledNavLink = styled(NavLink)`
-  width: 30%;
+  max-width: 30%;
+  width: 100%;
   text-decoration: none;
   color: inherit;
   &:hover,
@@ -52,7 +53,8 @@ const StyledNavLink = styled(NavLink)`
     color: inherit;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 40%;
+    max-width: 40%;
+    width: 100%;
   }
 `;
 
@@ -68,7 +70,6 @@ const Button = styled.button`
   cursor: pointer;
   position: absolute;
   z-index: 1;
-  /* display: none; */
   bottom: 0;
   border: none;
   border-radius: 0 0 6px 6px;

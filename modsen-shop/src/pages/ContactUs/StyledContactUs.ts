@@ -5,13 +5,16 @@ import styled from 'styled-components';
 import { breakpoints } from '@/constants/Breakpoints';
 
 const Wrapper = styled.div`
-  width: 80%;
+  max-width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.mediumPadding};
   margin: 0 auto;
   text-align: center;
   @media screen and (max-width: ${breakpoints.medium}) {
+    max-width: ${({ theme }) => theme.full};
+
     width: ${({ theme }) => theme.full};
   }
 `;
@@ -35,6 +38,7 @@ const InputsDiv = styled.div`
   justify-content: space-between;
   @media screen and (max-width: ${breakpoints.medium}) {
     row-gap: ${({ theme }) => theme.mediumPadding};
+    flex-direction: column;
   }
 `;
 
@@ -63,8 +67,13 @@ const H1 = styled.h1`
 const ErrorWrapper = styled.div`
 display flex;
 flex-direction: column;
-width: 45%;
+max-width: 45%;
+width: ${({ theme }) => theme.full};
 text-align: left;
+@media screen and (max-width: ${breakpoints.medium}) {
+  max-width: 100%;
+
+  }
 `;
 
 const ErrorWrapperArea = styled.div`

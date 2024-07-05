@@ -180,7 +180,8 @@ const DescDivTitle = styled.div`
 `;
 
 const TitleSpan = styled.div`
-  width: 7%;
+  max-width: 7%;
+  width: 100%;
   font-family: var(--font-family-dm-sans);
   font-size: var(--font-size-20);
   font-weight: var(--font-weight-400);

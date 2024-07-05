@@ -1,5 +1,5 @@
 import { IProduct } from '@/../types/types';
-import { productSlice } from '@/store/reducers/ProductReducer/ProductsSlice'; // Adjust the import path as per your setup
+import { productSlice } from '@/store/reducers/ProductReducer/ProductsSlice'; 
 import { expect } from '@jest/globals';
 
 const { reducer, actions } = productSlice;
@@ -10,6 +10,7 @@ describe('productSlice reducer', () => {
     isLoading: false,
     error: '',
     product: {} as IProduct,
+    swiperProducts: []
   };
 
   it('should handle productsFetching action', () => {

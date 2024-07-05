@@ -1,5 +1,3 @@
-// Login.js
-
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +7,7 @@ import { ErrorMessage } from '@/components/Footer/StyledFooter';
 import { StyledInput } from '@/components/Input/StyledInput';
 import { ROUTES } from '@/constants/Path';
 import { EMAIL_REGEX } from '@/constants/Regular';
-import { handleLogin } from '@/helpers/authHelpers'; // Импортируем наш хелпер
+import { handleLogin } from '@/helpers/authHelpers';
 import { useAppDispatch } from '@/hooks/redux';
 import { H1 } from '@/pages/Error/StyledError';
 

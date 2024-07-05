@@ -73,9 +73,11 @@ const SlideBtnDiv = styled.div`
   z-index: 10;
   bottom: ${({ theme }) => theme.m};
   left: 5%;
-  width: 10%;
+  max-width: 10%;
+  width: 100%;
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 25%;
+    max-width: 25%;
+    width: 100%;
     left: 0;
   }
 `;

@@ -5,14 +5,10 @@ import { Button } from '@/components/Button/Button';
 import { Products } from '@/components/Products/Products';
 import { StarRating } from '@/components/StarRating/StarRating';
 import { ROUTES } from '@/constants/Path';
-import { SocialRefs } from '@/constants/SocialRefs';
+import { socialIcons } from '@/constants/SocialRefs';
 import { auth } from '@/firebase';
 import { handleAddToCart, handleItemsLoad } from '@/helpers/cartControl';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { ReactComponent as FacebookIcon } from '@/images/facebook.svg';
-import { ReactComponent as InstagramIcon } from '@/images/instagram.svg';
-import { ReactComponent as MailIcon } from '@/images/mail.svg';
-import { ReactComponent as TwitterIcon } from '@/images/twiter.svg';
 import { selectedProductFetch } from '@/store/reducers/ProductReducer/ProductActionCreators';
 
 import * as S from './StyledProductPage';
@@ -103,30 +99,16 @@ const ProductPage = () => {
             </Button>
           )}
           <S.Icons>
-            <a href={SocialRefs.mail} target="_blank" rel="noopener noreferrer">
-              <MailIcon />
-            </a>
-            <a
-              href={SocialRefs.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FacebookIcon />
-            </a>
-            <a
-              href={SocialRefs.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <InstagramIcon />
-            </a>
-            <a
-              href={SocialRefs.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <TwitterIcon />
-            </a>
+            {socialIcons.map(({ href, Icon }, index) => (
+              <a
+                key={index}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon />
+              </a>
+            ))}
           </S.Icons>
           <S.Categories>
             <S.Category>Categories:</S.Category>

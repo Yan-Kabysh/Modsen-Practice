@@ -7,6 +7,7 @@ const initialState: ProductState = {
   isLoading: false,
   error: '',
   product: {} as IProduct,
+  swiperProducts: []
 };
 
 export const productSlice = createSlice({
@@ -20,6 +21,7 @@ export const productSlice = createSlice({
       state.isLoading = false;
       state.error = '';
       state.products = action.payload;
+      state.swiperProducts =action.payload.slice(0, 4);
     },
     productsFetchingError(state, action: PayloadAction<string>) {
       state.isLoading = false;

@@ -10,7 +10,7 @@ type StarRatingPropsType = {
 };
 
 const StarRating = ({ value }: StarRatingPropsType) => {
-  const roundedValue = useMemo(() => Math.round(value), [value]);
+  const roundedValue = Math.round(value);
   const accent = useAppSelector(
     (state) => state.uiReducer.currentTheme.colors.accent
   );

@@ -1,5 +1,5 @@
 import { User } from 'firebase/auth';
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import { DefaultTheme } from 'styled-components';
 
 
@@ -22,6 +22,7 @@ interface ProductState {
   isLoading: boolean;
   error: string;
   product: IProduct;
+  swiperProducts: IProduct[];
 }
 
 interface ProductProps {
@@ -85,6 +86,15 @@ interface IDescriptionProps {
 interface IHeaderButtons{
   isActive: boolean;
 }
+
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>  {
+  children: ReactNode;
+  onClick?: () => void;
+  width?: string;
+  height?: string;
+  maxWidth?: string;
+};
 
 
 
@@ -159,4 +169,5 @@ export type {
   WrapperProps,
   ImageWrapperProps,
   IHeaderButtons,
+  ButtonProps,
 };

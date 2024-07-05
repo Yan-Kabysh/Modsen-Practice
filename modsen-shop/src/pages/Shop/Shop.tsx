@@ -34,8 +34,6 @@ const Shop = () => {
           <FiltersTitle>{isOpen ? 'Hide filters' : 'Filters'}</FiltersTitle>
         </FiltersDiv>
         <Products
-          // width="300px"
-          // height="300px"
           searchTerm={searchTerm}
           priceRange={priceRange}
           sortBy={sortSelect}

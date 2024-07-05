@@ -19,12 +19,12 @@ module.exports = {
         rule.test && rule.test.toString().includes('svg')
       );
 
-      // Modify existing file-loader rule to ignore SVG files
+
       if (svgRuleIndex >= 0) {
         webpackConfig.module.rules[svgRuleIndex].exclude = /\.svg$/;
       }
 
-      // Add new rule for SVGR
+
       webpackConfig.module.rules.push({
         test: /\.svg$/,
         use: [

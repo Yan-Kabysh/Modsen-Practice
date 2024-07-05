@@ -27,7 +27,6 @@ const Register = () => {
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     authFormSubmit(data, dispatch, navigate);
-    // reset();
   };
 
   return (

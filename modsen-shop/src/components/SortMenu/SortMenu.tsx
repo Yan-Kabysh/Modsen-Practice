@@ -62,7 +62,9 @@ const SortMenu = ({
           reset={resetSelect}
         />
         <PriceSlider onPriceChange={onPriceChange} reset={resetInput} />
-        <Button onClick={clickHandler}>Clean filters</Button>
+        <Button maxWidth="100%" onClick={clickHandler}>
+          Clean filters
+        </Button>
       </Filters>
     </Wrapper>
   );

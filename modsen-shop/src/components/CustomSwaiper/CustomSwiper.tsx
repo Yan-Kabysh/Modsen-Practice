@@ -10,6 +10,9 @@ import {
   SliderWrapper,
 } from './StyledCustomSwiper';
 
+import { Button } from '@/components/Button/Button';
+import { ROUTES } from '@/constants/Path';
+import { useAppSelector } from '@/hooks/redux';
 import { Img } from '@/components/CustomSwaiper/StyledCustomSwiper';
 import blackAndWhiteImage from '@/images/black-white.jpg';
 import natureImage from '@/images/nature.jpg';

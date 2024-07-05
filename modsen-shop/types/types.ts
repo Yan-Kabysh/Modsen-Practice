@@ -1,5 +1,5 @@
 import { User } from 'firebase/auth';
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import { DefaultTheme } from 'styled-components';
 
 
@@ -88,6 +88,15 @@ interface IHeaderButtons{
 }
 
 
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>  {
+  children: ReactNode;
+  onClick?: () => void;
+  width?: string;
+  height?: string;
+  maxWidth?: string;
+};
+
+
 
 interface CommonThemeInterface{
   xxxs: string;
@@ -160,4 +169,5 @@ export type {
   WrapperProps,
   ImageWrapperProps,
   IHeaderButtons,
+  ButtonProps,
 };

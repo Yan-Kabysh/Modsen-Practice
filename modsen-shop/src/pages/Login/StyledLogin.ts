@@ -16,7 +16,8 @@ const Wrapper = styled.div`
   gap: ${({ theme }) => theme.m};
   justify-content: center;
   align-items: center;
-  border: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.text};
+  border: ${({ theme }) => theme.borderSmall} solid
+    ${({ theme }) => theme.colors.text};
   @media screen and (max-width: ${breakpoints.medium}) {
     width: ${({ theme }) => theme.full};
   }

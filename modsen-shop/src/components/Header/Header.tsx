@@ -70,6 +70,7 @@ const Header: React.FC = () => {
         />
         <S.StyledSearchIcon />
         <S.ButtonCart
+          data-testid="button-cart"
           isActive={window.location.pathname.includes('cart')}
           onClick={handleCartButtonClick}
         >

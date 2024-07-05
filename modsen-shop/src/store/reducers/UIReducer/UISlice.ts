@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import dark from 'theme/dark';
 import light from 'theme/light';
-import {commonThemeConfig} from 'theme/themeConfig'
+import { commonThemeConfig } from 'theme/themeConfig';
 
 import { ThemeState } from '@/../types/types';
 import THEME_TYPES from '@/constants/ThemeTypes';
@@ -13,7 +13,7 @@ const initialState: ThemeState = {
   commonThemeConfig,
 };
 
-const getMergedTheme  = (currentTheme: any) => ({
+const getMergedTheme = (currentTheme: any) => ({
   ...currentTheme,
   ...commonThemeConfig,
 });

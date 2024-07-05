@@ -43,6 +43,7 @@ const Login = () => {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <StyledInput
+            data-testid="email"
             {...register('email', {
               required: 'Required field.',
               pattern: {
@@ -57,6 +58,7 @@ const Login = () => {
         </div>
         <div>
           <StyledInput
+            data-testid="password"
             {...register('password', {
               required: 'Required field.',
               minLength: {
@@ -77,7 +79,9 @@ const Login = () => {
           {"Don't have an account? "}
           <StyledNavLink to={ROUTES.REGISTER}>Register</StyledNavLink>
         </Span>
-        <Button type="submit">Login</Button>
+        <Button data-testid="login" type="submit">
+          Login
+        </Button>
       </Form>
     </Wrapper>
   );

@@ -15,8 +15,8 @@ import { Register } from '@/pages/Register/Register';
 import { Shop } from '@/pages/Shop/Shop';
 
 import { Global } from './globals';
-import { Wrapper } from './StyledApp';
 import { getMergedTheme } from './store/reducers/UIReducer/UISlice';
+import { Wrapper } from './StyledApp';
 
 const App = () => {
   const { currentTheme } = useAppSelector((state) => state.uiReducer);

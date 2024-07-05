@@ -6,7 +6,8 @@ import { breakpoints } from '@/constants/Breakpoints';
 
 const QuantityButton = styled.button`
   background: ${({ theme }) => theme.colors.background};
-  border: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.text};
+  border: ${({ theme }) => theme.borderSmall} solid
+    ${({ theme }) => theme.colors.text};
   border-radius: ${({ theme }) => theme.half};
   width: ${({ theme }) => theme.m};
   height: ${({ theme }) => theme.m};

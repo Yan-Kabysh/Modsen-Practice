@@ -9,7 +9,8 @@ const StyledTextArea = styled.textarea`
   height: ${({ theme }) => theme.xxl};
   background: transparent;
   border: none;
-  border-bottom: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.gray};
+  border-bottom: ${({ theme }) => theme.borderSmall} solid
+    ${({ theme }) => theme.colors.gray};
   font-family: var(--font-family-dm-sans);
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-400);

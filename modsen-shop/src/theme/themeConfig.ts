@@ -28,7 +28,6 @@ export const commonThemeConfig: CommonThemeInterface = {
 
   cartItemSize: '150px',
 
-
   btnMaxWidth: '288px',
   btnHeight: '32px',
 
@@ -42,5 +41,5 @@ export const commonThemeConfig: CommonThemeInterface = {
   mobileContentMarginBottom: '100px',
 
   borderSmall: '1px',
-  borderBig: '2px'
+  borderBig: '2px',
 };

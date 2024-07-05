@@ -36,9 +36,9 @@ const MenuButton = styled.button<IMenuButtonProps>`
     }
 
     &:nth-child(3) {
-  transform: ${({ isOpen, theme }) =>
-    isOpen ? `rotate(-45deg) translate(${theme.xxxs}, -3px)` : `rotate(0)`};
-}
+      transform: ${({ isOpen, theme }) =>
+        isOpen ? `rotate(-45deg) translate(${theme.xxxs}, -3px)` : `rotate(0)`};
+    }
   }
 `;
 
@@ -79,7 +79,8 @@ const MenuWrapper = styled.div<IDescriptionProps>`
   gap: ${({ theme }) => theme.bigDots};
   margin: 10vh 4% 0 4%;
   transition: transform ${({ theme }) => theme.time} ease-in-out;
-  transform: ${({ isOpen, theme }) => (isOpen ? 'translateX(0)' : `translateX(${theme.full})`)};
+  transform: ${({ isOpen, theme }) =>
+    isOpen ? 'translateX(0)' : `translateX(${theme.full})`};
   overflow-y: auto;
 `;
 

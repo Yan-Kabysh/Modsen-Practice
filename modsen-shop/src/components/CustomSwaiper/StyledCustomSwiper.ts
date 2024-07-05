@@ -38,7 +38,7 @@ const Pagination = styled.div`
 const PaginationDot = styled.span<PaginationDotProps>`
   width: ${({ active, theme }) => (active ? theme.s : theme.bigDots)};
   height: ${({ active, theme }) => (active ? theme.s : theme.bigDots)};
-  margin: 0 ${({ theme }) =>  theme.smallDots};
+  margin: 0 ${({ theme }) => theme.smallDots};
   border-radius: ${({ theme }) => theme.half};
   background-color: ${({ active, theme }) =>
     active ? theme.colors.gray : theme.colors.lightGray};
@@ -47,7 +47,8 @@ const PaginationDot = styled.span<PaginationDotProps>`
   cursor: pointer;
   @media screen and (max-width: ${breakpoints.medium}) {
     width: ${({ active, theme }) => (active ? theme.bigDots : theme.smallDots)};
-    height: ${({ active, theme }) => (active ? theme.bigDots : theme.smallDots)};
+    height: ${({ active, theme }) =>
+      active ? theme.bigDots : theme.smallDots};
   }
 `;
 
@@ -70,7 +71,7 @@ const SlideWrapper = styled.div`
 const SlideBtnDiv = styled.div`
   position: absolute;
   z-index: 10;
-  bottom: ${({ theme }) => theme.m}; 
+  bottom: ${({ theme }) => theme.m};
   left: 5%;
   width: 10%;
   @media screen and (max-width: ${breakpoints.medium}) {

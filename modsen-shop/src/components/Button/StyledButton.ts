@@ -15,7 +15,8 @@ const StyledButton = styled.button<ButtonProps>`
   max-width: ${({ maxWidth, theme }) => maxWidth || theme.btnMaxWidth};
   width: ${({ width, theme }) => width || theme.full};
   height: ${({ height, theme }) => height || theme.btnHeight};
-  border: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.buttonText};
+  border: ${({ theme }) => theme.borderSmall} solid
+    ${({ theme }) => theme.colors.buttonText};
   border-radius: ${({ theme }) => theme.xxs};
   font-family: var(--font-family-dm-sans);
   font-size: var(--font-size-12);
@@ -30,7 +31,8 @@ const StyledButton = styled.button<ButtonProps>`
   &:hover {
     color: ${({ theme }) => theme.colors.buttonBackground};
     background: ${({ theme }) => theme.colors.buttonText};
-    border: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.buttonText};
+    border: ${({ theme }) => theme.borderSmall} solid
+      ${({ theme }) => theme.colors.buttonText};
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     max-width: ${({ theme }) => theme.btnMaxWidthMedia};

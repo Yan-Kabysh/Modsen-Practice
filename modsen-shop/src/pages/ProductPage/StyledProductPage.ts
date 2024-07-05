@@ -170,7 +170,8 @@ const DescDiv = styled.div`
 
 const DescDivTitle = styled.div`
   width: ${({ theme }) => theme.full};
-  border-bottom: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.gray};
+  border-bottom: ${({ theme }) => theme.borderSmall} solid
+    ${({ theme }) => theme.colors.gray};
   margin-bottom: ${({ theme }) => theme.mediumPadding};
   display: flex;
   justify-content: space-between;

@@ -10,7 +10,8 @@ import { ReactComponent as SearchIcon } from '@/images/search.svg';
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: ${({ theme }) => theme.borderSmall} solid ${({ theme }) => theme.colors.gray};
+  border-bottom: ${({ theme }) => theme.borderSmall} solid
+    ${({ theme }) => theme.colors.gray};
   margin: ${({ theme }) => theme.mediumPadding} 0 ${({ theme }) => theme.s} 0;
   padding-bottom: ${({ theme }) => theme.bigDots};
 `;
@@ -85,7 +86,8 @@ const StyledSearchIcon = styled(SearchIcon)`
 `;
 
 const Count = styled.span`
-  border: ${({ theme }) => theme.borderBig} solid ${({ theme }) => theme.colors.text};
+  border: ${({ theme }) => theme.borderBig} solid
+    ${({ theme }) => theme.colors.text};
   border-radius: ${({ theme }) => theme.half};
   width: 18px;
   height: 18px;

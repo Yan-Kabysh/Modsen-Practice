@@ -3,13 +3,9 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { ROUTES } from '@/constants/Path';
 import { EMAIL_REGEX } from '@/constants/Regular';
-import { SocialRefs } from '@/constants/SocialRefs';
+import { socialNetworks } from '@/constants/SocialRefs';
 import { submit } from '@/helpers/emailhelpers';
 import { ReactComponent as ArrowIcon } from '@/images/arrow.svg';
-import { ReactComponent as FacebookIcon } from '@/images/facebook.svg';
-import { ReactComponent as InstagramIcon } from '@/images/instagram.svg';
-import { ReactComponent as LinkIcon } from '@/images/linkedin.svg';
-import { ReactComponent as TwitterIcon } from '@/images/twiter.svg';
 
 import * as S from './StyledFooter';
 
@@ -65,34 +61,16 @@ const Footer: React.FC = () => {
       <S.PolicyNetworks>
         <S.Policy>© 2023 Shelly. Terms of use and privacy policy.</S.Policy>
         <S.Networks>
-          <a
-            href={SocialRefs.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <LinkIcon />
-          </a>
-          <a
-            href={SocialRefs.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FacebookIcon />
-          </a>
-          <a
-            href={SocialRefs.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <InstagramIcon />
-          </a>
-          <a
-            href={SocialRefs.twitter}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <TwitterIcon />
-          </a>
+          {socialNetworks.map(({ href, Icon }, index) => (
+            <a
+              key={index}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon />
+            </a>
+          ))}
         </S.Networks>
       </S.PolicyNetworks>
     </S.Wrapper>

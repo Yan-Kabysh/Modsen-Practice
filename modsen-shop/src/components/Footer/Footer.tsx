@@ -24,7 +24,6 @@ const Footer: React.FC = () => {
     reset,
     formState: { errors, isSubmitted },
   } = useForm<IEmailForm>({
-    // mode: 'onBlur',
     defaultValues: {},
   });
 

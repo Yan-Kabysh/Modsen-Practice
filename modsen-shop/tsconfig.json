@@ -32,7 +32,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    // "sourceMap": true,
     "noEmit": true,
     "incremental": true,
     "declaration": true,

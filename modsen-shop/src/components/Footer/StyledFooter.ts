@@ -114,7 +114,7 @@ const Ref = styled.a`
 
 const Input = styled.input`
   width: 400px;
-  height: ${({ theme }) => theme.m}; /* Высота инпута */
+  height: ${({ theme }) => theme.m}; 
   border: none;
   border-bottom: ${({ theme }) => theme.borderSmall} solid
     ${({ theme }) => theme.colors.text};

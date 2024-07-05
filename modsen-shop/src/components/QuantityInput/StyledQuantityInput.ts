@@ -35,11 +35,13 @@ const QuantityButton = styled.button`
 `;
 
 const QuantityWrapper = styled.div`
-  width: 10%;
+  max-width: 10%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   @media screen and (max-width: ${breakpoints.medium}) {
+    max-width: ${({ theme }) => theme.full};
     width: ${({ theme }) => theme.full};
     justify-content: flex-start;
     gap: ${({ theme }) => theme.s};

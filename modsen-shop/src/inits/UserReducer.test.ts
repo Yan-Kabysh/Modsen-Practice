@@ -1,4 +1,4 @@
-import { UserSlice } from '@/store/reducers/UserReducer/UserSlice'; // Adjust the import path as per your setup
+import { UserSlice } from '@/store/reducers/UserReducer/UserSlice';
 import { IUser, IUserState } from '@/../types/types';
 import { expect } from '@jest/globals';
 import { combineReducers, createStore } from 'redux';

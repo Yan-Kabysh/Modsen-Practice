@@ -7,7 +7,8 @@ import { breakpoints } from '@/constants/Breakpoints';
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  width: 40%;
+  max-width: 40%;
+  width: 100%;
   padding: ${({ theme }) => theme.s};
   border-radius: ${({ theme }) => theme.s};
   margin-top: ${({ theme }) => theme.cartItemSize};
@@ -19,6 +20,7 @@ const Wrapper = styled.div`
   border: ${({ theme }) => theme.borderSmall} solid
     ${({ theme }) => theme.colors.text};
   @media screen and (max-width: ${breakpoints.medium}) {
+    max-width: ${({ theme }) => theme.full};
     width: ${({ theme }) => theme.full};
   }
 `;
@@ -31,7 +33,6 @@ const StyledNavLink = styled(NavLink)`
   &:focus {
     text-decoration: none;
     color: ${({ theme }) => theme.colors.text};
-    /* font-weight: bold; */
   }
 `;
 

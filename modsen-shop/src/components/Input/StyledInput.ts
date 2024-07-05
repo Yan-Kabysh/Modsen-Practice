@@ -44,6 +44,7 @@ const StyledInput = styled.input`
     -webkit-text-fill-color: ${({ theme }) => theme.colors.text};
   }
   @media screen and (max-width: ${breakpoints.medium}) {
+    max-width: ${({ theme }) => theme.full};
     width: ${({ theme }) => theme.full};
     font-size: var(--font-size-12);
     line-height: var(--line-height-20);

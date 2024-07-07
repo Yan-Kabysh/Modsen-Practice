@@ -11,6 +11,7 @@ import {
   handleAuthStateChange,
   handleLogOut,
   handleQuantityChange,
+  handleRemoveAllItems,
   handleRemoveItem,
   removeItemFromCart,
   updateItemQuantity,
@@ -18,6 +19,7 @@ import {
 import { useAppSelector } from '@/hooks/redux';
 
 import { CartHeader, Empty, H1, Items, TotalWrapper } from './StyledCart';
+import { ModalWindow } from '@/components/ModalWindow/ModalWindow';
 
 const Cart = () => {
   const [loading, setLoading] = useState(true);
@@ -25,6 +27,22 @@ const Cart = () => {
   const cartItems = useAppSelector((state) => state.cartReducer.items);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [placing, setPlacing] = useState(false);
+
+  const handleOpenModal = async () => {
+    setPlacing(true);
+    await handleRemoveAllItems({
+      user,
+      dispatch,
+      setRemovingItems,
+    });
+    setPlacing(false);
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   const [removingItems, setRemovingItems] = useState<{
     [key: number]: boolean;
   }>({});
@@ -100,6 +118,15 @@ const Cart = () => {
           <Empty>Total cost: {<Price>$ {total.toFixed(2)}</Price>}</Empty>
         )}
       </TotalWrapper>
+      {cartItems.length !== 0 && (
+        <Button onClick={handleOpenModal}>
+          {placing ? 'Placing...' : 'Place an order'}
+        </Button>
+      )}
+      <ModalWindow isOpen={isModalOpen} onClose={handleCloseModal}>
+        <h2>Success order</h2>
+        <p>Order completed successfully</p>
+      </ModalWindow>
     </>
   );
 };

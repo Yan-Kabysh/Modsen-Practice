@@ -7,6 +7,7 @@ import { ROUTES } from '@/constants/Path';
 import { auth, db } from '@/firebase';
 import {
   addItem,
+  removeAllItes,
   removeItem,
   setCart,
   updateQuantity,
@@ -39,6 +40,24 @@ export const addItemToCart = async (userId: string, product: IProduct) => {
     }
   } catch (error) {
     console.error('Error adding item to cart:', error);
+    throw error;
+  }
+};
+
+export const removeAllItemsFromCart = async (userId: string) => {
+  try {
+    console.log(`Removing all products from user ${userId}'s cart...`);
+    const userCartRef = getUserCartRef(userId);
+    const userCartSnap = await getDoc(userCartRef);
+
+    if (userCartSnap.exists()) {
+      await updateDoc(userCartRef, { items: [] });
+      console.log(`All products removed successfully from user ${userId}'s cart.`);
+    } else {
+      console.log(`Cart for user ${userId} does not exist.`);
+    }
+  } catch (error) {
+    console.error('Error removing all items from cart:', error);
     throw error;
   }
 };
@@ -201,6 +220,29 @@ export const handleRemoveItem = async ({
     console.log('Please log in to add items to your cart');
   }
 };
+
+export const handleRemoveAllItems = async ({
+  user,
+  dispatch,
+  setRemovingItems,
+}: any) => {
+  if (user && user.id) {
+    try {
+      setRemovingItems(true);
+      await removeAllItemsFromCart(user.id);
+      dispatch(removeAllItes());
+      setRemovingItems(false);
+    } catch (error) {
+      console.error('Failed to remove all products from cart:', error);
+      console.log(
+        'Failed to remove all products from cart. Please try again later.'
+      );
+    }
+  } else {
+    console.log('Please log in to remove items from your cart');
+  }
+};
+
 
 export const handleQuantityChange = async ({
   user,
